@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -13,6 +13,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Initial draft. Reduced-scale test article of about 6 kWh(th) within $600, with objectives, design, BOM summary, test plan and safety; general arrangement TBK-DWG-002 Rev P1
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Replaced the test outline with a summary of test plan TBK-TST-001 and renumbered the tests TP0 to TP6 so they no longer share tags with the thermocouples
 ---
 
 # ThermaBrick test article design precis
@@ -125,28 +129,30 @@ The sequence follows TBK-PRC-001, section 6, and takes one weekend. It needs no 
 
 *Table 4. Test article cost by group. Line items are in `bom/bom-test-article.csv`.*
 
-The basis is the same as the full-scale BOM: US retail and marketplace list prices in September 2026, before tax and shipping. The margin is only $0.50. If quotes come in higher, defer the discharge kit first: the blower, PWM module and stack, together $25. Build and run tests T1 to T3 and T5, which answer O1, O2 and O4, then add the discharge kit. The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
+The basis is the same as the full-scale BOM: US retail and marketplace list prices in September 2026, before tax and shipping. The margin is only $0.50. If quotes come in higher, defer the discharge kit first: the blower, PWM module and stack, together $25. Build and run procedures TP1 to TP4, which answer O1, O2 and O4, then add the discharge kit. The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
 
 ## 6. Test plan
 
-The formal test plan will be TBK-TST-001. Its outline is as follows.
+Test plan TBK-TST-001 sets out seven procedures over about seven weeks, summarized in Table 5. The procedure numbers (TP) are separate from the thermocouple tags (T1 to T6).
 
-| Test | Procedure | Measured | Pass criterion |
-| --- | --- | --- | --- |
-| T1 Bake-out and commissioning | Check heater insulation resistance, then hold 150 °C sand mean for 24 h with the room ventilated | Insulation resistance, smoke and odor, moisture | 1 MΩ or more per heater at 500 V after bake-out |
-| T2 Charge | From a uniform 150 °C to 450 °C mean at up to 1.0 kW, with the well-wall limit active | T1, T3, T4 and SSR duty against time | Fits O1. Model within 10 % on time to 80 % charge after fitting sand k and contact h |
-| T3 Cool-down | 24 h idle from full, with the blower removed and both legs taped | Sand temperatures, jacket temperature | Fits O2. Loss within 20 % of the 249 W prediction before fitting |
-| T4 Discharge | 250 W and 150 W demands from full; airflow set by blower PWM and measured by the bag method | T5, T6, airflow, sand temperatures | Fits O3. Duty within 15 % of the model |
-| T5 Limit trip | Hold the T2 thermocouple in a heat-gun jet with the heaters cold | Trip temperature, latch, reset | Trips at 600 °C ± 10 K; stays off until START |
-| T6 Cycling | 25 charge and cool-down cycles | Drum circumference at three heights every 5 cycles | O5. Growth under 0.25 % after 25 cycles |
+| Procedure | Purpose | Key pass criterion |
+| --- | --- | --- |
+| TP0 Inspection and instrument checks | Build, sand mass, thermocouple and airflow calibration | Channels within ±2 K at 0 °C and 100 °C |
+| TP1 Limit and fault response, cold | O4 | Latching trip at 600 °C ± 10 K; firmware safe state within 10 s |
+| TP2 Bake-out and commissioning | Dry the sand, burn off binder, settle at 150 °C | 1 MΩ or more per heater at 500 V |
+| TP3 Charge | O1 | Fitted model within 10 K RMS; time to 80 % within 10 % |
+| TP4 Cool-down | O2 | Loss within 20 % of 249 W before fitting |
+| TP5 Discharge | O3 | Duty within 15 % of the model, with no refit |
+| TP6 Cycling | O5 | Drum growth under 0.25 % after 25 cycles |
 
-*Table 5. Test plan outline.*
+*Table 5. Test procedures (TBK-TST-001).*
 
 The fitted sand conductivity, contact conductance and insulation conductivity then go back into `tbk_cal_001.py`. TBK-CAL-001 will be reissued with measured values before the full-scale build is committed.
 
 ## 7. Open questions
 
 - [ ] Confirm heater lead time and resistance tolerance from the chosen supplier; order one spare if the budget allows.
-- [ ] Confirm the blower delivers 4 L/s through the U-tube (96 Pa) by the bag method before T4.
+- [ ] Confirm the blower delivers 4 L/s through the U-tube (96 Pa) by the bag method in TP0.
 - [ ] Write firmware for charge control, logging and blower PWM (`firmware/`).
-- [ ] Write the formal test plan, TBK-TST-001.
+- [x] Write the formal test plan, TBK-TST-001.
+- [ ] Write the analysis script `docs/05-tests/tbk_tst_001_fit.py` (TBK-TST-001, section 9).

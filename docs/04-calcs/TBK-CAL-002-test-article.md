@@ -3,7 +3,7 @@ doc_id: TBK-CAL-002
 title: ThermaBrick test article sizing
 project: ThermaBrick
 doc_type: Calculation
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -13,6 +13,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Initial draft. Sizing of the reduced-scale test article with the TBK-CAL-001 v0.2 models, including standby loss
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Test references updated to the procedure numbers in TBK-TST-001
 ---
 
 # ThermaBrick test article sizing
@@ -86,7 +90,7 @@ The single U-tube is the full-scale 1-1/4 in pipe with a 206 mm leg spacing. Eac
 
 *Figure 2. Test article discharge at a 250 W demand with standby loss.*
 
-Standby loss takes 2.1 to 2.9 kWh of the 5.9 kWh during a discharge, so controlled output is lower than at full scale. The test plan (TBK-PRC-002, section 6) uses 250 W as the reference demand. At that demand, output, airflow and outlet temperature all change measurably over the run, which is what a fit of the exchanger model needs.
+Standby loss takes 2.1 to 2.9 kWh of the 5.9 kWh during a discharge, so controlled output is lower than at full scale. The test plan (TBK-TST-001, TP5) uses 250 W as the reference demand. At that demand, output, airflow and outlet temperature all change measurably over the run, which is what a fit of the exchanger model needs.
 
 ## 5. Standby loss
 
@@ -103,7 +107,7 @@ The envelope is stone wool throughout: three 89 mm layers on the side, the heads
 
 *Table 4. Test article standby loss by path.*
 
-Loss falls to 141 W at 300 °C and 57 W at 150 °C. A 24 h idle period from full loses 4.1 kWh, or 69 % of the window, and the sand mean falls to 252 °C. The ratio of loss to stored heat is 42 W/kWh, against 25 W/kWh at full scale, because the smaller vessel has more surface per unit of volume. The 24 h cool-down test (T3) measures this loss directly and fits the insulation conductivity used in both notes.
+Loss falls to 141 W at 300 °C and 57 W at 150 °C. A 24 h idle period from full loses 4.1 kWh, or 69 % of the window, and the sand mean falls to 252 °C. The ratio of loss to stored heat is 42 W/kWh, against 25 W/kWh at full scale, because the smaller vessel has more surface per unit of volume. The cool-down procedure (TBK-TST-001, TP4) measures this loss directly and fits the insulation conductivity used in both notes.
 
 ## 6. Electrical and structural checks
 
@@ -125,5 +129,5 @@ The brick bearing check assumes the chime lip bears on an 8 mm wide line across 
 The limitations of TBK-CAL-001, section 8, apply. In addition:
 
 - The discharge cells are larger than at full scale, so the exchanger results check the correlation and the sand-side model, not the full-scale output directly.
-- The blower curve is assumed, not measured. The 4 L/s maximum will be confirmed by the bag method in test T4.
+- The blower curve is assumed, not measured. The 4 L/s maximum will be confirmed by the bag method in TBK-TST-001, TP0.
 - Heater power is estimated from SSR duty and measured resistance, with line voltage read at the start of each test. That gives about ±5 % on energy input.
