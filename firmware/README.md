@@ -43,6 +43,8 @@ The monitor prints the IP address once Wi-Fi connects, then one CSV row every 10
 
 ## Wiring
 
+The complete circuit, including the 120 V side, is the schematic TBK-DWG-003 (`cad/drawings/TBK-DWG-003.pdf`), with KiCad source in `electronics/test-article/`. Table 1 lists the ESP32 connections.
+
 | Signal | ESP32 GPIO | Connects to |
 | --- | --- | --- |
 | SCK (shared) | 18 | SCK on all five MAX6675 modules |

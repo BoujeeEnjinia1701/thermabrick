@@ -38,4 +38,4 @@ These options would bring the total to roughly $2,400 to $2,700 with no change i
 
 *Table 2. Cost-down options.*
 
-A reduced-scale test article is the only route to $600, and it is now the next build. It is a 16 US gal drum with 68 kg of sand, four heater cells and one U-tube, storing 5.9 kWh(th) (TBK-PRC-002). Its separate BOM is `bom-test-article.csv`, estimated at $599.50. An earlier note here suggested a 30 US gal drum. Sizing showed that drum gives a bed too shallow for the full-scale heaters, so the 16 US gal drum replaced it.
+A reduced-scale test article is the only route to $600, and it is now the next build. It is a 16 US gal drum with 68 kg of sand, four heater cells and one U-tube, storing 5.9 kWh(th) (TBK-PRC-002). Its separate BOM is `bom-test-article.csv`, estimated at $599.70. An earlier note here suggested a 30 US gal drum. Sizing showed that drum gives a bed too shallow for the full-scale heaters, so the 16 US gal drum replaced it.

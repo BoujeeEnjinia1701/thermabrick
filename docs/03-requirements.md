@@ -3,7 +3,7 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.3"
+version: "0.4"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -21,6 +21,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Updated R3, R4 and R5 status for standby loss (TBK-CAL-001 v0.2), so R3 is now not met; R20 notes the $600 reduced-scale test article
+- version: "0.4"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: R20 test article estimate updated to $599.70 after adding the pull-down resistors
 ---
 
 # ThermaBrick requirements
@@ -67,7 +71,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R18 | Monitoring | Log all temperatures, heater power and export at 10 s intervals; report state of charge within 10 % of the calorimetric value | T: compare against R1 test | Firmware to be written |
 | R19 | Durability | 1,000 charge cycles without drum growth over 1 % in circumference or loss of heater function | T: measure drum circumference every 25 cycles | Open: sand ratcheting risk, see TBK-PRC-001 section 8 |
-| R20 | Prototype cost | About $600 USD in parts | I: against the BOM | **Not met:** $3,674 estimated for full scale. The reduced-scale test article (TBK-PRC-002) is estimated at $599.50 |
+| R20 | Prototype cost | About $600 USD in parts | I: against the BOM | **Not met:** $3,674 estimated for full scale. The reduced-scale test article (TBK-PRC-002) is estimated at $599.70 |
 
 ## 5. Traceability
 

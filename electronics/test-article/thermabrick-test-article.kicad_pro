@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "filename": "thermabrick-test-article.kicad_pro",
+    "version": 1
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "sheets": [
+    [
+      "df01abd3-904f-545b-8fd1-80045d59933c",
+      "Root"
+    ]
+  ],
+  "boards": [],
+  "text_variables": {}
+}

@@ -21,9 +21,10 @@ K-type thermocouples,4,"Type K, mineral insulated, 3 mm 310 or 304 stainless she
 Solid state relay,1,"Zero-cross SSR, 25 A, 24 to 380 VAC load, 3 to 32 VDC control",Amazon (SSR-25DA or equal),9.00,buy,Switches all four heaters. A shorted SSR is covered by the latching relay.
 SSR heat sink,1,"Aluminum SSR heat sink with thermal pad",Amazon,6.00,buy,About 10 W dissipation at 8.3 A.
 Independent high limit,1,"REX-C100 temperature controller, relay output (R*AN), type K input, 120 VAC supply",Amazon,14.00,buy,Set as an on-off permissive that opens at 600 C well-wall temperature. Wired into the latching relay coil circuit.
-Latching power relay,1,"Power relay, 30 A contacts, 120 VAC coil, with socket",Amazon,10.00,buy,Heater supply passes through its contacts; a holding contact latches it after START.
+Latching power relay,1,"Power relay, DPDT, 30 A per pole, 120 VAC coil, with socket (JQX-30F 2Z class)",Amazon,10.00,buy,"K1 on TBK-DWG-003. Pole 1 switches the heaters; pole 2 is the holding contact that latches it after START."
 Start and stop buttons,1,"Momentary pushbuttons, one normally open (START) and one normally closed (STOP), 22 mm",Amazon,5.00,buy,Any limit trip or power loss drops the relay until START is pressed.
 Control enclosure,1,"Steel electrical enclosure, about 200 x 150 x 100 mm, with DIN rail",Amazon or Home Depot,10.00,buy,
 Fuse,1,"Inline fuse holder with 10 A fast-acting fuse",Home Depot or auto parts store,5.00,buy,Protects the heater leads.
 Supply cord,1,"14/3 SJT cord with NEMA 5-15 plug, 6 ft",Home Depot or Lowe's,8.00,buy,Plugs into a GFCI-protected 15 A or 20 A garage receptacle; 8.3 A load.
+Pull-down resistors,2,"Resistor, 10 kOhm, 1/4 W, 5 %",DigiKey or an assortment on hand,0.10,buy,"R1 and R2 on TBK-DWG-003: hold the SSR and blower off through ESP32 boot and reset."
 Heater junction box,1,"Steel handy box with a ceramic terminal block",Home Depot plus Amazon,8.00,buy,On the jacket top; gathers the eight heater leads.
