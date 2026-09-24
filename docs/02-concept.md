@@ -3,7 +3,7 @@ doc_id: TBK-PRC-001
 title: ThermaBrick design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -17,19 +17,23 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Full v0.2 design. Architecture, sizing summary from TBK-CAL-001, charge and discharge subsystems, controls, build and commissioning sequence, safety, design decisions, risks and open questions; general arrangement TBK-DWG-001 Rev P1
+- version: "0.3"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Updated charge and discharge figures for standby loss (TBK-CAL-001 v0.2); recorded the R3 shortfall and the options to close it; added the reduced-scale test article (TBK-PRC-002) as the next build
 ---
 
 # ThermaBrick design precis
 
-ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 7.9 h at 3.0 kW, then delivers 1.0 kW of warm air for 18 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its two weaknesses are cost and standby loss. The parts are estimated at $3,674 against a $600 target, and it releases 459 W passively at full charge. Both are open decisions in TBK-PRB-001.
+ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 9.6 h at up to 3.0 kW, then delivers 1.0 kW of warm air for 14.3 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its weaknesses are cost, standby loss and charge time. The parts are estimated at $3,674 against a $600 target. It releases 459 W passively at full charge. With that loss running, a full charge takes 9.6 h, against the 8 h in R3. A $600 reduced-scale test article (TBK-PRC-002) will measure the sand and loss properties behind all three before the full-scale build.
 
 | Parameter | Value |
 | --- | --- |
 | Storage | 210 kg dry silica sand in an unlined 55 US gal open-head drum |
 | Usable heat | 18.3 kWh(th), 150 to 450 °C energy-weighted mean |
 | Charge | 12 cartridge heaters of 250 W in steel wells; 3.0 kW, 12.5 A at 240 V |
-| Charge time from empty | 11.7 kWh in 4 h; full in 7.9 h |
-| Discharge | Six 1-1/4 in U-tubes; 1.0 kW rated to 155 °C sand mean; 1.5 kW boost for 9.7 h |
+| Charge time from empty | 10.9 kWh in 4 h; full in 9.6 h |
+| Discharge | Six 1-1/4 in U-tubes; 1.0 kW for 14.3 h, to 154 °C sand mean; 1.5 kW boost for 8.1 h |
 | Supply air | 30 L/s at 50 °C (1.0 kW), mixed from exchanger outlet air and room air |
 | Standby loss | 459 W at full charge; 8.7 kWh over 24 h idle |
 | Envelope and mass | 1,209 mm diameter by 1,462 mm high; about 410 kg in service |
@@ -60,12 +64,12 @@ The medium is 210 kg of washed silica sand, sieved to remove fines and dried in 
 
 ## 3. Charge subsystem
 
-Heat input is limited by how fast dry sand conducts heat, not by heater rating. The sand conducts only about 0.3 W/(m K), so twelve wells are used instead of six. That cuts the full-charge time from 17.6 h to 7.9 h at the same 3.0 kW (TBK-CAL-001, Table 9).
+Heat input is limited by how fast dry sand conducts heat, not by heater rating. The sand conducts only about 0.3 W/(m K), so twelve wells are used instead of six. That cuts the full-charge time from over 30 h to 9.6 h at the same 3.0 kW, with standby loss counted (TBK-CAL-001, Table 9).
 
 - **Heaters.** 5/8 in by 20 in cartridge heaters, 250 W at 240 V, with an Incoloy 800 sheath, NiCr 80/20 winding in MgO and ceramic-beaded nickel leads. The surface load is 1.1 W/cm², and the hottest calculated sheath temperature is 634 °C against a 760 °C rating.
 - **Wells.** 3/4 in Sch 40 black steel pipe, 906 mm long, with a threaded malleable iron cap at the bottom. The wells stand on the drum floor in rings of 150 mm and 245 mm radius and end 25 mm above the lid, so no steel crosses the top insulation. The heater leads rise through the insulation to a junction box on the jacket top. Any heater can be drawn out and replaced from above.
 - **Switching.** Two groups of six heaters, each on a zero-cross SSR, with burst-fire control over 1 s windows. A 2-pole contactor upstream opens both legs whenever a hardware limit trips.
-- **Charge profile.** Full 3.0 kW for the first 3.1 h, then tapering as the well walls reach 550 °C, to 1.2 kW at full charge (TBK-CAL-001, Figure 1).
+- **Charge profile.** Full 3.0 kW for the first 3.2 h, then tapering as the well walls reach 550 °C, to 1.2 kW at full charge (TBK-CAL-001, Figure 1).
 
 ## 4. Discharge subsystem
 
@@ -81,7 +85,7 @@ Air never touches the sand. Six closed U-tubes of 1-1/4 in black steel pipe carr
 
 *Table 2. Discharge air path.*
 
-The controller sets heat output with the inlet damper and holds the supply air at 50 °C with fan speed. At full charge 2.8 L/s through the exchanger carries 1.0 kW. As the bed cools the damper opens, up to 25 L/s at a 155 °C sand mean (TBK-CAL-001, Figure 2). The inlet damper sits on the cold side, so an ordinary galvanized butterfly and a hobby servo can do the job. When it closes, the heat-trap bend in the outlet stops convection through the tubes.
+The controller sets heat output with the inlet damper and holds the supply air at 50 °C with fan speed. At full charge 2.8 L/s through the exchanger carries 1.0 kW. As the bed cools the damper opens, up to 25 L/s at a 154 °C sand mean (TBK-CAL-001, Figure 2). Of the 18.3 kWh stored, 14.5 kWh leaves as controlled output and 3.8 kWh as standby loss into the same room. The inlet damper sits on the cold side, so an ordinary galvanized butterfly and a hobby servo can do the job. When it closes, the heat-trap bend in the outlet stops convection through the tubes.
 
 ## 5. Controls and instrumentation
 
@@ -143,7 +147,7 @@ Each decision in Table 4 will be recorded as a design decision record (TBK-DDR-0
 | --- | --- | --- | --- |
 | D1 | Silica sand, window 150 to 450 °C | Basalt, olivine or soapstone to 600 °C and above | Cost and availability. The window keeps all sand below the 573 °C quartz inversion, and the 150 °C floor is where 1.0 kW output ends. |
 | D2 | Cartridge heaters in capped wells | Bare nichrome coils buried in sand; electric air heater in a closed air loop | Replaceable from the top without removing sand; heaters isolated from sand and moisture; standard parts |
-| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W | Only twelve wells meet the 8 h charge target (TBK-CAL-001, Table 9) |
+| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W; twelve of 1 in | Fastest affordable layout: 9.6 h against 15.2 h or more for fewer wells. Twelve 1 in wells reach 8.4 h at higher cost (TBK-CAL-001, Table 9) |
 | D4 | Closed U-tubes for discharge | Air blown directly through the sand bed | No dust in room air, low pressure drop and no fluidization risk |
 | D5 | Cold-side damper with a mixing tee and heat trap | Hot-side damper; fan pushing through the bed | Room-temperature damper and fan; convection stopped with no moving parts |
 | D6 | Wells end at the lid | Wells run through the top insulation | Removes a 94 W thermal bridge |
@@ -155,13 +159,15 @@ Each decision in Table 4 will be recorded as a design decision record (TBK-DDR-0
 The main technical risks are as follows.
 
 - **Thermal ratcheting.** The sand expands while the drum is still cool, then settles into the gap when the drum expands, and the drum may grow a little each cycle. Heating from the core outward helps, and R19 sets a 1 % growth limit to watch. A compressible AES liner inside the drum wall is the fallback if growth appears.
-- **Sand conductivity.** If the sand conducts 20 % less heat than assumed, the charge time grows to 9.2 h (TBK-CAL-001, Table 8). The first test will fit the real value.
+- **Sand conductivity.** If the sand conducts 20 % less heat than assumed, the charge time grows to 12.1 h (TBK-CAL-001, Table 8). The test article will fit the real value.
 - **GFCI nuisance trips.** Twelve MgO heaters leak a little current when damp. Bake-out cures this, but a 30 mA equipment ground-fault device may be needed if a 5 mA GFCI trips. That choice is for the installing electrician.
-- **Cost.** At $3,674, the parts cost about six times the target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`).
+- **Cost.** At $3,674, the parts cost about six times the target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The $600 budget now funds the test article.
+- **Charge time.** With standby loss counted, a full charge takes 9.6 h against the 8 h in R3. The options are to cut loss (TBK-CAL-001, Table 5), move to twelve 1 in wells (8.4 h), or relax R3 to 10 h. Choose after the test article has measured sand conductivity and loss.
 
 ## 9. Open questions
 
-- [ ] Decide the budget path: full scale at about $3,700, a reduced-scale test article at $600, or cost-down (TBK-PRB-001, section 5).
+- [x] Decide the budget path. Decided 2026-09-24: build the reduced-scale test article (TBK-PRC-002) within $600 first; revisit the full-scale budget with its results.
+- [ ] Close the R3 charge-time gap of 1.6 h (section 8, charge time risk).
 - [ ] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5).
 - [ ] Confirm the fan's pressure curve and speed-control interface against 60 L/s at 150 Pa.
 - [ ] Confirm the compressive strength of the stone wool base board on the data sheet (60 kPa or more).
@@ -176,7 +182,8 @@ The main technical risks are as follows.
 | --- | --- |
 | Problem statement v0.2 | `docs/01-problem.md` (TBK-PRB-001) |
 | Requirements v0.2 | `docs/03-requirements.md` (TBK-REQ-001) |
-| Sizing calculation v0.1 and script | `docs/04-calcs/` (TBK-CAL-001) |
+| Sizing calculation v0.2 and script | `docs/04-calcs/` (TBK-CAL-001) |
+| Test article precis, sizing, drawing and BOM | TBK-PRC-002, TBK-CAL-002, TBK-DWG-002, `bom/bom-test-article.csv` |
 | Parametric model | `cad/src/model.py`; exports in `cad/step/` and `cad/stl/` |
 | General arrangement, Rev P1 | `cad/drawings/TBK-DWG-001` (SVG, PDF, PNG), built by `cad/src/sheets.py` |
 | Bill of materials | `bom/bom.csv` and `bom/bom-notes.md` |

@@ -3,7 +3,7 @@ doc_id: TBK-CAL-001
 title: ThermaBrick thermal and electrical sizing
 project: ThermaBrick
 doc_type: Calculation
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -13,22 +13,29 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Initial draft. Sizing for 18 kWh(th) of sand storage, charge and discharge models, standby loss, electrical, air path and floor load
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Corrected the charge and discharge results to include standby loss, which v0.1 omitted. Full charge now takes 9.6 h, so R3 is not met; rated output holds for 14.3 h. Updated Tables 1, 3, 8 and 9 and Figures 1 and 2
 ---
 
 # ThermaBrick thermal and electrical sizing
 
-An unlined 55 US gal drum holding 210 kg of dry silica sand stores 18.3 kWh(th) between a mean sand temperature of 150 °C and 450 °C. Twelve 250 W cartridge heaters (3.0 kW at 240 V) charge it fully in 7.9 h from surplus PV. They store 15.7 kWh in the first 6 h without any sand exceeding 550 °C. Six 1-1/4 in steel U-tubes then deliver a steady 1.0 kW of heated air for 18 h, until the sand mean falls to 155 °C. Standby loss is 459 W at full charge. That heat is released into the room where the unit stands, so ThermaBrick must stand inside the heated space. Table 1 summarizes the results.
+An unlined 55 US gal drum holding 210 kg of dry silica sand stores 18.3 kWh(th) between a mean sand temperature of 150 °C and 450 °C. Twelve 250 W cartridge heaters (3.0 kW at 240 V) charge it fully in 9.6 h from surplus PV, with standby loss running throughout. They store 14.5 kWh in the first 6 h without any sand exceeding 550 °C. Six 1-1/4 in steel U-tubes then deliver a steady 1.0 kW of heated air for 14.3 h, until the sand mean falls to 154 °C. Of the 18.3 kWh stored, 14.5 kWh leaves as controlled output and 3.8 kWh as standby loss. Standby loss is 459 W at full charge. That heat is released into the room where the unit stands, so ThermaBrick must stand inside the heated space. The design misses the charge-time requirement, R3, by 1.6 h. Table 1 summarizes the results.
+
+Version 0.1 of this note omitted standby loss from the charge and discharge runs. It reported a full charge in 7.9 h and 1.0 kW for 18 h, and both figures were optimistic. Every result in this version includes the loss.
 
 | Quantity | Result | Requirement (TBK-REQ-001) |
 | --- | --- | --- |
 | Stored heat, 150 to 450 °C sand mean | 18.3 kWh(th) | R1: 18 kWh(th) or more |
 | Sand mass and fill depth | 210 kg, 571 mm | R1 |
 | Charge power | 3.0 kW, 12.5 A at 240 V | R2, R11 |
-| Heat stored after 4 h and 6 h of full surplus | 11.7 kWh and 15.7 kWh | R3: 11 kWh in 4 h |
-| Time to full charge from 150 °C | 7.9 h | R3: 8 h or less |
+| Heat stored after 4 h and 6 h of full surplus | 10.9 kWh and 14.5 kWh | R3: 11 kWh in 4 h (not met) |
+| Time to full charge from 150 °C | 9.6 h | R3: 8 h or less (not met) |
 | Peak sand, well-wall, sheath and drum-wall temperature | 550 °C, 550 °C, 634 °C, about 480 °C | R8: 550 °C, 550 °C, 700 °C, 500 °C |
-| Rated output held until sand mean reaches | 1.0 kW, 155 °C | R4: 170 °C or lower |
-| Boost output held until sand mean reaches | 1.5 kW for 9.7 h, 220 °C | R5: 8 h or more |
+| Rated output held until sand mean reaches | 1.0 kW for 14.3 h, 154 °C | R4: 170 °C or lower |
+| Controlled and passive heat from full to empty | 14.5 kWh and 3.8 kWh | None |
+| Boost output held until sand mean reaches | 1.5 kW for 8.1 h, 217 °C | R5: 8 h or more |
 | Standby loss at 450 °C, 300 °C and 150 °C | 459 W, 259 W, 103 W | R7: 500 W or less |
 | Heat lost in 24 h idle from full | 8.7 kWh (47 % of window) | R7: 9 kWh or less |
 | Jacket surface temperature, side | 26 °C | R9: 45 °C or less |
@@ -46,6 +53,7 @@ The design basis is as follows.
 - The usable window is defined on the energy-weighted mean sand temperature: empty at 150 °C, full at 450 °C. Below 150 °C the exchanger cannot hold 1 kW (section 4). Above 450 °C the sand near the heater wells would pass 550 °C during charge.
 - No sand anywhere exceeds 550 °C. Quartz undergoes the alpha to beta inversion at 573 °C with a step volume change of about 0.8 %. Cycling through it cracks grains, makes fines and raises the ratcheting load on the drum. The well wall is the hottest point in the sand, so the controller limits well-wall temperature to 550 °C.
 - Supply is 240 V split phase on a dedicated 20 A circuit, the normal North American arrangement for a fixed heating appliance.
+- Standby loss (section 5) runs throughout every charge and discharge. It is evaluated at the current mean sand temperature.
 
 ## 2. Storage capacity
 
@@ -78,7 +86,7 @@ The enthalpy change over the window is 314.3 kJ/kg, so 18 kWh(th) needs 206.1 kg
 
 Twelve 5/8 in cartridge heaters, 250 W each at 240 V, sit in 3/4 in Sch 40 black steel wells. The wells stand in two rings of six at radii 150 mm and 245 mm, on the rays between the U-tubes. Each heater's share of the bed is a circle of 79.7 mm radius around a well of 13.35 mm outside radius.
 
-Sand conductivity limits the charge rate, not heater power. Dry packed sand conducts only about 0.3 W/(m K), so the temperature drop across the sand near a well is large. An early layout with six 500 W heaters hit the well-wall limit early, averaged only 1.0 kW and needed 17.6 h to fill. Doubling the well count halves each heater's share of the bed, which cuts the diffusion distance. It also halves the heat each well must pass. Section 8 compares the layouts that were considered.
+Sand conductivity limits the charge rate, not heater power. Dry packed sand conducts only about 0.3 W/(m K), so the temperature drop across the sand near a well is large. An early layout with six 500 W heaters hit the well-wall limit early and could not fill the bed within 30 h once standby loss is counted. Doubling the well count halves each heater's share of the bed, which cuts the diffusion distance. It also halves the heat each well must pass. Section 8 compares the layouts that were considered.
 
 ### 3.2 Model
 
@@ -94,25 +102,26 @@ Assumptions:
 - Heater power spreads over the 563 mm equivalent bed depth. The heated length runs from 26 mm to 483 mm above the drum floor. The 88 mm of sand above it and the 26 mm below it charge by axial conduction.
 - Emissivity 0.80 for the oxidized Incoloy sheath and 0.70 for the oxidized steel bore.
 - Charge starts from a uniform 150 °C.
+- Standby loss is drawn evenly from the outer edge of every cell.
 
 ### 3.3 Results
 
-The heaters run at the full 3.0 kW for 3.1 h. The well wall then reaches 550 °C, and the controller tapers the power to 1.2 kW by the end of charge (Figure 1 and Table 3). The mean charge power is 2.33 kW. The hottest sheath temperature is 634 °C at the start of the taper. That leaves 66 K of margin to the 700 °C control limit and 126 K to the 760 °C element rating. At full charge the sand ranges from 432 °C midway between wells to 543 °C beside them, so none passes the quartz inversion. The outer ring of wells stands 41 mm from the drum wall, where the modeled sand is at 461 °C. Because the wall is insulated, it reflects heat back toward the well, so the wall itself may run about 20 K hotter. The drum wall is therefore taken as about 480 °C at those spots, within the 500 °C limit of R8. A temporary drum-wall thermocouple on the first build will confirm it.
+The heaters run at the full 3.0 kW for 3.2 h. The well wall then reaches 550 °C, and the controller tapers the power to 1.2 kW by the end of charge (Figure 1 and Table 3). The mean charge power is 1.90 kW, of which roughly 300 W on average goes to standby loss. The hottest sheath temperature is 634 °C at the start of the taper. That leaves 66 K of margin to the 700 °C control limit and 126 K to the 760 °C element rating. At full charge the sand ranges from 426 °C midway between wells to 543 °C beside them, so none passes the quartz inversion. The outer ring of wells stands 41 mm from the drum wall, where the modeled sand is at 463 °C. Because the wall is insulated, it reflects heat back toward the well, so the wall itself may run about 20 K hotter. The drum wall is therefore taken as about 480 °C at those spots, within the 500 °C limit of R8. A temporary drum-wall thermocouple on the first build will confirm it.
 
 ![Charge power, mean sand temperature and well-wall temperature against time](fig/tbk-cal-001-fig1-charge.svg)
 
-*Figure 1. Charge from empty. Power is held at 3.0 kW until the well wall reaches 550 °C at 3.1 h, then tapers.*
+*Figure 1. Charge from empty with standby loss. Power is held at 3.0 kW until the well wall reaches 550 °C at 3.2 h, then tapers.*
 
 | Elapsed time | Heater power | Sand mean | Heat stored in window |
 | --- | --- | --- | --- |
-| 2 h | 3.00 kW | 256 °C | 6.0 kWh |
-| 4 h | 2.40 kW | 348 °C | 11.7 kWh |
-| 6 h | 1.69 kW | 411 °C | 15.7 kWh |
-| 7.9 h | 1.22 kW | 450 °C | 18.3 kWh |
+| 2 h | 3.00 kW | 251 °C | 5.7 kWh |
+| 4 h | 2.50 kW | 337 °C | 10.9 kWh |
+| 6 h | 1.85 kW | 393 °C | 14.5 kWh |
+| 9.6 h | 1.17 kW | 450 °C | 18.3 kWh |
 
 *Table 3. Charge progress with a full 3.0 kW of surplus available throughout.*
 
-In winter the PV surplus is usually less than 3 kW, and the controller simply follows it. Section 1 of TBK-PRB-001 estimates that a typical sunny winter day offers 8 to 14 kWh of surplus. That is well inside what the bed can absorb in 6 h.
+In winter the PV surplus is usually less than 3 kW, and the controller simply follows it. Section 1 of TBK-PRB-001 estimates that a typical sunny winter day offers 8 to 14 kWh of surplus. That is within what the bed can absorb in 6 h.
 
 ### 3.4 Heater rating check
 
@@ -126,15 +135,15 @@ Six U-tubes of 1-1/4 in Sch 40 black steel pipe (42.2 mm outside, 35.1 mm bore) 
 
 On the air side, the model uses Gnielinski's correlation for turbulent flow and Hausen's developing-flow correlation for laminar flow, blended linearly between Reynolds numbers of 2,300 and 4,000. The air outlet temperature follows from the log-mean relation for a tube at uniform wall temperature. Air properties are taken at the mean air temperature.
 
-The controller meets a heat demand by setting the exchanger airflow with the inlet damper. The fan then adds room air through the bypass so the mixed supply leaves at 50 °C. Airflow through the exchanger is capped at 25 L/s.
+The controller meets a heat demand by setting the exchanger airflow with the inlet damper. The fan then adds room air through the bypass so the mixed supply leaves at 50 °C. Airflow through the exchanger is capped at 25 L/s. Standby loss is drawn from the bed at the same time, as in the charge model.
 
 ### 4.2 Results
 
-At full charge the exchanger meets 1.0 kW with only 2.8 L/s of air, which leaves at 314 °C. As the bed cools, the controller opens the damper (Figure 2). Output holds at 1.0 kW for 18.1 h, until the sand mean reaches 155 °C and the airflow reaches its 25 L/s cap. At the 150 °C floor the output is 940 W. The discharge from 450 °C to 150 °C returns the full 18.3 kWh. A 1.5 kW boost can be held for 9.7 h, down to a sand mean of 220 °C.
+At full charge the exchanger meets 1.0 kW with only 2.8 L/s of air, which leaves at 314 °C. As the bed cools, the controller opens the damper (Figure 2). Output holds at 1.0 kW for 14.3 h, until the sand mean reaches 154 °C and the airflow reaches its 25 L/s cap. At the 150 °C floor the output is 950 W. Of the 18.3 kWh released between 450 °C and 150 °C, 14.5 kWh is controlled output and 3.8 kWh is standby loss into the same room. A 1.5 kW boost can be held for 8.1 h, down to a sand mean of 217 °C.
 
 ![Heat output, mean sand temperature and exchanger outlet temperature against time](fig/tbk-cal-001-fig2-discharge.svg)
 
-*Figure 2. Discharge from full at a 1.0 kW demand. The kink in outlet temperature near 4 h is where airflow crosses into the laminar-to-turbulent transition range.*
+*Figure 2. Discharge from full at a 1.0 kW demand with standby loss. The kink in outlet temperature near 3 h is where airflow crosses into the laminar-to-turbulent transition range.*
 
 ### 4.3 Air path and fan
 
@@ -165,7 +174,7 @@ Assumptions:
 
 *Table 4. Standby loss by path with the sand at 450 °C.*
 
-The side dominates. The AES and stone wool interface sits at 390 °C, well inside the 650 °C limit for stone wool fiber. The side jacket runs at 26 °C. Loss falls with sand temperature, to 259 W at 300 °C and 103 W at 150 °C. Stepping this through a 24 h idle period from full charge loses 8.7 kWh, and the sand mean drops to 317 °C.
+Sections 3 and 4 draw this loss from the bed at every time step. The side dominates. The AES and stone wool interface sits at 390 °C, well inside the 650 °C limit for stone wool fiber. The side jacket runs at 26 °C. Loss falls with sand temperature, to 259 W at 300 °C and 103 W at 150 °C. Stepping this through a 24 h idle period from full charge loses 8.7 kWh, and the sand mean drops to 317 °C.
 
 This loss is not wasted in the heating season, but it is uncontrolled. The unit therefore belongs inside the heated space, and its passive output counts toward the room's heat load. Two upgrades reduce it (Table 5). Neither is in the v0.2 BOM.
 
@@ -218,26 +227,26 @@ Spread over the 1.21 m diameter footprint, the load is 3.5 kPa. That is above th
 
 ## 8. Sensitivity and limitations
 
-Table 8 varies the two least certain inputs. Charging is most sensitive to sand conductivity. Even with 20 % lower conductivity, the bed still takes 14.4 kWh in 6 h.
+Table 8 varies the two least certain inputs. Charging is most sensitive to sand conductivity. With 20 % lower conductivity the bed still takes 13.3 kWh in 6 h, but a full charge needs 12.1 h.
 
 | Case | Time to full charge | Stored in 6 h | Sand mean where 1.0 kW ends |
 | --- | --- | --- | --- |
-| Base case | 7.9 h | 15.7 kWh | 155 °C |
-| Sand k × 0.8 | 9.2 h | 14.4 kWh | 170 °C |
-| Sand k × 1.25 | 7.0 h | 16.7 kWh | 150 °C |
-| Contact conductance 150 W/(m² K) | 8.2 h | 15.3 kWh | 155 °C |
+| Base case | 9.6 h | 14.5 kWh | 154 °C |
+| Sand k × 0.8 | 12.1 h | 13.3 kWh | 168 °C |
+| Sand k × 1.25 | 8.2 h | 15.5 kWh | 150 °C |
+| Contact conductance 150 W/(m² K) | 10.3 h | 14.2 kWh | 154 °C |
 
 *Table 8. Sensitivity of charge and discharge performance.*
 
-Table 9 records the heater layouts that were evaluated with the same model, all at 3.0 kW total. Twelve 1 in wells charge slightly faster, but twelve 3/4 in wells meet R3 at lower cost and leave more clearance to the U-tubes.
+Table 9 records the heater layouts that were evaluated with the same model, all at 3.0 kW total. No layout meets R3's 8 h once standby loss is counted. Twelve 1 in wells come closest at 8.4 h. Twelve 3/4 in wells are 1.2 h slower but cost less and leave more clearance to the U-tubes. TBK-PRC-001, section 9, lists the options for closing the gap.
 
 | Layout | Time to full charge | Stored in 6 h |
 | --- | --- | --- |
-| Six 3/4 in wells, 500 W each | 17.6 h | 9.4 kWh |
-| Six 1-1/2 in wells, 500 W each | 11.6 h | 12.5 kWh |
-| Nine 3/4 in wells, 333 W each | 10.6 h | 13.2 kWh |
-| Twelve 3/4 in wells, 250 W each (selected) | 7.9 h | 15.7 kWh |
-| Twelve 1 in wells, 250 W each | 7.1 h | 16.5 kWh |
+| Six 3/4 in wells, 500 W each | Over 30 h | 8.4 kWh |
+| Six 1-1/2 in wells, 500 W each | 18.0 h | 11.4 kWh |
+| Nine 3/4 in wells, 333 W each | 15.2 h | 12.1 kWh |
+| Twelve 3/4 in wells, 250 W each (selected) | 9.6 h | 14.5 kWh |
+| Twelve 1 in wells, 250 W each | 8.4 h | 15.4 kWh |
 
 *Table 9. Heater layouts considered.*
 
@@ -245,5 +254,5 @@ The main limitations of the method are as follows.
 
 - The radial cells treat each pipe's share of the bed as a circle. The real hexagonal and ring spacing leaves some sand farther from a pipe than the cell radius, so local temperatures will spread more than modeled. The sand thermocouple grid (TBK-PRC-001, section 5) is placed to measure this.
 - Axial conduction and the unheated sand above and below the heaters are lumped into the radial cells.
-- The standby model treats each surface in one dimension and does not model the corners where side and top insulation meet.
-- Sand conductivity, contact conductance and insulation conductivity are literature values. The first test (TBK-TST-001, to be written) will fit them from measured charge and cool-down curves.
+- The standby model treats each surface in one dimension and does not model the corners where side and top insulation meet. In the charge and discharge runs the loss is spread evenly over all cells, although in practice it leaves mostly through the outer cells and the top.
+- Sand conductivity, contact conductance and insulation conductivity are literature values. The reduced-scale test article (TBK-PRC-002, sized in TBK-CAL-002) exists to fit them from measured charge and cool-down curves before the full-scale build.

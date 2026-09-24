@@ -1,6 +1,6 @@
 # ThermaBrick
 
-**Area:** CleanTech · **Status:** Concept · **Prototype budget:** about $600 USD target (v0.2 estimate $3,674, under review) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **Status:** Concept · **Prototype budget:** $600 USD test article first (full-scale estimate $3,674) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
@@ -12,15 +12,19 @@ Surplus rooftop solar gets exported cheaply or curtailed, while heating still bu
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
-The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °C. Twelve 250 W heaters charge it at up to 3.0 kW, filling it in 7.9 h, and six steel U-tubes deliver 1.0 kW of warm air for about 18 h.
+The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °C. Twelve 250 W heaters charge it at up to 3.0 kW, filling it in 9.6 h, and six steel U-tubes deliver 1.0 kW of warm air for about 14 h. A reduced-scale test article (about 6 kWh(th), $600) comes first, to measure the sand and insulation properties the design depends on.
 
 | Document | ID | Version |
 | --- | --- | --- |
-| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.2 |
-| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.2 |
-| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.2 |
-| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.1 |
+| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.3 |
+| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.3 |
+| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.3 |
+| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.2 |
 | [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P1 |
+| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.1 |
+| [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.1 |
+| [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
+| [Test article BOM](bom/bom-test-article.csv) | | $599.50 |
 
 ## Key components
 

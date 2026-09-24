@@ -3,7 +3,7 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -17,11 +17,15 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Defined 20 requirements with targets, verification methods and v0.2 compliance status traced to TBK-CAL-001
+- version: "0.3"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Updated R3, R4 and R5 status for standby loss (TBK-CAL-001 v0.2), so R3 is now not met; R20 notes the $600 reduced-scale test article
 ---
 
 # ThermaBrick requirements
 
-The v0.2 design meets 16 of the 20 requirements below, by analysis or by design. Three depend on firmware or on testing that has not yet been done (R12, R18 and R19). The fourth, cost (R20), is not met: the design costs about six times the target, and TBK-PRB-001, section 5, records the decision as open. Every requirement will be confirmed by test on the first build.
+The v0.2 design meets 15 of the 20 requirements below, by analysis or by design. Three depend on firmware or on testing that has not yet been done (R12, R18 and R19). Two are not met. Charge time (R3) misses by 1.6 h once standby loss is counted. Cost (R20) is about six times the target; the $600 budget now funds a reduced-scale test article instead (TBK-PRB-001, section 5). Every requirement will be confirmed by test on the first build.
 
 Verification methods are analysis (A), inspection (I), demonstration (D) and test (T). Status reflects the v0.2 analysis in TBK-CAL-001 and the BOM. "Met (A)" means shown by analysis and not yet tested.
 
@@ -31,9 +35,9 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R1 | Stored heat between 150 °C and 450 °C energy-weighted mean sand temperature | 18 kWh(th) or more | A: TBK-CAL-001 section 2. T: calorimetric discharge (air flow and temperature rise) | Met (A): 18.3 kWh(th) |
 | R2 | Charge power drawn only from PV surplus, following export in real time | 0 to 3.0 kW in steps of 25 W or finer; grid import from charging 50 Wh per day or less | D: log export meter and heater power through three sunny days | Met by design |
-| R3 | Charge acceptance from empty with full surplus available | 11 kWh or more in 4 h; full in 8 h or less | A: TBK-CAL-001 section 3. T: charge from 150 °C at 3.0 kW | Met (A): 11.7 kWh in 4 h, full in 7.9 h |
-| R4 | Rated heat output | 1.0 kW held down to 170 °C sand mean or lower | A: TBK-CAL-001 section 4. T: discharge at 1.0 kW demand | Met (A): held to 155 °C |
-| R5 | Boost heat output | 1.5 kW for 8 h or more from full | A: TBK-CAL-001 section 4. T | Met (A): 9.7 h |
+| R3 | Charge acceptance from empty with full surplus available | 11 kWh or more in 4 h; full in 8 h or less | A: TBK-CAL-001 section 3. T: charge from 150 °C at 3.0 kW | **Not met (A):** 10.9 kWh in 4 h, full in 9.6 h |
+| R4 | Rated heat output | 1.0 kW held down to 170 °C sand mean or lower | A: TBK-CAL-001 section 4. T: discharge at 1.0 kW demand | Met (A): held 14.3 h, to 154 °C |
+| R5 | Boost heat output | 1.5 kW for 8 h or more from full | A: TBK-CAL-001 section 4. T | Met (A): 8.1 h |
 | R6 | Supply air temperature at the register | 55 °C or below at all times | T: log supply air through charge and discharge | Met by design (50 °C setpoint) |
 | R7 | Standby loss | 500 W or less at full charge; 9 kWh or less over 24 h idle from full | A: TBK-CAL-001 section 5. T: 24 h cool-down from full | Met (A): 459 W; 8.7 kWh |
 
@@ -63,7 +67,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R18 | Monitoring | Log all temperatures, heater power and export at 10 s intervals; report state of charge within 10 % of the calorimetric value | T: compare against R1 test | Firmware to be written |
 | R19 | Durability | 1,000 charge cycles without drum growth over 1 % in circumference or loss of heater function | T: measure drum circumference every 25 cycles | Open: sand ratcheting risk, see TBK-PRC-001 section 8 |
-| R20 | Prototype cost | About $600 USD in parts | I: against the BOM | **Not met:** $3,674 estimated; decision open in TBK-PRB-001 |
+| R20 | Prototype cost | About $600 USD in parts | I: against the BOM | **Not met:** $3,674 estimated for full scale. The reduced-scale test article (TBK-PRC-002) is estimated at $599.50 |
 
 ## 5. Traceability
 

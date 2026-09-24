@@ -99,8 +99,9 @@ class Cell:
         self.T = np.full(n, float(T0))
         self.rho = P["sand_rho"]
 
-    def step(self, q_in, dt):
-        """Advance dt with q_in W per m entering the sand at r1 (negative = extraction)."""
+    def step(self, q_in, dt, q_out=0.0):
+        """Advance dt with q_in W per m entering the sand at r1 (negative = extraction) and
+        q_out W per m leaving at r2 (standby loss, spread over the cells)."""
         T, rc, rf, V = self.T, self.rc, self.rf, self.V
         n = len(T)
         C = self.rho * cp_quartz(T) * V / dt
@@ -110,6 +111,7 @@ class Cell:
         b[:-1] += G; b[1:] += G
         a[1:] = -G; c[:-1] = -G
         d[0] += q_in
+        d[-1] -= q_out
         # Thomas algorithm
         for i in range(1, n):
             w = a[i] / b[i - 1]
@@ -164,11 +166,14 @@ def sheath_temp(q_per_m, T_well, well_id=None):
     return 0.5 * (lo + hi)
 
 
-def charge(T_start=T_LO, dt=120.0, t_max=30 * 3600, h_contact=None, n=None, well=None, p_heater=None):
+def charge(T_start=T_LO, dt=120.0, t_max=30 * 3600, h_contact=None, n=None, well=None, p_heater=None,
+           loss=None):
     """Charge one heater cell from a uniform T_start until its energy-weighted mean reaches T_HI.
 
     Each step the controller applies the largest power that keeps the well wall at or below
-    T_WALL_MAX and the sheath at or below T_SHEATH_MAX at the end of the step."""
+    T_WALL_MAX and the sheath at or below T_SHEATH_MAX at the end of the step. With loss (a
+    function of mean sand temperature returning W for the whole unit), the standby loss is
+    drawn from the outer edge of every cell."""
     h_contact = h_contact or H_CONTACT
     n = n or N_HEATERS
     well_od, well_id = well or (P["well_od"], P["well_id"])
@@ -182,16 +187,17 @@ def charge(T_start=T_LO, dt=120.0, t_max=30 * 3600, h_contact=None, n=None, well
     q_max = p_heater / L
     t, log_ = 0.0, []
     while t < t_max:
+        q_loss = loss(cell.mean_equiv()) / (n * L) if loss else 0.0
         lo, hi = 0.0, q_max
         for _ in range(18):
             q = 0.5 * (lo + hi)
             trial = copy.deepcopy(cell)
-            trial.step(q, dt)
+            trial.step(q, dt, q_loss)
             Tw = trial.T_wall(q, h_contact)
             ok = Tw <= T_WALL_MAX and sheath_temp(q * L / L_h, Tw, well_id) <= T_SHEATH_MAX
             lo, hi = (q, hi) if ok else (lo, q)
         q = lo
-        cell.step(q, dt)
+        cell.step(q, dt, q_loss)
         t += dt
         Tw = cell.T_wall(q, h_contact)
         log_.append((t / 3600, q * L * n / N_HEATERS, Tw, sheath_temp(q * L / L_h, Tw, well_id), cell.mean_equiv(),
@@ -232,7 +238,7 @@ def utube_air(m_dot, T_wall):
     return T_out, m_dot * cp * (T_out - T_AMB), h, Re, Lu
 
 
-def discharge(Q_demand=1000.0, V_max_Ls=25.0, T_start=T_HI, dt=60.0, t_max=60 * 3600):
+def discharge(Q_demand=1000.0, V_max_Ls=25.0, T_start=T_HI, dt=60.0, t_max=60 * 3600, loss=None):
     """Discharge the bed at Q_demand (W total) through the six U-tubes, limited by V_max_Ls
     of room air (L/s at 20 C) through the exchanger. One cell per tube leg."""
     n_legs = 2 * P["n_utubes"]
@@ -268,7 +274,8 @@ def discharge(Q_demand=1000.0, V_max_Ls=25.0, T_start=T_HI, dt=60.0, t_max=60 * 
         log_.append((t / 3600, P["n_utubes"] * Q, m * P["n_utubes"] / rho20 * 1000, T_out, Tm))
         if Tm <= T_LO:
             break
-        cell.step(-Q / L_cell, dt)
+        q_loss = loss(Tm) / (n_legs * L_cell / 2) if loss else 0.0
+        cell.step(-Q / L_cell, dt, q_loss)
         E_out += P["n_utubes"] * Q * dt
         t += dt
     return dict(r1=r1, r2=r2, Lu=Lu, log=log_, E_out=E_out / 3.6e6)
@@ -503,9 +510,9 @@ def sensitivity():
     for label, ks, hc in (("Base case", 1.0, None), ("Sand k x 0.8", 0.8, None), ("Sand k x 1.25", 1.25, None),
                           ("Contact h 150 W/(m2 K)", 1.0, 150.0)):
         K_SCALE = ks
-        lg = charge(h_contact=hc)["log"]
+        lg = charge(h_contact=hc, loss=LOSS)["log"]
         r6 = min(lg, key=lambda r: abs(r[0] - 6))
-        dcl = discharge()["log"]
+        dcl = discharge(loss=LOSS)["log"]
         t_rated = next((r[4] for r in dcl if r[1] < 990), dcl[-1][4])
         rows.append((label, lg[-1][0], win(r6[4]), t_rated))
     K_SCALE = 1.0
@@ -518,14 +525,24 @@ def win_kwh(T):
 
 
 # ---------------------------------------------------------------- report
+def LOSS(T):
+    """Standby loss of the whole unit at mean sand temperature T, W."""
+    return standby(T)["total"]
+
+
 def main():
     s = storage()
+    print("== 0. Adiabatic reference (v0.1 basis, no standby loss)")
+    lg0 = charge()["log"]
+    dc0 = discharge()
+    t0 = next((r[0] for r in dc0["log"] if r[1] < 990), dc0["log"][-1][0])
+    print(f"  full charge {lg0[-1][0]:.2f} h; 1.0 kW held {t0:.2f} h")
     print("== 1. Storage")
     for k, v in s.items():
         print(f"  {k:10s} {v:10.3f}")
 
-    print("== 2. Charge (one heater cell)")
-    ch = charge()
+    print("== 2. Charge (one heater cell), standby loss coupled")
+    ch = charge(loss=LOSS)
     print(f"  r1 {ch['r1']*1000:.1f} mm  r2 {ch['r2']*1000:.1f} mm  L {ch['L']*1000:.0f} mm")
     lg = ch["log"]
     for row in lg[:: max(1, len(lg) // 14)] + [lg[-1]]:
@@ -546,7 +563,7 @@ def main():
     print(f"  mean power over full charge {s['E'] / t_full:.2f} kW")
 
     print("== 3. Discharge at 1.0 kW, 25 L/s max through the exchanger")
-    dc = discharge()
+    dc = discharge(loss=LOSS)
     lg = dc["log"]
     print(f"  r1 {dc['r1']*1000:.1f} mm  r2 {dc['r2']*1000:.1f} mm  U-tube length {dc['Lu']:.2f} m")
     for row in lg[:: max(1, len(lg) // 14)] + [lg[-1]]:
@@ -555,14 +572,15 @@ def main():
     t_rated = next((r[0] for r in lg if r[1] < 990), lg[-1][0])
     Tm_rated = next((r[4] for r in lg if r[1] < 990), lg[-1][4])
     print(f"  holds 1.0 kW for {t_rated:.2f} h, down to Tmean {Tm_rated:.0f} C; "
-          f"energy delivered {dc['E_out']:.2f} kWh over {lg[-1][0]:.1f} h")
+          f"energy delivered {dc['E_out']:.2f} kWh over {lg[-1][0]:.1f} h; "
+          f"passive {s['E'] - dc['E_out']:.2f} kWh")
     for Tm_probe in (400, 300, 250, 200, 150):
         r = min(lg, key=lambda r: abs(r[4] - Tm_probe))
         print(f"    at Tmean {Tm_probe}: {r[1]:.0f} W")
 
     figures(ch, dc)
     print("== 3b. Boost 1.5 kW")
-    dcb = discharge(Q_demand=1500.0, V_max_Ls=25.0)
+    dcb = discharge(Q_demand=1500.0, V_max_Ls=25.0, loss=LOSS)
     lg = dcb["log"]
     t_b = next((r[0] for r in lg if r[1] < 1490), lg[-1][0])
     Tm_b = next((r[4] for r in lg if r[1] < 1490), lg[-1][4])
@@ -611,7 +629,7 @@ def main():
     for label, n, well in (("6 x 3/4 in", 6, (26.7, 20.9)), ("6 x 1-1/2 in", 6, (48.3, 40.9)),
                            ("9 x 3/4 in", 9, (26.7, 20.9)), ("12 x 3/4 in", 12, (26.7, 20.9)),
                            ("12 x 1 in", 12, (33.4, 26.6))):
-        lg = charge(n=n, well=well)["log"]
+        lg = charge(n=n, well=well, loss=LOSS)["log"]
         t_ = np.array([r[0] for r in lg])
         T6 = float(np.interp(6, t_, [r[4] for r in lg])) if t_[-1] >= 6 else T_HI
         print(f"  {label:14s} {lg[-1][0]:5.1f} h  {win_kwh(T6):5.1f} kWh")
