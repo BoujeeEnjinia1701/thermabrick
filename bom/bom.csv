@@ -1,9 +1,43 @@
 item,qty,spec,supplier,unit_cost_usd,make_buy,notes
-55 gal steel drum,,,,,,
-"Sand, 200 kg",,,,,,
-Ceramic fiber insulation,,,,,,
-Nichrome heating elements,,,,,,
-Solid state relay,,,,,,
-K-type thermocouples,,,,,,
-ESP32 controller,,,,,,
-Inline fan,,,,,,
+55 gal steel drum,1,"Open-head steel drum, 55 US gal, unlined, 18 ga body, 16 ga lid, bolted closing ring, ID 571.5 mm",Uline or local drum reconditioner,150.00,buy,Storage vessel. Strip exterior paint before first firing. No interior liner or coating.
+"Sand, 210 kg fill",10,"Washed play sand, 50 lb (22.7 kg) bag, sieved to remove fines; 227 kg bought for 210 kg fill",Home Depot or Lowe's (Quikrete play sand or equal),6.50,buy,Storage medium. Dried in place during bake-out; see TBK-PRC-001.
+Nichrome heating elements,12,"Cartridge heater, 5/8 in x 20 in (15.9 x 508 mm), 240 V, 250 W, Incoloy 800 sheath, NiCr 80/20 winding in MgO, 2 in cold end, 36 in ceramic-beaded nickel leads",Tempco or Watlow (or equal industrial heater supplier),45.00,buy,1.1 W/cm2 watt density. Rated sheath 760 C; controller keeps it below 700 C.
+Heater well pipe,4,"Black steel pipe, 3/4 in Sch 40, ASTM A53, 10 ft; cut to twelve 906 mm wells, threaded one end",Home Depot or Lowe's,32.00,buy,Not galvanized. Three wells per stick.
+Heater well cap,12,"Black malleable iron cap, 3/4 in NPT",Home Depot or Lowe's,3.50,buy,Assemble with nickel anti-seize; no PTFE tape or paste.
+U-tube pipe,5,"Black steel pipe, 1-1/4 in Sch 40, ASTM A53, 10 ft; cut to six 1149 mm inlet legs and six 901 mm outlet legs, threaded one end",Home Depot or Lowe's,55.00,buy,Discharge heat exchanger.
+U-tube elbow,12,"Black malleable iron 90 deg elbow, 1-1/4 in NPT",Home Depot or Lowe's,9.00,buy,Two per U-tube.
+U-tube nipple,6,"Black steel nipple, 1-1/4 in x 2-1/2 in",Home Depot or Lowe's,5.00,buy,Radial run at the bottom of each U-tube.
+Nickel anti-seize,1,"Nickel anti-seize compound, rated 1300 C, 8 oz",McMaster-Carr or auto parts store,18.00,buy,All threads inside the drum.
+Collector shell,1,"Single-wall black stovepipe, 10 in, 24 ga, 24 in length; cut an 80 mm ring",Home Depot or Lowe's,32.00,buy,Hot collector on the lid over the six outlet legs.
+Collector top and outlet collar,1,"Steel sheet 18 ga, 12 x 12 in, plus 4 in crimped start collar",Home Depot or Lowe's,22.00,make,Riveted to the collector ring; seal with AES rope.
+Hot outlet duct,1,"Single-wall black stovepipe kit, 4 in, 24 ga: 24 in length and two adjustable 90 deg elbows",Home Depot or Lowe's,40.00,buy,Rises and turns down as a heat trap. Guard it; keep 450 mm from combustibles.
+Mixing tee,1,"Black stovepipe tee, 4 in, 24 ga",Home Depot or Lowe's,20.00,buy,Hot branch meets room air; air downstream is 60 C or below.
+Inlet damper,1,"Manual butterfly damper, 4 in, galvanized, with blade shaft extended for servo drive",Home Depot or Lowe's,12.00,buy,Cold side. Closed whenever the fan is off.
+Inlet damper servo,1,"Metal-gear hobby servo, 180 deg, 5 to 6 V, 10 kg cm (MG996R class)",Amazon or Adafruit,12.00,buy,Modulates heat output. Linkage stays below 40 C.
+Bypass damper,1,"Manual balancing damper, 4 in, galvanized",Home Depot or Lowe's,12.00,buy,Sets the room-air share at the mixing tee.
+Inline fan,1,"EC inline duct fan, 4 in (100 mm), at least 60 L/s at 150 Pa, PWM or 0-10 V speed input, air temperature rating 60 C or higher",AC Infinity CLOUDLINE T4 or Vents TT PRO 100 (confirm speed interface),130.00,buy,Pulls through the exchanger and bypass; delivers mixed air at 50 C.
+Supply duct and register,1,"Insulated flexible duct 4 in x 8 ft, clamps and a 4 in floor or wall register",Home Depot or Lowe's,35.00,buy,Downstream of the fan only.
+Ceramic fiber insulation,2,"AES (body-soluble) fiber blanket, 25 mm x 610 mm x 7.62 m (1 in x 24 in x 25 ft), 128 kg/m3, rated 1100 C or higher",Superwool Plus (Morgan Thermal Ceramics) via a kiln or refractory supplier,130.00,buy,Two layers on the drum side and 50 mm hot face in the headspace and over the lid. AES replaces RCF for handling safety.
+AES fiber board,1,"Rigid AES fiber board, 25 mm, 610 x 914 mm, rated 1100 C or higher",Kiln or refractory supplier,70.00,buy,Hot face under the drum.
+Insulating firebrick,14,"K-23 insulating firebrick, 230 x 114 x 64 mm",Kiln or refractory supplier,6.00,buy,One course laid flat under the drum footprint; carries the load.
+Stone wool batt,3,"Stone wool batt, 89 mm (3.5 in), 15.25 x 47 in, 59.7 ft2 per pack",ROCKWOOL Comfortbatt R15 via Home Depot or Lowe's,75.00,buy,Three layers on the side; headspace and over the lid. Binder burns off on first heat.
+Stone wool board,4,"Stone wool board, 50 mm, 610 x 1219 mm, compressive strength 60 kPa or higher at 10 % strain",ROCKWOOL Comfortboard 110 or ProRox board,45.00,buy,Two layers across the full base. Verify the data sheet strength before purchase.
+AES rope gasket,1,"AES fiber rope, 12 mm, 3 m",Kiln or refractory supplier,20.00,buy,"Lid, collector and lid penetrations."
+Jacket sheet,2,"Galvanized steel flashing coil, 0.4 to 0.6 mm, 610 mm x 15.2 m (24 in x 50 ft)",Home Depot or Lowe's,65.00,buy,Side wrap in three rows plus the top cap and inlet plenum. Surface stays below 30 C.
+Jacket fasteners and tape,1,"Aluminum pop rivets, sheet metal screws, aluminum foil tape",Home Depot or Lowe's,25.00,buy,
+ESP32 controller,1,"ESP32-DevKitC-32E, 4 MB flash",Espressif via DigiKey or Mouser,11.00,buy,Charge and discharge control; logs to local API.
+Thermocouple amplifier,7,"MAX31856 universal thermocouple amplifier breakout, SPI",Adafruit (product 3263),17.50,buy,"Two well-wall, four sand and one collector channel."
+K-type thermocouples,8,"Type K, mineral insulated, 3 mm Inconel 600 sheath, 1000 mm, ungrounded junction, mini plug",Omega or Auber Instruments (or equal),22.00,buy,Seven on the controller and one on the independent limit.
+Air temperature sensor,3,"DS18B20 digital probe, stainless tip, 1 m lead",Adafruit or Amazon,4.00,buy,"Room, supply air and jacket surface."
+Solid state relay,2,"Zero-cross SSR, 25 A, 24 to 280 VAC load, 3 to 32 VDC control",Crydom D2425 via DigiKey or Mouser,60.00,buy,One per six-heater group (1.5 kW each). Burst-fire control.
+SSR heat sink,2,"Panel heat sink for single-phase SSR, 2 K/W or better, with thermal pad",DigiKey or Mouser,15.00,buy,7.5 W per SSR at 6.25 A.
+Safety contactor,1,"Definite-purpose contactor, 2-pole, 30 A, 24 VAC coil",Grainger or HVAC supply,30.00,buy,Opens both legs when any limit trips.
+Control transformer,1,"Control transformer, 240 VAC to 24 VAC, 40 VA, with fused secondary",Grainger or HVAC supply,22.00,buy,Powers the contactor coil through the limit chain.
+Independent high limit,1,"1/16 DIN temperature controller, type K input, relay output, latching alarm with manual reset",Auber Instruments or equal,45.00,buy,Trips the contactor at 600 C well-wall temperature. Separate from the ESP32.
+Branch fuses,2,"2-pole DIN rail fuse holder with 10 A class CC fuses",DigiKey or Mouser,15.00,buy,Supplementary protection per heater group.
+DC power supply,1,"DIN rail power supply, 12 VDC, 2 A, with 5 V buck converter",DigiKey or Mouser,25.00,buy,"ESP32, servo and fan signal."
+Export meter,1,"Two-channel Wi-Fi energy meter with 50 A CT clamps and local API",Shelly Pro EM-50,90.00,buy,Measures grid export at the main panel; sets the charge power.
+GFCI breaker,1,"2-pole 20 A GFCI breaker to match the existing panel",Home Depot or Lowe's,110.00,buy,Dedicated 240 V circuit. Installed by a licensed electrician where required.
+Branch wiring,1,"12 AWG THHN copper, conduit, fittings and disconnect",Home Depot or Lowe's,80.00,buy,20 A circuit to the control enclosure.
+Control enclosure,1,"Steel enclosure 300 x 250 x 150 mm, DIN rail, terminal blocks, cable glands",DigiKey or Automation Direct,70.00,buy,Mounted on the wall beside the unit.
+Heater junction box,1,"Steel junction box 150 x 150 x 100 mm with ceramic terminal blocks",Home Depot plus McMaster-Carr,35.00,buy,On the jacket top; gathers the 24 heater leads.

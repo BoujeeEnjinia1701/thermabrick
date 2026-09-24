@@ -3,7 +3,7 @@ doc_id: TBK-PRB-001
 title: ThermaBrick problem statement
 project: ThermaBrick
 doc_type: Problem statement
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -13,16 +13,71 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Initial scaffold
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Developed the energy case, users and context, constraints, success measures and scope; flagged the budget gap found in the v0.2 costing
 ---
 
 # ThermaBrick problem statement
 
-Surplus rooftop solar gets exported cheaply or curtailed, while heating still burns gas.
+Homes with rooftop solar increasingly export their midday surplus for a few cents per kilowatt-hour, or lose it to curtailment. The same homes then buy gas or grid power at full price to heat the evening. ThermaBrick stores that surplus as heat in sand at up to 450 °C and releases it as warm air when the house needs it. It aims to shift about 18 kWh(th) a day from midday to the evening and night, using parts that a capable maker can buy and assemble in a garage.
 
-## Users and context
+## 1. The energy case
 
-_To be developed._
+The mismatch is one of timing, not quantity. A 6 kWp rooftop array in a sunny, cold climate such as Denver produces roughly 20 to 25 kWh on a clear January day, most of it between 10:00 and 15:00. Household base load over those hours is typically 0.5 to 1.5 kW. That leaves roughly 8 to 14 kWh of midday surplus on a sunny winter day, and more in spring and autumn. Heating demand peaks between 17:00 and 08:00, after the surplus has gone.
 
-## Constraints
+Assumptions:
 
-- Garage-buildable prototype, about $600 USD
+- Array yield of 3.5 to 4.2 kWh per kWp on a clear January day at 40° N.
+- Heating demand of 20 to 60 kWh(th) per day for a small, reasonably insulated house or a large room.
+
+Some tariffs and installations pay little or nothing for exports. Examples include the California net billing tariff that replaced net metering in 2023, export-capped installations and zero-export inverters. There, the surplus is worth far more as heat than as export. At an export value of $0.05/kWh, 18 kWh of surplus earns $0.90. The same 18 kWh(th) of heat displaces about 0.68 therm of gas at 90 % furnace efficiency, or 18 kWh of resistance heating bought at the retail rate.
+
+A battery can also shift the surplus, but stationary lithium storage costs several hundred dollars per kilowatt-hour of capacity. Its cycles are better spent on loads that need electricity. Heat is the one large household load that can be stored cheaply in an inert, abundant material. Sand is nearly free, does not burn and does not degrade with cycling.
+
+The honest limit of the case is scale. At this size standby losses are high (TBK-CAL-001, section 5), and the parts cost equals several years of savings. The prototype is a technology demonstrator and a design reference. It is not an economic product, and payback is not a design goal.
+
+## 2. Users and context
+
+The primary user is a homeowner or experienced maker who:
+
+- has rooftop PV of 4 kWp or more and a way to read grid export in real time, such as an inverter API or an energy meter;
+- has a slab-on-grade space inside the heated envelope, such as a basement, an attached garage workshop or a ground-floor utility room, with 1.5 m by 1.5 m of floor space;
+- can have a dedicated 240 V, 20 A circuit installed; and
+- is comfortable with pipe threading, sheet metal and low-voltage electronics, and will hire an electrician for the branch circuit where local code requires it.
+
+The secondary audience is other designers, students and community energy groups, who will use the documentation to adapt the design. For them the calculation note and the parametric model matter as much as the hardware.
+
+The operating context sets the design. The unit charges from about 10:00 to 16:00 whenever export is detected, holds heat through the late afternoon, and releases it through a room register from evening to morning. In the heating season its standby loss warms the same room. That heat is not wasted, but it cannot be switched off. Outside the heating season the unit is idle.
+
+## 3. Constraints
+
+- **Garage-buildable.** No welding, no pressure vessel and no custom machining. Cutting and threading pipe, riveting sheet metal and basic electrical assembly are acceptable.
+- **Safe at the temperatures involved.** Independent hardware over-temperature protection, no coated or galvanized steel in hot zones, cool touchable surfaces and insulation fibers that are safe to handle.
+- **Standard supply.** 240 V split phase on one 20 A circuit, the normal North American arrangement for a fixed heater.
+- **Indoor siting on a concrete slab.** The unit weighs about 410 kg in service.
+- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimates $3,674 for the full-scale design, about six times the target. Resolving this is the first open decision in section 5.
+
+## 4. What success looks like
+
+The v0.2 draft sets the following measures, which TBK-REQ-001 turns into verifiable requirements. ThermaBrick:
+
+- stores at least 18 kWh(th) between 150 °C and 450 °C sand mean temperature;
+- absorbs at least 11 kWh in 4 h of full surplus and fills in 8 h or less;
+- delivers a steady 1.0 kW of warm air through most of the stored range, with supply air at 55 °C or below;
+- never lets any sand pass 550 °C, and keeps every accessible surface at 45 °C or below;
+- follows live PV export, so it draws surplus power and never imports from the grid to charge; and
+- can be reproduced entirely from the published model, drawings, BOM and firmware.
+
+## 5. Open decisions
+
+1. **Budget.** Choose between raising the prototype budget to about $3,700 for the full-scale design, building a reduced-scale test article first within the original $600, or cost-reducing and accepting lower performance. The cost-down options are listed in `bom/bom-notes.md`.
+2. **Standby loss.** Decide whether 459 W of uncontrolled output at full charge suits the target rooms, or whether to adopt the loss-reduction options in TBK-CAL-001, Table 5.
+
+## 6. Out of scope
+
+- Domestic hot water. A later revision could add a water coil to the collector.
+- Charging from cheap night-rate grid power. The controller could do it, but it is not a design driver.
+- Certification to UL 2021 or a similar appliance standard. The prototype is a documented experimental build, not a listed product.
+- Multi-unit or district scale.
