@@ -3,7 +3,7 @@ doc_id: TBK-TST-001
 title: ThermaBrick test article test plan
 project: ThermaBrick
 doc_type: Test plan
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Firmware and logging host written (firmware/); section 1 now references them and lists the added sand trip; prerequisite checked off
+- version: "0.3"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Analysis script written and checked on synthetic data. Section 9 adds a fitted heater power correction and defines the time-to-80 % and closure checks so they are independent of the fitted model state; TP3 pass wording and prerequisites updated
 ---
 
 # ThermaBrick test article test plan
@@ -147,7 +151,7 @@ Assumption: washed play sand arrives with 3 % to 5 % moisture. Driving off 2 kg 
 
 The unit is full, at a 450 °C mean, when the fitted model says so (section 9). The 420 °C T3 end point is a practical stop that the model predicts shortly before full charge.
 
-**Pass:** the fitted model reproduces T1, T3 and T4 with an RMS error of 10 K or less, and predicts the time to 80 % charge within 10 % of the measured energy balance.
+**Pass:** the fitted model reproduces T1, T3 and T4 with an RMS error of 10 K or less; its controller-driven run predicts the time to 80 % charge within 10 % of the measured energy balance; and the heater power correction is within 5 % (section 9).
 
 **Also report:** the unfitted prediction error; the fitted sand conductivity multiplier and contact conductance; and the time at which the well-wall limit was reached.
 
@@ -163,17 +167,47 @@ The unit is full, at a 450 °C mean, when the fitted model says so (section 9). 
 
 ## 9. Analysis method
 
-The analysis script `docs/05-tests/tbk_tst_001_fit.py`, to be written before TP3, fits three multipliers to the TP3 and TP4 data:
+The analysis script `docs/05-tests/tbk_tst_001_fit.py` fits four values to the TP3 and TP4 data:
 
-- `K_SCALE` on the sand conductivity,
-- the wall contact conductance, and
-- a multiplier on the stone wool conductivity.
+- `k_sand`, a multiplier on the sand conductivity;
+- `h_contact`, the wall contact conductance, in W/(m² K);
+- `k_ins`, a multiplier on the stone wool and firebrick conductivity; and
+- `p_scale`, a correction to the logged heater power, which carries the ±5 % uncertainty of Table 3.
 
-The script drives the TBK-CAL-002 model with the measured heater power instead of the model's own controller. It then minimizes the RMS difference between measured and modeled T1 (well wall), T4 (cell at 34 mm) and T3 (cell outer edge), with least squares over the whole TP3 and TP4 record.
+The script drives the TBK-CAL-002 model with the measured heater power instead of the model's own controller. It then minimizes, by Levenberg–Marquardt least squares, the RMS difference between measured and modeled T1 (well wall), T4 (cell at 34 mm) and T3 (cell outer edge), over the whole TP3 and TP4 record at 60 s spacing. The model starts from a uniform bed at the mean of T3 and T4 in the first row.
 
-The sand conductivity and contact conductance mostly shape the charge curves, and the insulation multiplier mostly shapes the cool-down. So the three are identifiable from one charge and one cool-down. The script reports each value with the confidence interval from the fit's Jacobian. It also reports the energy balance, heater energy minus modeled stored heat and modeled loss, as a check on closure. Closure within 10 % is expected.
+**Why the four values can be separated:**
+- The cool-down has no heater power, so it fixes `k_ins` on its own.
+- With the loss known, the rate at which the bed heats in TP3 fixes `p_scale`.
+- The shape of the charge curves at the three radii fixes `k_sand` and `h_contact`.
 
-TP5 is then predicted with no further fitting. Its only comparison is between measured and modeled exchanger duty.
+The script reports each value with a 95 % interval from the fit's Jacobian. That interval is optimistic, because successive residuals are correlated; treat it as a lower bound on the uncertainty.
+
+The script reports these checks:
+
+- **RMS error**, fitted and unfitted, overall and for each thermocouple.
+- **Time to 80 % charge.** The measured value comes from the energy balance: the corrected heater energy less the loss fitted on the cool-down, added to the heat at the start. The predicted value comes from a run of the fitted model under its own 550 °C well-wall controller. Agreement shows that the real controller and bed take heat as fast as the model says.
+- **Energy closure over TP3.** The corrected heater energy is compared with the stored heat plus the fitted loss. The stored heat is estimated from the measured temperatures alone, through a linear radial profile between T1, T4 and T3. The estimate reads slightly high because T1 includes the contact drop at the well wall. Closure within 10 % is expected.
+- **Standby loss** from the fitted envelope, at 450 °C, 300 °C and 150 °C, against the 249 W prediction.
+- **Power correction** within 5 %. A larger correction points to a wrong `v_line` or `r_heat` setting in the firmware.
+
+TP5 is then predicted with the fitted values and no further fitting. Its only comparison is between measured and modeled exchanger duty, averaged over each hour. The first hour is not scored, because the model starts from a uniform bed.
+
+The commands are as follows, run from the repo root:
+
+```bash
+python docs/05-tests/tbk_tst_001_fit.py selftest
+```
+
+```bash
+python docs/05-tests/tbk_tst_001_fit.py fit --tp3 docs/05-tests/data/DATE_TP3.csv --tp4 docs/05-tests/data/DATE_TP4.csv
+```
+
+```bash
+python docs/05-tests/tbk_tst_001_fit.py tp5 --tp5 docs/05-tests/data/DATE_TP5.csv
+```
+
+Results are written as JSON and SVG to `docs/05-tests/results/`. The self-test builds charge, cool-down and discharge records from known values with the model. It adds 1.5 K of thermocouple noise, a 2 % power error and 3 % duty noise, then fits them. It passes only if every value is recovered: `k_sand` and `k_ins` within 5 %, `h_contact` within 30 %, `p_scale` within 2 %, and TP5 within 15 %. The TP5 part checks the plumbing of the prediction, not the physics, because the same model made the data.
 
 ## 10. TP5 Discharge
 
@@ -216,7 +250,7 @@ The results, fitted parameters and pass or fail for every procedure go in test r
 - [ ] Test article built and inspected to TBK-DWG-002 (TP0).
 - [x] Firmware with the five functions in section 1, committed to `firmware/`; host unit tests pass.
 - [ ] Firmware flashed and the wiring checked against `firmware/README.md`, Table 1.
-- [ ] Analysis script `docs/05-tests/tbk_tst_001_fit.py`, checked against a synthetic data set made with `tbk_cal_002.py`.
+- [x] Analysis script `docs/05-tests/tbk_tst_001_fit.py`, checked against a synthetic data set made with `tbk_cal_002.py` (`selftest` passes).
 - [ ] Insulation tester borrowed or rented for TP2.
 - [ ] Contact thermometer for jacket and stack surfaces (a Type K bead probe on a spare MAX6675 channel is acceptable).
 - [ ] Smoke alarm working in the test room.
