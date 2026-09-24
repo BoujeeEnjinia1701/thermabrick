@@ -21,10 +21,11 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.3 |
 | [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.2 |
 | [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P1 |
-| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.2 |
+| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.3 |
 | [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.2 |
 | [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
-| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.1 |
+| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.2 |
+| [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
 | [Test article BOM](bom/bom-test-article.csv) | | $599.50 |
 
 ## Key components

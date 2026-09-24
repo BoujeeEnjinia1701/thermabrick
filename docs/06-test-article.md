@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Replaced the test outline with a summary of test plan TBK-TST-001 and renumbered the tests TP0 to TP6 so they no longer share tags with the thermocouples
+- version: "0.3"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Controller firmware and logging host written; pin assignments recorded in firmware/README.md
 ---
 
 # ThermaBrick test article design precis
@@ -153,6 +157,6 @@ The fitted sand conductivity, contact conductance and insulation conductivity th
 
 - [ ] Confirm heater lead time and resistance tolerance from the chosen supplier; order one spare if the budget allows.
 - [ ] Confirm the blower delivers 4 L/s through the U-tube (96 Pa) by the bag method in TP0.
-- [ ] Write firmware for charge control, logging and blower PWM (`firmware/`).
+- [x] Write firmware for charge control, logging and blower PWM (`firmware/`; wiring and API in `firmware/README.md`).
 - [x] Write the formal test plan, TBK-TST-001.
 - [ ] Write the analysis script `docs/05-tests/tbk_tst_001_fit.py` (TBK-TST-001, section 9).

@@ -3,7 +3,7 @@ doc_id: TBK-TST-001
 title: ThermaBrick test article test plan
 project: ThermaBrick
 doc_type: Test plan
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -13,6 +13,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Initial draft. Six test procedures for the reduced-scale test article, with instrumentation, uncertainty, analysis method, pass criteria, safety and schedule
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Firmware and logging host written (firmware/); section 1 now references them and lists the added sand trip; prerequisite checked off
 ---
 
 # ThermaBrick test article test plan
@@ -44,6 +48,8 @@ The firmware must provide five things before TP1:
 3. **Blower mode:** fixed PWM duty set from the Wi-Fi interface.
 4. **Logging:** every channel, the SSR duty and the blower duty at 10 s intervals to a CSV file, with a monotonic time stamp.
 5. **Safe state:** heaters off (SSR input low, with a pull-down resistor on the pin) after a reset, an open thermocouple on T1, a T1 reading above 575 °C or loss of the log for 60 s.
+
+The firmware in `firmware/` provides all five, and `firmware/README.md` gives the wiring, commands and fault codes. It adds two further trips: T3 or T4 above 560 °C, and a stalled main loop. The logging host is `firmware/tools/logger.py`. Its polling is the log heartbeat in item 5, so stopping the logger is how TP1 step 5 tests that trigger. The T1 injection in TP1 step 5 uses the `esp32dev_test` build.
 
 ## 2. Instrumentation
 
@@ -208,7 +214,8 @@ The results, fitted parameters and pass or fail for every procedure go in test r
 ## 13. Prerequisites
 
 - [ ] Test article built and inspected to TBK-DWG-002 (TP0).
-- [ ] Firmware with the five functions in section 1, committed to `firmware/`.
+- [x] Firmware with the five functions in section 1, committed to `firmware/`; host unit tests pass.
+- [ ] Firmware flashed and the wiring checked against `firmware/README.md`, Table 1.
 - [ ] Analysis script `docs/05-tests/tbk_tst_001_fit.py`, checked against a synthetic data set made with `tbk_cal_002.py`.
 - [ ] Insulation tester borrowed or rented for TP2.
 - [ ] Contact thermometer for jacket and stack surfaces (a Type K bead probe on a spare MAX6675 channel is acceptable).
