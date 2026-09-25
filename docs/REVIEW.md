@@ -140,7 +140,7 @@ These were never labeled as accepted, but Amish has not reviewed them. All live 
 
 ## 5. Changed in this review pass
 
-- **This document:** added as `docs/REVIEW-2026-09.md`.
+- **This document:** added as `docs/REVIEW-2026-09.md`; renamed `docs/REVIEW.md` at Amish's request on 2026-09-24, as kit 1.2.0 expects.
 - **Budget:** $727.70 returned to proposed in TBK-PRB-001 (v0.7), TBK-REQ-001 (v0.8), TBK-PRC-002 (v0.11), the BOM notes, the purchasing checklist, the README, and `project.yaml` (budget back to 636).
 - **Design decisions:** D1 to D8 in TBK-PRC-001 (v0.4) marked "Proposed, awaiting Amish".
 - **Controller board:** marked optional and deferred in TBK-PRC-002, the README, the BOM notes, the purchasing checklist and `electronics/README.md`.
@@ -156,4 +156,4 @@ These were never labeled as accepted, but Amish has not reviewed them. All live 
 5. Confirm the controller board stays deferred.
 6. Done after the review: the U-tube solid is fixed, TRL 3 is recorded, and the kit is on 1.2.0 with `trl_target: 3`.
 7. Install KiCad properly.
-8. Kit 1.2.0 expects the review note at `docs/REVIEW.md`. Rename this file, or keep the dated name. Proposed, awaiting Amish; recommendation: rename, so later sessions update one file.
+8. Done: renamed to `docs/REVIEW.md` at Amish's request, as kit 1.2.0 expects.

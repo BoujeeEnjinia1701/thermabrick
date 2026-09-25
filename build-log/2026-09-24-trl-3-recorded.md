@@ -64,3 +64,5 @@ None.
 - [ ] TRL 4 needs hardware: build the test article, run TBK-TST-001, and complete TBK-TST-002 with `environment: lab`, supported by build log entries.
 - [ ] Kit 1.1.4's TRL 4 check is too weak. With `trl: 4` set temporarily, `render.py --check` passed for this repo with no hardware built. It counts any TST document (the test plan qualifies) and any two `.md` files in `build-log/` (`README.md` and `TEMPLATE.md` qualify). The fix belongs in the kit source, not this repo; `trl` was restored to 3.
 - [ ] Kit 1.2.0 exists in `wastewise-scan` (commit `8ee209e`, "TRL 3 cap, CLAUDE.md guardrails, concept media standard"); syncing to it is for Amish to decide.
+
+*Note added 2026-09-24: the review cited above was renamed `docs/REVIEW.md` at Amish's request.*
