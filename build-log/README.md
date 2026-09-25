@@ -23,6 +23,7 @@ Conventions:
 ## Entries
 
 <!-- index start -->
+- [2026-09-24: Kit 1.3.0](2026-09-24-kit-1-3-0.md)
 - [2026-09-24: Kit 1.2.0 and TRL target capped at 3](2026-09-24-kit-1-2-0.md)
 - [2026-09-24: TRL 3 recorded](2026-09-24-trl-3-recorded.md)
 <!-- index end -->

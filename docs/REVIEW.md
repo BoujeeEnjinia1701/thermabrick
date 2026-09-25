@@ -154,6 +154,10 @@ These were never labeled as accepted, but Amish has not reviewed them. All live 
 3. Choose a path on the R3 charge-time miss, or wait for the test article's measurements.
 4. Decide whether 47 % daily standby loss is acceptable, or adopt the loss-reduction options.
 5. Confirm the controller board stays deferred.
-6. Done after the review: the U-tube solid is fixed, TRL 3 is recorded, and the kit is on 1.2.0 with `trl_target: 3`.
+6. Done after the review: the U-tube solid is fixed, TRL 3 is recorded, and the kit is on 1.3.0 with `trl_target: 3`.
 7. Install KiCad properly.
 8. Done: renamed to `docs/REVIEW.md` at Amish's request, as kit 1.2.0 expects.
+
+## 7. Log
+
+- 2026-09-24: kit synced to 1.3.0 at Amish's request. Concept media regenerated with a scale figure, a 3D viewer (`media/model.glb`, `media/viewer.html`) and a heat flow diagram (`media/flow.png`, TBK-CAL-001 estimates); TBK-DWG-006 reissued at Rev P2. Recorded in `build-log/2026-09-24-kit-1-3-0.md`.

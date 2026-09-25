@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Concept media for ThermaBrick (kit 1.2.0, CLAUDE.md section 5).
+"""Concept media for ThermaBrick (kit 1.3.0, CLAUDE.md section 5).
 
 Run from the repo root:
     python cad/src/concept_media.py
 
-Builds the full-scale assembly from model.py and writes, through .kit/concept.py:
-    media/hero.png                 shaded isometric render
+Builds the full-scale assembly from model.py and writes, through .kit/concept.py (kit 1.3.0):
+    media/hero.png                 shaded isometric render with a 1.75 m person for scale
+    media/model.glb, viewer.html   interactive 3D viewer for the website
+    media/flow.png                 estimated heat flow, full to empty
     media/cutaway.png              half section showing the sand, wells, heaters and U-tubes
     media/exploded.png             exploded view with callouts numbered by bom/bom.csv line
-    media/concept-blueprint.*      concept sheet TBK-DWG-006 Rev P1
+    media/concept-blueprint.*      concept sheet TBK-DWG-006 Rev P2 (P1 had no scale figure)
 Key figures come from TBK-CAL-001 v0.2. Licensed MIT (see LICENSE-SOFTWARE).
 """
 import sys
@@ -47,12 +49,21 @@ KEY_FIGURES = [
     "Source: TBK-CAL-001 v0.2",
 ]
 
+# Discharge from full to empty, TBK-CAL-001 v0.2, section 4 (calculated estimates, not measured)
+FLOW = {
+    "title": "estimated heat flow, full to empty (TBK-CAL-001)",
+    "stages": [("Sand store, full", 18.3), ("Warm air output", 14.5)],
+    "losses": [(0, "Standby loss into the room", 3.8)],
+    "unit": "kWh",
+}
+
 
 def main():
     _, out = model.build(parts=True)
     parts = [Part(name, out[key], color, bom, explode) for key, name, color, bom, explode in PARTS]
     res = render_all(parts, project="ThermaBrick", title="Concept overview", dwg_no="TBK-DWG-006",
-                     key_figures=KEY_FIGURES, date="2026-09-24", media_dir=str(ROOT / "media"))
+                     key_figures=KEY_FIGURES, date="2026-09-24", media_dir=str(ROOT / "media"), flow=FLOW,
+                     rev="P2")
     for k, v in res.items():
         print(f"{k:10s} {Path(v).relative_to(ROOT)}")
 
