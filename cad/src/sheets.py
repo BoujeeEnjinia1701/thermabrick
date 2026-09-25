@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / ".kit"))
 sys.path.insert(0, str(ROOT / "cad" / "src"))
 
 from drawing import Sheet, project_views  # noqa: E402
+import enclosure  # noqa: E402
 import model  # noqa: E402
 import test_article  # noqa: E402
 
@@ -22,6 +23,7 @@ VIEWS = DWG / "_views"
 REVISIONS = {
     "TBK-DWG-001": [("P1", "First issue: general arrangement of the v0.2 design", "2026-09-24", "AC")],
     "TBK-DWG-002": [("P1", "First issue: reduced-scale test article", "2026-09-24", "AC")],
+    "TBK-DWG-005": [("P1", "First issue: controller enclosure, 250 x 200 x 150 mm", "2026-09-24", "AC")],
 }
 
 
@@ -63,6 +65,21 @@ def rows_002():
     ]
 
 
+def rows_005():
+    P, d = enclosure.PARAMS, enclosure.derived()
+    return [
+        ("Enclosure", f"{P['width']:.0f} x {P['height']:.0f} x {P['depth']:.0f} mm polycarbonate, UL 94 V-0 or 5VA, IP65; "
+                      "steel mounting plate bonded to PE"),
+        ("Lid cutouts", f"REX-C100 {P['rex_cutout']:.0f} x {P['rex_cutout']:.0f} mm at x {P['rex_xz'][0]:.0f}, z {P['rex_xz'][1]:.0f}; "
+                        f"STOP and START {P['button_hole']:.1f} mm dia at x {P['stop_xz'][0]:.0f} and {P['start_xz'][0]:.0f}, z 55"),
+        ("Glands", "Bottom face at y 75: M25 x -80 (thermocouples), M16 x -35 (blower), M20 x 55 (supply), M20 x 95 (heaters)"),
+        ("Plate", "DIN rail at z 145: HDR-15-12 12 V supply, JQX-30F relay socket. SSR on heat sink top right; controller bottom left"),
+        ("Clearance", f"Fit check: every part clears by {P['clearance']:.0f} mm; REX-C100 body ends 36 mm from the plate"),
+        ("Datum", "x from the enclosure centerline, z up from the bottom face, y into the box from the lid"),
+        ("Reference", "TBK-DWG-003 schematic, TBK-PRC-002, bom/bom-test-article.csv"),
+    ]
+
+
 def key_data_svg(path, rows):
     """Key data and notes panel, placed under the orthographic views."""
     w, rh = 205.0, 5.4
@@ -91,6 +108,10 @@ SHEETS = {
     "TBK-DWG-002": dict(mod=test_article, title="Test article general arrangement", rows=rows_002,
                         material="Carbon steel drum and pipe; stone wool; aluminum jacket. "
                                  "See bom/bom-test-article.csv"),
+    "TBK-DWG-005": dict(mod=enclosure, title="Controller enclosure layout", rows=rows_005,
+                        material="Polycarbonate enclosure, steel mounting plate. Part envelopes from supplier data",
+                        iso_drop=("lid", "rex", "buttons"), iso_cut=False, iso_dir=(0.45, -1.0, 0.55),
+                        iso_label=("Isometric, lid removed", "Lid parts hidden, not to scale")),
 }
 
 
@@ -120,16 +141,23 @@ def make(dwg_no):
     views["front"] = visible(sec, "section_aa", (c.X, c.Y - dist, c.Z))
     # Right view: exterior, visible edges only
     views["right"] = visible(assy, "right_exterior", (c.X + dist, c.Y, c.Z))
-    # Isometric cutaway: remove the quadrant facing the viewer (x > 0, y < 0), sand kept
+    # Isometric cutaway: remove the quadrant facing the viewer (x > 0, y < 0), sand kept.
+    # A sheet may instead drop named parts (the enclosure lid) and skip the cut.
     quad = Pos(big / 2, -big / 2, -10) * Box(big, big, big, align=(Align.CENTER, Align.CENTER, Align.MIN))
-    cut = Compound(_solid([parts[n] - quad for n in parts]))
-    views["iso"] = visible(cut, "iso_cutaway", (c.X + dist, c.Y - dist, c.Z + dist * 0.8))
+    keep_parts = [n for n in parts if n not in cfg.get("iso_drop", ())]
+    if cfg.get("iso_cut", True):
+        cut = Compound(_solid([parts[n] - quad for n in keep_parts]))
+    else:
+        cut = Compound([parts[n] for n in keep_parts])
+    ix, iy, iz = cfg.get("iso_dir", (1.0, -1.0, 0.8))
+    views["iso"] = visible(cut, "iso_cutaway", (c.X + dist * ix, c.Y + dist * iy, c.Z + dist * iz))
 
     revs = REVISIONS[dwg_no]
     s = Sheet(project="ThermaBrick", title=cfg["title"], dwg_no=dwg_no, rev=revs[-1][0], author="Amish Chadha",
               date=revs[-1][2], scale=None, material=cfg["material"], revisions=revs)
     s.add_ortho(views, ["front", "top", "right"])
-    s.add_iso(views["iso"], label="Isometric cutaway", sublabel="Quarter removed, not to scale")
+    iso_label, iso_sub = cfg.get("iso_label", ("Isometric cutaway", "Quarter removed, not to scale"))
+    s.add_iso(views["iso"], label=iso_label, sublabel=iso_sub)
     panel = key_data_svg(vdir / "key_data.svg", cfg["rows"]())
     s.add_svg(panel, 20.0, 222.0, scale=1.0)
     out = s.save(DWG / dwg_no)

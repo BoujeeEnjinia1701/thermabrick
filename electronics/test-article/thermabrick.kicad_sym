@@ -682,7 +682,7 @@
         (justify left)
       )
     )
-    (property "Value" "12 V 5 A"
+    (property "Value" "HDR-15-12, 12 V 1.25 A"
       (at -7.62 -7.62 0)
       (effects
         (font

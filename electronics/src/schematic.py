@@ -25,7 +25,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "electronics" / "test-article"
 NAME = "thermabrick-test-article"
-REV, DATE = "P1", "2026-09-24"
+REV, DATE = "P2", "2026-09-24"
+REVISIONS = [("P1", "First issue: test article controller", "2026-09-24", "AC"),
+             ("P2", "PS1 changed to a DIN-rail HDR-15-12 12 V 1.25 A supply (TBK-DWG-005)", "2026-09-24", "AC")]
 KICAD_APPS = [Path("/Applications/KiCad/KiCad.app"), Path.home() / "Applications/KiCad/KiCad.app",
               Path("/Volumes/KiCad/KiCad/KiCad.app")]   # installed, per-user, or the mounted disk image
 KICAD_APP = next((a for a in KICAD_APPS if a.exists()), KICAD_APPS[0])
@@ -160,7 +162,7 @@ CUSTOM = {
                            [("L", "L", PASS), ("N", "N", PASS), None, ("TC+", "TC+", PASS), ("TC-", "TC-", PASS)],
                            [("COM", "OUT COM", PASS), ("NO", "OUT NO", PASS)], 20.32,
                            "Independent high limit: relay closed while T2 < 600 C"),
-    "PSU_12V": box_symbol("PSU_12V", "PS", "12 V 5 A",
+    "PSU_12V": box_symbol("PSU_12V", "PS", "HDR-15-12, 12 V 1.25 A",
                           [("L", "L", PASS), None, ("N", "N", PASS)], [("V+", "+V", P_OUT), None, ("V-", "-V", P_OUT)],
                           15.24, "AC to 12 VDC power supply"),
     "Buck": box_symbol("Buck", "U", "Buck 12 V to 5 V, 3 A",
@@ -218,7 +220,7 @@ PARTS = [
      {"L": "L_F", "N": "N", "TC+": "TC2P", "TC-": "TC2N", "COM": "L_RUN", "NO": "L_COIL"}),
     ("TC2", "TB:Thermocouple", "T2 well wall (limit)", 180.34, 101.6, {"+": "TC2P", "-": "TC2N"}),
     # Low voltage: supplies and blower
-    ("PS1", "TB:PSU_12V", "12 V 5 A", 33.02, 144.78, {"L": "L_F", "N": "N", "V+": "+12V", "V-": "GND"}),
+    ("PS1", "TB:PSU_12V", "HDR-15-12, 12 V 1.25 A", 33.02, 144.78, {"L": "L_F", "N": "N", "V+": "+12V", "V-": "GND"}),
     ("U3", "TB:Buck", "Buck 12 V to 5 V, 3 A", 76.2, 144.78, {"IN+": "+12V", "IN-": "GND", "OUT+": "+5V", "OUT-": "GND"}),
     ("U4", "TB:MOSFET_Module", "Logic-level MOSFET PWM module", 76.2, 185.42,
      {"VIN+": "+12V", "VIN-": "GND", "PWM": "BLOWER_PWM", "GND": "GND", "OUT+": "BLOWER_P", "OUT-": "BLOWER_N"}),
@@ -254,6 +256,7 @@ NOTES = [
     (254.0, 48.26, "6. Bond to PE: drum, wells, jacket, stack, enclosure, junction box, SSR heat sink.", 1.27),
     (254.0, 52.07, "7. K1, U1 and U2 terminal numbers are functional; follow each part's wiring label.", 1.27),
     (254.0, 55.88, "8. T2 goes only to U2, never to the ESP32, so the limit stays independent.", 1.27),
+    (254.0, 59.69, "9. PS1 and K1 mount on the DIN rail; layout in enclosure drawing TBK-DWG-005.", 1.27),
 ]
 
 # The baseline circuit, TBK-DWG-003. Other circuits (electronics/src/board.py) use the same keys.
@@ -363,7 +366,7 @@ def build(c=BASELINE):
     sch = ["kicad_sch", ["version", 20250114], ["generator", Q("thermabrick_schematic_py")],
            ["generator_version", Q("9.0")], ["uuid", Q(root)], ["paper", Q("A3")],
            ["title_block", ["title", Q(c["title"])], ["date", Q(DATE)],
-            ["rev", Q(REV)], ["company", Q("Open Hardware Portfolio, amishchadha.com")],
+            ["rev", Q(c.get("rev", REV))], ["company", Q("Open Hardware Portfolio, amishchadha.com")],
             ["comment", 1, Q(c["comment"])],
             ["comment", 2, Q("Licensed CERN-OHL-S-2.0")]],
            ["lib_symbols", *lib.values()], *items,
@@ -463,7 +466,7 @@ def build_sheet():
     s = Sheet(project="ThermaBrick", title="Test article controller schematic", dwg_no="TBK-DWG-003", rev=REV,
               author="Amish Chadha", date=DATE, scale=None, units="n/a",
               material="Electrical schematic. KiCad source in electronics/test-article; see bom/bom-test-article.csv",
-              revisions=[("P1", "First issue: test article controller", DATE, "AC")])
+              revisions=REVISIONS)
     s.scale = 1.0
     s.add_svg(cropped, M + 4, M + 16, W - 2 * M - 8, TB_Y - M - 20)
     s.save(ROOT / "cad" / "drawings" / "TBK-DWG-003")
