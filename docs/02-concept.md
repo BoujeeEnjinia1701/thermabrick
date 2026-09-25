@@ -3,7 +3,7 @@ doc_id: TBK-PRC-001
 title: ThermaBrick design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.3"
+version: "0.4"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -21,6 +21,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Updated charge and discharge figures for standby loss (TBK-CAL-001 v0.2); recorded the R3 shortfall and the options to close it; added the reduced-scale test article (TBK-PRC-002) as the next build
+- version: "0.4"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Review pass: design decisions D1 to D8 marked proposed, awaiting Amish; none has been reviewed or accepted
 ---
 
 # ThermaBrick design precis
@@ -141,20 +145,20 @@ The design layers its protection so that no single failure can overheat the unit
 
 ## 8. Key design decisions and risks
 
-Each decision in Table 4 will be recorded as a design decision record (TBK-DDR-001 onward) before v1.0.
+The choices in Table 4 are proposals by the designer. None has been reviewed or accepted by Amish; each stays proposed until Amish reviews it, and accepted ones will then be recorded as a design decision record (TBK-DDR-001 onward) before v1.0.
 
-| No. | Decision | Alternatives considered | Reason |
-| --- | --- | --- | --- |
-| D1 | Silica sand, window 150 to 450 °C | Basalt, olivine or soapstone to 600 °C and above | Cost and availability. The window keeps all sand below the 573 °C quartz inversion, and the 150 °C floor is where 1.0 kW output ends. |
-| D2 | Cartridge heaters in capped wells | Bare nichrome coils buried in sand; electric air heater in a closed air loop | Replaceable from the top without removing sand; heaters isolated from sand and moisture; standard parts |
-| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W; twelve of 1 in | Fastest affordable layout: 9.6 h against 15.2 h or more for fewer wells. Twelve 1 in wells reach 8.4 h at higher cost (TBK-CAL-001, Table 9) |
-| D4 | Closed U-tubes for discharge | Air blown directly through the sand bed | No dust in room air, low pressure drop and no fluidization risk |
-| D5 | Cold-side damper with a mixing tee and heat trap | Hot-side damper; fan pushing through the bed | Room-temperature damper and fan; convection stopped with no moving parts |
-| D6 | Wells end at the lid | Wells run through the top insulation | Removes a 94 W thermal bridge |
-| D7 | AES fiber hot face, stone wool bulk | Refractory ceramic fiber throughout | Handling safety and cost |
-| D8 | 240 V, 3.0 kW, burst-fire SSRs plus contactor | 120 V at 1.8 kW | Only 240 V can absorb a full sunny day's surplus; the contactor covers SSR failure |
+| No. | Proposal | Alternatives considered | Reason | Status |
+| --- | --- | --- | --- | --- |
+| D1 | Silica sand, window 150 to 450 °C | Basalt, olivine or soapstone to 600 °C and above | Cost and availability. The window keeps all sand below the 573 °C quartz inversion, and the 150 °C floor is where 1.0 kW output ends. | Proposed, awaiting Amish |
+| D2 | Cartridge heaters in capped wells | Bare nichrome coils buried in sand; electric air heater in a closed air loop | Replaceable from the top without removing sand; heaters isolated from sand and moisture; standard parts | Proposed, awaiting Amish |
+| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W; twelve of 1 in | Fastest affordable layout: 9.6 h against 15.2 h or more for fewer wells. Twelve 1 in wells reach 8.4 h at higher cost (TBK-CAL-001, Table 9) | Proposed, awaiting Amish |
+| D4 | Closed U-tubes for discharge | Air blown directly through the sand bed | No dust in room air, low pressure drop and no fluidization risk | Proposed, awaiting Amish |
+| D5 | Cold-side damper with a mixing tee and heat trap | Hot-side damper; fan pushing through the bed | Room-temperature damper and fan; convection stopped with no moving parts | Proposed, awaiting Amish |
+| D6 | Wells end at the lid | Wells run through the top insulation | Removes a 94 W thermal bridge | Proposed, awaiting Amish |
+| D7 | AES fiber hot face, stone wool bulk | Refractory ceramic fiber throughout | Handling safety and cost | Proposed, awaiting Amish |
+| D8 | 240 V, 3.0 kW, burst-fire SSRs plus contactor | 120 V at 1.8 kW | Only 240 V can absorb a full sunny day's surplus; the contactor covers SSR failure | Proposed, awaiting Amish |
 
-*Table 4. Key design decisions.*
+*Table 4. Key design proposals.*
 
 The main technical risks are as follows.
 
@@ -166,7 +170,7 @@ The main technical risks are as follows.
 
 ## 9. Open questions
 
-- [x] Decide the budget path. Decided 2026-09-24: build the reduced-scale test article (TBK-PRC-002) within $600 first; revisit the full-scale budget with its results.
+- [x] Decide the budget path. Amish decided on 2026-09-24 to build the reduced-scale test article (TBK-PRC-002) first. Revisiting the full-scale budget with its results is proposed.
 - [ ] Close the R3 charge-time gap of 1.6 h (section 8, charge time risk).
 - [ ] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5).
 - [ ] Confirm the fan's pressure curve and speed-control interface against 60 L/s at 150 Pa.
@@ -174,7 +178,7 @@ The main technical risks are as follows.
 - [ ] Choose between a 5 mA GFCI and 30 mA equipment protection with the electrician.
 - [ ] Write the controller schematic (`electronics/`) and firmware (`firmware/`).
 - [ ] Write test plan TBK-TST-001: charge, discharge, 24 h cool-down, limit trip and ratcheting measurement.
-- [ ] Record decisions D1 to D8 as design decision records.
+- [ ] Review proposals D1 to D8 (awaiting Amish), then record the accepted ones as design decision records.
 
 ## 10. Deliverables in this revision
 

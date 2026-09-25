@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.10"
+version: "0.11"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -49,11 +49,15 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Added the four items the build procedure found to the BOM (second stone wool pack, heater cable, wiring consumables, thermocouple extension); budget now $727.70
+- version: "0.11"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Review pass: the $727.70 budget returned to proposed, awaiting Amish (accepted budget remains $635.70); controller board marked optional and deferred
 ---
 
 # ThermaBrick test article design precis
 
-The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $727.70. That is $127.70 over the original $600 target, and it was accepted as the test article budget on 2026-09-24 (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
+The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $727.70, $127.70 over the original $600 target. Amish accepted $635.70 on 2026-09-24; the rise to $727.70 is proposed, awaiting Amish (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
 
 - one U-tube instead of the full-scale density;
 - a 120 V plug-in supply instead of a 240 V branch circuit;
@@ -73,7 +77,7 @@ Its purpose is to measure the numbers the full-scale design rests on before $3,6
 | Standby loss | 249 W at full charge |
 | Envelope and mass | 880 mm diameter, 1,688 mm high including the stack; about 116 kg |
 | Controls | ESP32 with five thermocouple channels; separate latching 600 °C limit |
-| Parts cost | $727.70 estimated (`bom/bom-test-article.csv`); accepted budget |
+| Parts cost | $727.70 estimated (`bom/bom-test-article.csv`); accepted budget $635.70, rise proposed |
 
 *Table 1. Key parameters of the test article.*
 
@@ -203,13 +207,15 @@ The corrected enclosure and wiring add $36.00. Three options were considered:
 2. defer the $25 discharge kit until TP5 and build for $610.70 first;
 3. use an enclosure or supply already on hand.
 
-**Decided 2026-09-24: option 1.** The budget for the test article is $635.70, and the whole article, discharge kit included, is built at once.
+**Decided by Amish on 2026-09-24: option 1.** The budget for the test article is $635.70, and the whole article, discharge kit included, is built at once.
 
-The build procedure (section 4) then found $92.00 of parts the BOM had not covered: a second stone wool pack, the heater cable, wiring consumables and thermocouple extension wire. They were added the same day, which sets the accepted budget at **$727.70**.
+The build procedure (section 4) then found $92.00 of parts the BOM had not covered: a second stone wool pack, the heater cable, wiring consumables and thermocouple extension wire. Amish had them added to the BOM the same day, so it now totals $727.70. Raising the accepted budget from $635.70 to $727.70 is **proposed, awaiting Amish**.
 
 The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
 
-### 5.1 Optional controller board
+### 5.1 Optional controller board (deferred)
+
+**Status: optional and deferred.** The test article is built with hand-wired modules. The board is not ordered or built unless Amish decides otherwise after the review.
 
 The low-voltage controller can be built on a printed circuit board instead of hand-wired modules. The board is drawing TBK-DWG-004 Rev P1, with its KiCad source and gerbers in `electronics/controller-board/` and its parts in `bom/bom-controller-board.csv`. It measures 110 mm by 80 mm and has two layers with a ground plane.
 
@@ -221,7 +227,7 @@ The board adds $24.85:
 - less $6.00 for the two modules it replaces;
 - plus about $3.00 for a genuine DevKitC V4 in place of a generic board, whose header spacing may not fit.
 
-That takes the test article to $752.55. It is therefore an option, not the baseline. Its value is a repeatable, inspectable wiring job for the controller.
+That would take the test article to $752.55. It is therefore an option, not the baseline, and it is deferred. Its value is a repeatable, inspectable wiring job for the controller.
 
 ## 6. Test plan
 

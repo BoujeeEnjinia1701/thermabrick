@@ -1,6 +1,6 @@
 # Purchasing checklist
 
-Test article (TBK-PRC-002), accepted budget $727.70. Generated from `bom-test-article.csv` and `bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.
+Test article (TBK-PRC-002). BOM total $727.70; accepted budget $635.70, rise to $727.70 proposed, awaiting Amish. Generated from `bom-test-article.csv` and `bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.
 
 Prices are the BOM's budgetary estimates (US list prices, September 2026, before tax and shipping). Record the price actually paid beside each line.
 
@@ -143,9 +143,9 @@ Pipe, sheet metal, insulation and sand. Subtotal $324.50.
 
 **Test article total: $727.70** across 35 lines.
 
-## Optional: controller board (TBK-DWG-004)
+## Optional and deferred: controller board (TBK-DWG-004)
 
-Only if building the controller on the printed board. Parts $27.85; the board replaces the buck converter and blower driver above ($6.00), so skip those two lines. Upload `electronics/controller-board/thermabrick-controller-board-gerbers-P1.zip` to the board house: 2 layers, 1.6 mm FR-4, 1 oz copper, HASL, any color.
+Deferred: do not order unless Amish decides to build the controller on the printed board. Parts $27.85; the board replaces the buck converter and blower driver above ($6.00), so skip those two lines. Upload `electronics/controller-board/thermabrick-controller-board-gerbers-P1.zip` to the board house: 2 layers, 1.6 mm FR-4, 1 oz copper, HASL, any color.
 
 - [ ] **Printed circuit board**, qty 1, $15.00 each, $15.00. 110 x 80 mm, 2 layer FR-4 1.6 mm, 1 oz copper, HASL; gerbers in electronics/controller-board (minimum order of 5 shares the cost). Supplier: JLCPCB or PCBWay.
   - [ ] Received: quantity and specification match the order.

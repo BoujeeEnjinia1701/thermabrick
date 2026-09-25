@@ -121,7 +121,7 @@ def main():
     total = round(sum(float(r["qty"]) * float(r["unit_cost_usd"]) for r in rows), 2)
 
     L = ["# Purchasing checklist", "",
-         "Test article (TBK-PRC-002), accepted budget $727.70. Generated from `bom-test-article.csv` and "
+         "Test article (TBK-PRC-002). BOM total $727.70; accepted budget $635.70, rise to $727.70 proposed, awaiting Amish. Generated from `bom-test-article.csv` and "
          "`bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.",
          "",
          "Prices are the BOM's budgetary estimates (US list prices, September 2026, before tax and shipping). "
@@ -147,8 +147,8 @@ def main():
     L += [f"**Test article total: {money(total)}** across {len(rows)} lines.", ""]
 
     btotal = round(sum(float(r["qty"]) * float(r["unit_cost_usd"]) for r in board), 2)
-    L += ["## Optional: controller board (TBK-DWG-004)", "",
-          f"Only if building the controller on the printed board. Parts {money(btotal)}; the board replaces the buck "
+    L += ["## Optional and deferred: controller board (TBK-DWG-004)", "",
+          f"Deferred: do not order unless Amish decides to build the controller on the printed board. Parts {money(btotal)}; the board replaces the buck "
           "converter and blower driver above ($6.00), so skip those two lines. Upload "
           "`electronics/controller-board/thermabrick-controller-board-gerbers-P1.zip` to the board house: 2 layers, "
           "1.6 mm FR-4, 1 oz copper, HASL, any color.", ""]

@@ -5,7 +5,7 @@
 | `src/schematic.py` | Generator for the test article controller schematic (TBK-DWG-003), the source of truth for that circuit |
 | `src/board.py` | Generator for the optional controller board: schematic, PCB layout, gerbers and TBK-DWG-004 |
 | `test-article/` | KiCad project for TBK-DWG-003: the whole controller, mains and low voltage, as hand-wired modules |
-| `controller-board/` | KiCad project for the optional low-voltage controller board, with gerbers for fabrication |
+| `controller-board/` | KiCad project for the optional low-voltage controller board, with gerbers for fabrication. **Optional and deferred:** not to be ordered unless Amish decides so |
 
 Change a circuit in its script, not in KiCad, then regenerate from the repo root:
 
