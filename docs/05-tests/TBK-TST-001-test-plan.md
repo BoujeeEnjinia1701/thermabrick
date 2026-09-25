@@ -3,7 +3,7 @@ doc_id: TBK-TST-001
 title: ThermaBrick test article test plan
 project: ThermaBrick
 doc_type: Test plan
-version: "0.4"
+version: "0.5"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -25,6 +25,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Thermocouple tips moved from 245 mm to 300 mm above the drum floor, so the 500 mm probes end inside the top insulation (docs/07-build/cut-list.md, C4)
+- version: "0.5"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Section 12 names the report template TBK-TST-002 and the script that fills its analysis sections
 ---
 
 # ThermaBrick test article test plan
@@ -247,7 +251,7 @@ Exchanger duty is ṁ cp (T5 − T6), with ṁ from the airflow table and cp of 
 
 Raw logs are saved as `docs/05-tests/data/YYYY-MM-DD_TPn.csv`. Record in the file header the firmware commit, the channel offsets from section 2.1 and the line voltage readings. Photographs and daily notes go in `build-log/` as dated entries. Nothing in the raw data is edited; corrections are applied in the analysis script and recorded there.
 
-The results, fitted parameters and pass or fail for every procedure go in test report TBK-TST-002. The fitted values are then entered in `tbk_cal_001.py`, and TBK-CAL-001 is reissued. That reissue decides the options for the full-scale charge-time gap (TBK-PRC-001, section 8).
+The results, fitted parameters and pass or fail for every procedure go in test report TBK-TST-002. After running the analysis, `python docs/05-tests/tbk_tst_002_fill.py` fills the report's TP3 to TP5 results, its fitted-property tables and a re-run of the full-scale sizing with the fitted values; the rest is written by hand from the build log and test records. The fitted values are then entered in `tbk_cal_001.py`, and TBK-CAL-001 is reissued. That reissue decides the options for the full-scale charge-time gap (TBK-PRC-001, section 8).
 
 ## 13. Prerequisites
 

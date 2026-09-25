@@ -24,7 +24,8 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.10 |
 | [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.2 |
 | [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
-| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.4 |
+| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.5 |
+| [Test article test report (template)](docs/05-tests/TBK-TST-002-test-report.md) | TBK-TST-002 | 0.1 |
 | [Test analysis script](docs/05-tests/tbk_tst_001_fit.py) | | Python, NumPy |
 | [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
 | [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |
