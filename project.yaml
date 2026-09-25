@@ -3,7 +3,7 @@ name: ThermaBrick
 slug: thermabrick
 area: CleanTech
 trl: 3                   # Technology Readiness Level, see .kit/STANDARDS.md section 9
-trl_target: 4
+trl_target: 3            # capped at TRL 3 by .kit/PHASE.yaml (kit 1.2.0), Amish 2026-09-24
 trl_evidence:
   - docs/01-problem.md
   - docs/02-concept.md

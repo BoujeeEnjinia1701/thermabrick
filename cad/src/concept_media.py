@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Concept media for ThermaBrick (kit 1.2.0, CLAUDE.md section 5).
+
+Run from the repo root:
+    python cad/src/concept_media.py
+
+Builds the full-scale assembly from model.py and writes, through .kit/concept.py:
+    media/hero.png                 shaded isometric render
+    media/cutaway.png              half section showing the sand, wells, heaters and U-tubes
+    media/exploded.png             exploded view with callouts numbered by bom/bom.csv line
+    media/concept-blueprint.*      concept sheet TBK-DWG-006 Rev P1
+Key figures come from TBK-CAL-001 v0.2. Licensed MIT (see LICENSE-SOFTWARE).
+"""
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / ".kit"))
+sys.path.insert(0, str(ROOT / "cad" / "src"))
+
+from concept import Part, render_all  # noqa: E402
+import model  # noqa: E402
+
+# (model part, name, color, bom/bom.csv line, exploded offset in mm)
+PARTS = [
+    ("base", "Insulating firebrick base", "#C9B79C", 21, (0, 0, -350)),
+    ("drum", "55 gal steel drum", "#6B7280", 1, (0, 0, 0)),
+    ("sand", "Sand, 210 kg fill", "#D8B26E", 2, (0, 1400, 0)),
+    ("wells", "Heater well pipe", "#374151", 4, (0, 0, 900)),
+    ("heaters", "Cartridge heaters", "#B91C1C", 3, (0, 0, 1500)),
+    ("utubes", "U-tube pipe", "#1F2937", 6, (0, 0, 0)),
+    ("lid", "Drum lid (with drum)", "#4B5563", None, (0, 0, 650)),
+    ("collector", "Collector shell", "#111827", 10, (0, 0, 2100)),
+    ("insulation", "Stone wool batt", "#E5D3A8", 22, (-1500, 0, 0)),
+    ("jacket", "Jacket sheet", "#9CA3AF", 25, (1500, 0, 0)),
+    ("inlet_plenum", "Inlet plenum (jacket sheet)", "#6B7280", None, (0, 0, 1800)),
+]
+
+KEY_FIGURES = [
+    "18.3 kWh(th) stored, 150 to 450 °C",
+    "210 kg silica sand in a 55 US gal drum",
+    "3.0 kW charge, 12 x 250 W heaters, 240 V",
+    "Full charge 9.6 h (R3 asks 8 h: not met)",
+    "1.0 kW warm air held for 14.3 h",
+    "Standby loss 459 W at full charge",
+    "1,209 mm dia. x 1,462 mm high",
+    "Source: TBK-CAL-001 v0.2",
+]
+
+
+def main():
+    _, out = model.build(parts=True)
+    parts = [Part(name, out[key], color, bom, explode) for key, name, color, bom, explode in PARTS]
+    res = render_all(parts, project="ThermaBrick", title="Concept overview", dwg_no="TBK-DWG-006",
+                     key_figures=KEY_FIGURES, date="2026-09-24", media_dir=str(ROOT / "media"))
+    for k, v in res.items():
+        print(f"{k:10s} {Path(v).relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -30,6 +30,7 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
 | [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |
 | [Controller enclosure layout](cad/drawings/TBK-DWG-005.pdf) | TBK-DWG-005 | Rev P1 |
+| [Concept sheet](media/concept-blueprint.pdf), with [hero](media/hero.png), [cutaway](media/cutaway.png) and [exploded](media/exploded.png) renders | TBK-DWG-006 | Rev P1 |
 | [Test article BOM](bom/bom-test-article.csv) | | $727.70 total; $635.70 accepted |
 | [Purchasing checklist](bom/purchasing-checklist.md) | | Test article, by supplier |
 | [Build procedure](docs/07-build/test-article-build.md) and [cut list](docs/07-build/cut-list.md) | | Test article |
