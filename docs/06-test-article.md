@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.7"
+version: "0.8"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -37,11 +37,15 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Added the controller enclosure (TBK-DWG-005 Rev P1). The fit check required a 150 mm deep enclosure and a DIN-rail 12 V supply, and added glands, DIN rail and wiring parts; the estimate rose to $635.70, over the $600 budget, with options listed
+- version: "0.8"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Recorded the decision to accept $635.70 as the test article budget
 ---
 
 # ThermaBrick test article design precis
 
-The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $635.70, which is $35.70 over the $600 prototype budget (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
+The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $635.70. That is $35.70 over the original $600 target, and it was accepted as the test article budget on 2026-09-24 (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
 
 - one U-tube instead of the full-scale density;
 - a 120 V plug-in supply instead of a 240 V branch circuit;
@@ -61,7 +65,7 @@ Its purpose is to measure the numbers the full-scale design rests on before $3,6
 | Standby loss | 249 W at full charge |
 | Envelope and mass | 880 mm diameter, 1,616 mm high including the stack; about 115 kg |
 | Controls | ESP32 with five thermocouple channels; separate latching 600 °C limit |
-| Parts cost | $635.70 estimated (`bom/bom-test-article.csv`), $35.70 over budget |
+| Parts cost | $635.70 estimated (`bom/bom-test-article.csv`); accepted budget |
 
 *Table 1. Key parameters of the test article.*
 
@@ -164,17 +168,21 @@ The sequence follows TBK-PRC-001, section 6, and takes one weekend. It needs no 
 
 The basis is the same as the full-scale BOM: US retail and marketplace list prices in September 2026, before tax and shipping.
 
-The estimate is $35.70 over budget. The controller enclosure model (TBK-DWG-005, section 3) showed that the $600 figure rested on three wrong entries:
+The estimate is $35.70 over the original $600 target. The controller enclosure model (TBK-DWG-005, section 3) showed that the $600 figure rested on three wrong entries:
 
 - a $10 enclosure, 100 mm deep, that cannot take the REX-C100 (98 mm behind the lid);
 - a barrel-jack 12 V adapter that should not be hard-wired inside a mains enclosure;
 - no allowance for glands, DIN rail, lever connectors or an earth stud.
 
-The corrected enclosure and wiring add $36.00. Three ways back toward $600, for decision:
+The corrected enclosure and wiring add $36.00. Three options were considered:
 
-1. **Accept $635.70.** This is 6 % over, and every part is specified.
-2. **Defer the discharge kit.** The blower, PWM module and stack, together $25, are not needed until TP5. Build and run TP0 to TP4, which answer O1, O2 and O4, for $610.70, then add the kit.
-3. **Use parts on hand.** Any rated enclosure of at least 250 × 200 × 150 mm, or a spare DIN-rail supply, saves its line in the BOM. The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
+1. accept $635.70, with every part specified;
+2. defer the $25 discharge kit until TP5 and build for $610.70 first;
+3. use an enclosure or supply already on hand.
+
+**Decided 2026-09-24: option 1.** The budget for the test article is $635.70, and the whole article, discharge kit included, is built at once.
+
+The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
 
 ### 5.1 Optional controller board
 

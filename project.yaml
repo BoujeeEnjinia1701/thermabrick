@@ -8,7 +8,7 @@ pitch: >-
   Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 problem: >-
   Surplus rooftop solar gets exported cheaply or curtailed, while heating still burns gas.
-budget_usd: 600
+budget_usd: 636   # test article, accepted 2026-09-24 (TBK-PRB-001)
 difficulty: 3  # 1 easiest, 5 hardest
 hero_image: media/hero.png
 licenses:

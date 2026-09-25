@@ -3,7 +3,7 @@ doc_id: TBK-PRB-001
 title: ThermaBrick problem statement
 project: ThermaBrick
 doc_type: Problem statement
-version: "0.4"
+version: "0.5"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -25,6 +25,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Noted that the test article estimate is now $635.70 after the enclosure fit check; the way back to $600 is open
+- version: "0.5"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Recorded the decision to accept the test article at $635.70
 ---
 
 # ThermaBrick problem statement
@@ -65,7 +69,7 @@ The operating context sets the design. The unit charges from about 10:00 to 16:0
 - **Safe at the temperatures involved.** Independent hardware over-temperature protection, no coated or galvanized steel in hot zones, cool touchable surfaces and insulation fibers that are safe to handle.
 - **Standard supply.** 240 V split phase on one 20 A circuit, the normal North American arrangement for a fixed heater.
 - **Indoor siting on a concrete slab.** The unit weighs about 410 kg in service.
-- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimates $3,674 for the full-scale design, about six times the target. The $600 now funds a reduced-scale test article (section 5).
+- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimates $3,674 for the full-scale design, about six times the target. The budget now funds a reduced-scale test article, accepted at $635.70 (section 5).
 
 ## 4. What success looks like
 
@@ -80,7 +84,7 @@ The v0.2 draft sets the following measures, which TBK-REQ-001 turns into verifia
 
 ## 5. Open decisions
 
-1. **Budget.** Decided 2026-09-24. The $600 budget funds a reduced-scale test article first: a 16 US gal drum storing about 6 kWh(th), built with the same heater cells as the full-scale design (TBK-PRC-002). Its measurements will settle sand conductivity, contact conductance and standby loss. The full-scale budget will be revisited with those results. After the controller enclosure was modeled, the test article estimate rose to $635.70. How to close the $35.70 gap is open; TBK-PRC-002, section 5, lists the options.
+1. **Budget.** Decided 2026-09-24. The $600 budget funds a reduced-scale test article first: a 16 US gal drum storing about 6 kWh(th), built with the same heater cells as the full-scale design (TBK-PRC-002). Its measurements will settle sand conductivity, contact conductance and standby loss. The full-scale budget will be revisited with those results. After the controller enclosure was modeled, the test article estimate rose to $635.70. Decided 2026-09-24: accept $635.70 as the test article budget, with every part specified, rather than defer parts or rely on parts on hand.
 2. **Standby loss.** Decide whether 459 W of uncontrolled output at full charge suits the target rooms, or whether to adopt the loss-reduction options in TBK-CAL-001, Table 5.
 
 ## 6. Out of scope
