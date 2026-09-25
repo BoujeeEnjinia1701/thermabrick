@@ -49,12 +49,13 @@ PARAMS = {
     "tube_id": 35.1,
     "leg_span": 206.4,           # leg centers: two elbows on a 1-1/4 x 6 in nipple
     "bend_z": 50.0,
-    "leg_above_jacket": 80.0,
+    "leg_nipple": 914.4,         # 1-1/4 x 36 in nipple; the shortest stock length that reaches
+    "elbow_offset": 27.2,        # elbow center to nipple end: 44.5 center-to-end less 17.3 engagement
 
     # Dilution stack over the outlet leg: 4 in black stovepipe, open at both ends
     "stack_d": 101.6,
     "stack_len": 610.0,
-    "stack_gap": 40.0,           # stack bottom above the jacket top
+    "stack_overlap": 40.0,       # outlet leg ends this far inside the stack's open bottom
 
     # Insulation: stone wool throughout, bricks on edge under the chime
     "ins_side": 267.0,           # 3 x 89 mm stone wool batt
@@ -62,6 +63,7 @@ PARAMS = {
     "base_h": 114.0,             # K-23 bricks on edge, stone wool between
     "brick": (230.0, 64.0, 114.0),
     "n_bricks": 4,
+    "brick_r": 150.0,            # brick centers, radial, so each spans r 35 to 265 under the chime
     "jacket_t": 0.5,             # aluminum roll flashing, 20 in x 25 ft
 
     # Inlet blower (12 V centrifugal, 97 x 94 x 33 mm) on the inlet leg
@@ -93,8 +95,10 @@ def derived(p=PARAMS):
     d["top_ins_z0"] = d["lid_z"] + p["lid_t"]
     d["jacket_top_z"] = d["top_ins_z0"] + p["ins_top"]
     d["well_top_z"] = d["top_ins_z0"] + p["well_above_lid"]
-    d["leg_top_z"] = d["jacket_top_z"] + p["leg_above_jacket"]
-    d["stack_z0"] = d["jacket_top_z"] + p["stack_gap"]
+    d["leg_top_z"] = d["floor_z"] + p["bend_z"] + p["elbow_offset"] + p["leg_nipple"]
+    d["leg_above_jacket"] = d["leg_top_z"] - d["jacket_top_z"]
+    d["stack_z0"] = d["leg_top_z"] - p["stack_overlap"]
+    d["well_cut"] = d["well_top_z"] - (d["floor_z"] + p["well_floor_gap"]) + 25.0   # 25 mm crimp allowance
     d["overall_h"] = d["stack_z0"] + p["stack_len"]
     d["overall_d"] = 2 * d["jacket_r_o"]
     return d
@@ -120,7 +124,7 @@ def build(parts=False):
     bricks = []
     for i in range(p["n_bricks"]):
         ang = 45 + 360 / p["n_bricks"] * i
-        bricks.append(Rot(0, 0, ang) * Pos(d["drum_r_o"] - bl / 2 + 20, 0, 0) * Box(bl, bw, bh, align=B))
+        bricks.append(Rot(0, 0, ang) * Pos(p["brick_r"], 0, 0) * Box(bl, bw, bh, align=B))
     out["bricks"] = Compound(bricks)
     base = Cylinder(d["jacket_r_i"], p["base_h"], align=B)
     for b in bricks:

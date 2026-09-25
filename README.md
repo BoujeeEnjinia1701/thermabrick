@@ -1,6 +1,6 @@
 # ThermaBrick
 
-**Area:** CleanTech · **Status:** Concept · **Prototype budget:** about $636 USD test article first (full-scale estimate $3,674) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **Status:** Concept · **Prototype budget:** about $728 USD test article first (full-scale estimate $3,674) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
@@ -16,21 +16,22 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 
 | Document | ID | Version |
 | --- | --- | --- |
-| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.5 |
+| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.6 |
 | [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.3 |
-| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.6 |
+| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.7 |
 | [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.2 |
 | [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P1 |
-| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.8 |
+| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.10 |
 | [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.2 |
 | [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
-| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.3 |
+| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.4 |
 | [Test analysis script](docs/05-tests/tbk_tst_001_fit.py) | | Python, NumPy |
 | [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
 | [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |
 | [Controller enclosure layout](cad/drawings/TBK-DWG-005.pdf) | TBK-DWG-005 | Rev P1 |
-| [Test article BOM](bom/bom-test-article.csv) | | $635.70 |
+| [Test article BOM](bom/bom-test-article.csv) | | $727.70 |
 | [Purchasing checklist](bom/purchasing-checklist.md) | | Test article, by supplier |
+| [Build procedure](docs/07-build/test-article-build.md) and [cut list](docs/07-build/cut-list.md) | | Test article |
 | [Controller board layout (optional)](cad/drawings/TBK-DWG-004.pdf) | TBK-DWG-004 | Rev P1 |
 | [Controller board BOM (optional)](bom/bom-controller-board.csv) | | +$24.85 net |
 

@@ -37,6 +37,7 @@ GROUP = {
     "Sand": "local", "Heater well pipe": "local", "U-tube legs": "local", "U-tube elbow": "local",
     "U-tube bottom nipple": "local", "Dilution stack": "local", "Stone wool batt": "local", "Jacket sheet": "local",
     "Jacket fasteners and tape": "local", "Fuse": "local", "Supply cord": "local", "Heater junction box": "local",
+    "Heater cable": "local", "Wiring consumables": "amazon", "Thermocouple extension": "amazon",
 }
 
 # What to confirm before paying (order) and when the part arrives (arrival)
@@ -83,6 +84,10 @@ CHECKS = {
     "Fuse": ("Inline holder with 10 A fast-acting fuse; buy a spare fuse.", ""),
     "Supply cord": ("14/3 SJT with NEMA 5-15 plug, 6 ft.", ""),
     "Heater junction box": ("Steel handy box; ceramic terminal block rated 250 V, 10 A or more.", ""),
+    "Heater cable": ("16/3 SJT, 2 m, black, white and green conductors.", ""),
+    "Wiring consumables": ("Stranded 16 AWG and 22 AWG hookup wire rated 105 C; ferrules to suit; M5 ring lugs; heat-shrink.", ""),
+    "Thermocouple extension": ("Type K extension grade (not copper), with miniature type K plugs and jacks.",
+                               "Check polarity: yellow positive, red negative (ANSI)."),
 }
 
 TOOLS = [
@@ -116,7 +121,7 @@ def main():
     total = round(sum(float(r["qty"]) * float(r["unit_cost_usd"]) for r in rows), 2)
 
     L = ["# Purchasing checklist", "",
-         "Test article (TBK-PRC-002), accepted budget $635.70. Generated from `bom-test-article.csv` and "
+         "Test article (TBK-PRC-002), accepted budget $727.70. Generated from `bom-test-article.csv` and "
          "`bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.",
          "",
          "Prices are the BOM's budgetary estimates (US list prices, September 2026, before tax and shipping). "

@@ -2,7 +2,7 @@ item,qty,spec,supplier,unit_cost_usd,make_buy,notes
 Steel drum,1,"Open-head steel drum, 16 US gal, unlined, 20 ga, bolt ring; 13.5 in (343 mm) ID x 26.5 in (673 mm) high",Uline S-19411,115.00,buy,Strip the exterior paint and discard the lid gasket before first firing. Seal the lid with stone wool strip.
 Sand,3,"Washed play sand, 50 lb (22.7 kg) bag; 68 kg fill",Home Depot or Lowe's (Quikrete play sand or equal),6.50,buy,5.9 kWh(th) between 150 and 450 C. Weigh every bag.
 Nichrome heating elements,4,"Cartridge heater, 5/8 in x 18 in (15.9 x 457 mm), 120 V, 250 W, stainless or Incoloy sheath, NiCr winding in MgO, 16 in heated, 2 in cold end, 24 in high-temperature leads",Made-to-order import cartridge heater supplier (Amazon or AliExpress),18.00,buy,Same diameter and linear power class as the full-scale heater. Measure each cold resistance on arrival (57.6 ohm hot nominal).
-Heater well pipe,1,"Black steel pipe, 3/4 in Sch 40, ASTM A53, 10 ft; cut to four 717 mm wells, bottoms crimped closed in a vise",Home Depot or Lowe's,28.00,buy,Not galvanized. No threading needed.
+Heater well pipe,1,"Black steel pipe, 3/4 in Sch 40, ASTM A53, 10 ft; cut to four 692 mm wells (C1 in docs/07-build/cut-list.md), bottoms crimped closed in a vise",Home Depot or Lowe's,28.00,buy,Not galvanized. No threading needed.
 U-tube legs,2,"Black steel nipple, 1-1/4 in x 36 in",Home Depot or Lowe's,28.00,buy,One inlet leg and one outlet leg.
 U-tube elbow,2,"Black malleable iron 90 deg elbow, 1-1/4 in NPT",Home Depot or Lowe's,8.00,buy,Dry threads; the joint is never taken apart.
 U-tube bottom nipple,1,"Black steel nipple, 1-1/4 in x 6 in",Home Depot or Lowe's,6.00,buy,Sets the 206 mm leg spacing.
@@ -11,7 +11,7 @@ Blower driver,1,"Logic-level MOSFET PWM module, 5 A",Amazon,3.00,buy,
 12 V supply,1,"DIN-rail supply 12 VDC 1.25 A (15 W), 85 to 264 VAC in, 17.5 x 90 x 54.5 mm",Mean Well HDR-15-12 via DigiKey or Mouser,12.00,buy,"PS1 on TBK-DWG-003 Rev P2. Blower and controller power; wired inside the enclosure (TBK-DWG-005)."
 Buck converter,1,"12 V to 5 V buck converter, 3 A",Amazon,3.00,buy,Powers the ESP32.
 Dilution stack,1,"Single-wall black stovepipe, 4 in, 24 ga, 24 in",Home Depot or Lowe's,12.00,buy,Over the outlet leg; room air drawn in at the open bottom dilutes the exchanger air. Held with steel tie wire.
-Stone wool batt,1,"Stone wool batt, 89 mm (3.5 in), 15.25 x 47 in, 59.7 ft2 per pack",ROCKWOOL Comfortbatt R15 via Home Depot or Lowe's,60.00,buy,"Three side layers, two in the headspace, two over the lid, and the base fill. Binder burns off on first heat."
+Stone wool batt,2,"Stone wool batt, 89 mm (3.5 in), 15.25 x 47 in, 59.7 ft2 per pack",ROCKWOOL Comfortbatt R15 via Home Depot or Lowe's,60.00,buy,"Three side layers, two in the headspace, two over the lid, and the base fill: about 5.98 m2 (cut list C9), so two packs. Binder burns off on first heat."
 Insulating firebrick,4,"K-23 insulating firebrick, 230 x 114 x 64 mm",Kiln or refractory supplier,5.50,buy,Stood on edge under the chime. Bearing stress 0.55 MPa against about 1 MPa crushing strength.
 Jacket sheet,1,"Aluminum roll flashing, 20 in x 25 ft",Home Depot or Lowe's,30.00,buy,"Side wrap in two rows plus the top cap. Runs at 26 C, so aluminum is acceptable here."
 Jacket fasteners and tape,1,"Aluminum foil tape and sheet metal screws",Home Depot or Lowe's,8.00,buy,Tape also seals the pipe ends for standby tests.
@@ -31,3 +31,6 @@ Fuse,1,"Inline fuse holder with 10 A fast-acting fuse",Home Depot or auto parts 
 Supply cord,1,"14/3 SJT cord with NEMA 5-15 plug, 6 ft",Home Depot or Lowe's,8.00,buy,Plugs into a GFCI-protected 15 A or 20 A garage receptacle; 8.3 A load.
 Pull-down resistors,2,"Resistor, 10 kOhm, 1/4 W, 5 %",DigiKey or an assortment on hand,0.10,buy,"R1 and R2 on TBK-DWG-003: hold the SSR and blower off through ESP32 boot and reset."
 Heater junction box,1,"Steel handy box with a ceramic terminal block",Home Depot plus Amazon,8.00,buy,On the jacket top; gathers the eight heater leads.
+Heater cable,1,"16/3 SJT cord, 2 m (6 ft), no plug",Home Depot or Lowe's,8.00,buy,"Junction box to controller enclosure: L_HEAT, N and PE (drum bond)."
+Wiring consumables,1,"16 AWG and 22 AWG stranded hookup wire rated 105 C, insulated ferrules, ring lugs and heat-shrink assortment",Amazon,12.00,buy,Panel wiring per cut list C12.
+Thermocouple extension,1,"Type K extension wire, 20 AWG, 5 m, with six pairs of miniature type K connectors",Amazon,12.00,buy,"Extends the 1 m probe leads to the enclosure; yellow positive, red negative."

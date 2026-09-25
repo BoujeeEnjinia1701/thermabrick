@@ -3,7 +3,7 @@ doc_id: TBK-TST-001
 title: ThermaBrick test article test plan
 project: ThermaBrick
 doc_type: Test plan
-version: "0.3"
+version: "0.4"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -21,6 +21,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Analysis script written and checked on synthetic data. Section 9 adds a fitted heater power correction and defines the time-to-80 % and closure checks so they are independent of the fitted model state; TP3 pass wording and prerequisites updated
+- version: "0.4"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Thermocouple tips moved from 245 mm to 300 mm above the drum floor, so the 500 mm probes end inside the top insulation (docs/07-build/cut-list.md, C4)
 ---
 
 # ThermaBrick test article test plan
@@ -59,10 +63,10 @@ The firmware in `firmware/` provides all five, and `firmware/README.md` gives th
 
 | Tag | Quantity | Location | Sensor and reader |
 | --- | --- | --- | --- |
-| T1 | Well-wall temperature (control) | Well W1 at (90, 75) mm, outer face toward the drum wall, 245 mm above the drum floor | Type K, MI 3 mm, 500 mm; MAX6675 |
+| T1 | Well-wall temperature (control) | Well W1 at (90, 75) mm, outer face toward the drum wall, 300 mm above the drum floor | Type K, MI 3 mm, 500 mm; MAX6675 |
 | T2 | Well-wall temperature (limit) | Well W3 at (−90, −75) mm, same height and face | Type K, MI 3 mm, 500 mm; REX-C100 |
-| T3 | Sand temperature, center | Drum axis, 245 mm above the drum floor | Type K, MI 3 mm, 500 mm; MAX6675 |
-| T4 | Sand temperature, outer | On the ray through W1, 151 mm from the axis (34 mm from the W1 center, 20 mm from the drum wall), 245 mm above the floor | Type K, MI 3 mm, 500 mm; MAX6675 |
+| T3 | Sand temperature, center | Drum axis, 300 mm above the drum floor | Type K, MI 3 mm, 500 mm; MAX6675 |
+| T4 | Sand temperature, outer | On the ray through W1, 151 mm from the axis (34 mm from the W1 center, 20 mm from the drum wall), 300 mm above the floor | Type K, MI 3 mm, 500 mm; MAX6675 |
 | T5 | Exchanger outlet air | 50 mm inside the top of the outlet leg, on its axis | Type K kit probe; MAX6675 |
 | T6 | Room and inlet air | 300 mm from the blower intake, shaded from the unit | Type K kit probe; MAX6675 |
 | P | Heater power | Derived from SSR duty, line voltage and measured hot resistance | ESP32 log and multimeter |
@@ -72,7 +76,7 @@ The firmware in `firmware/` provides all five, and `firmware/README.md` gives th
 
 *Table 2. Instrumentation.*
 
-T3 and T4 sit at radii the model can reproduce. T4 is 34 mm from the center of W1, inside that heater's cell, and is compared with the model at 34 mm. T3 lies 117 mm from all four wells, beyond the 84 mm cell radius, and is compared with the model's outer edge. Before filling, photograph each thermocouple against a steel rule and record its as-built position to ±5 mm.
+The tips sit 300 mm above the drum floor, within the heated length (45 mm to 451 mm) and clear of both its ends. At that height the 500 mm probes end inside the top insulation, where their lead junctions stay cool. T3 and T4 sit at radii the model can reproduce. T4 is 34 mm from the center of W1, inside that heater's cell, and is compared with the model at 34 mm. T3 lies 117 mm from all four wells, beyond the 84 mm cell radius, and is compared with the model's outer edge. Before filling, photograph each thermocouple against a steel rule and record its as-built position to ±5 mm.
 
 ### 2.1 Checks before testing
 

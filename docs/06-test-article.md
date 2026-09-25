@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.8"
+version: "0.10"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -41,11 +41,19 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Recorded the decision to accept $635.70 as the test article budget
+- version: "0.9"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Build section now points to the build procedure and cut list; corrected the well cut length (692 mm), the envelope height (1,688 mm) and the thermocouple height (300 mm above the drum floor); listed the open items the build procedure found
+- version: "0.10"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Added the four items the build procedure found to the BOM (second stone wool pack, heater cable, wiring consumables, thermocouple extension); budget now $727.70
 ---
 
 # ThermaBrick test article design precis
 
-The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $635.70. That is $35.70 over the original $600 target, and it was accepted as the test article budget on 2026-09-24 (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
+The test article is a one-third-scale ThermaBrick. It is a 16 US gal steel drum holding 68 kg of sand, storing 5.9 kWh(th) between 150 °C and 450 °C. The parts are estimated at $727.70. That is $127.70 over the original $600 target, and it was accepted as the test article budget on 2026-09-24 (section 5). It keeps the part of the design that carries the most risk at full fidelity: four heater cells built from the same 5/8 in cartridge heaters, 3/4 in wells and cell spacing as the full-scale unit. It cuts cost everywhere else:
 
 - one U-tube instead of the full-scale density;
 - a 120 V plug-in supply instead of a 240 V branch circuit;
@@ -63,9 +71,9 @@ Its purpose is to measure the numbers the full-scale design rests on before $3,6
 | Charge time from empty | 15.7 h at up to 1.0 kW, including standby loss |
 | Discharge | One 1-1/4 in U-tube, 12 V blower up to 4 L/s; 250 W held for 8.8 h |
 | Standby loss | 249 W at full charge |
-| Envelope and mass | 880 mm diameter, 1,616 mm high including the stack; about 115 kg |
+| Envelope and mass | 880 mm diameter, 1,688 mm high including the stack; about 116 kg |
 | Controls | ESP32 with five thermocouple channels; separate latching 600 °C limit |
-| Parts cost | $635.70 estimated (`bom/bom-test-article.csv`); accepted budget |
+| Parts cost | $727.70 estimated (`bom/bom-test-article.csv`); accepted budget |
 
 *Table 1. Key parameters of the test article.*
 
@@ -107,7 +115,7 @@ The article answers five questions. Each one feeds a specific number in TBK-CAL-
 
 **Vessel and sand.** The 16 US gal drum stands on four K-23 firebricks set on edge under the chime, with stone wool packed between them. Three 50 lb bags of play sand, sieved and weighed, fill it to 491 mm. Remove the rubber lid gasket, which is rated only to 121 °C, and seal the lid with a strip of stone wool.
 
-**Heaters and wells.** Cut a 10 ft stick of 3/4 in black pipe into four 717 mm wells, and crimp one end of each closed in a vise. The wells stand 20 mm off the drum floor at (±90, ±75) mm and end 25 mm above the lid. Each holds a 5/8 in by 18 in cartridge heater, 250 W at 120 V. The four heaters are wired in parallel through one fuse, one SSR and the contacts of the latching relay.
+**Heaters and wells.** Cut a 10 ft stick of 3/4 in black pipe into four 692 mm wells, and crimp the bottom 25 mm of each closed in a vise. The wells stand 20 mm off the drum floor at (±90, ±75) mm and end 25 mm above the lid. Each holds a 5/8 in by 18 in cartridge heater, 250 W at 120 V. The four heaters are wired in parallel through one fuse, one SSR and the contacts of the latching relay.
 
 **Exchanger.** A U-tube made of two 1-1/4 in by 36 in black nipples, two elbows and a 6 in nipple, with its legs at y = ±103 mm. The blower is taped to the inlet leg. The outlet leg ends 40 mm inside the open bottom of a 24 in, 4 in stovepipe, which draws in room air and dilutes the exchanger air before it leaves the top. Peak outlet air is 319 °C at the lowest test demand.
 
@@ -115,9 +123,9 @@ The article answers five questions. Each one feeds a specific number in TBK-CAL-
 
 **Controls.** An ESP32 reads five MAX6675 channels:
 
-- T1: well-wall control thermocouple, clamped at mid-depth to one well;
-- T3: sand at the center, at mid-depth;
-- T4: sand 20 mm from the drum wall, beside a well, at mid-depth;
+- T1: well-wall control thermocouple, clamped to one well 300 mm above the drum floor;
+- T3: sand at the center, 300 mm above the drum floor;
+- T4: sand 20 mm from the drum wall, beside a well, 300 mm above the drum floor;
 - T5: exchanger outlet air;
 - T6: room air.
 
@@ -138,14 +146,29 @@ The model's fit check confirms that every part clears its neighbors by 3 mm. The
 
 ## 4. Build
 
-The sequence follows TBK-PRC-001, section 6, and takes one weekend. It needs no pipe threader and no electrician.
+The step-by-step procedure is `docs/07-build/test-article-build.md`. It takes about three working days, and needs no pipe threader and no electrician. Every dimension in it comes from the generated cut list, `docs/07-build/cut-list.md`.
 
-1. Strip the drum's exterior paint and burn it out empty outdoors. Drill the lid for four 28.7 mm and two 44.2 mm holes from a template printed from the model.
-2. Set four firebricks on edge and pack stone wool between them. Set the drum on top.
-3. Stand the wells and the assembled U-tube, using the lid as a template. Clamp T1, T2 and T4 in place with steel tie wire and hang T3 on a wire guide.
-4. Fill with sand in 100 mm lifts to 491 mm, rodding each lift.
-5. Fit the headspace wool, the lid, the side and top wool, and the jacket. Fit the stack and the blower.
-6. Drop in the heaters, land the leads in the junction box, and wire the enclosure.
+The stages run in this order:
+
+1. Incoming checks.
+2. Drum preparation.
+3. Wells and U-tube.
+4. Thermocouples.
+5. Base and drum, set at the final position.
+6. Sand, filled through a plywood template.
+7. Heaters.
+8. Insulation and jacket.
+9. Blower and stack.
+10. Controller enclosure.
+11. Checks with the unit unplugged.
+12. First power-up with the heaters disconnected.
+
+Writing the procedure turned up four items the BOM had not covered. All four were added on 2026-09-24, for $92.00:
+
+- a second pack of stone wool ($60.00), since the cut list needs about 5.98 m² against 5.55 m² in one pack;
+- a heater cable from the junction box to the enclosure ($8.00);
+- wiring consumables ($12.00);
+- type K extension wire with miniature connectors ($12.00), so the enclosure need not sit within reach of the 1 m probe leads.
 
 > **Safety:** Respirable crystalline silica and mineral fiber. Fill and fit insulation outdoors or with local exhaust, wearing a P100 or N95 respirator, gloves and eye protection.
 
@@ -160,9 +183,9 @@ The sequence follows TBK-PRC-001, section 6, and takes one weekend. It needs no 
 | Drum and sand | 134.50 |
 | Heaters and wells | 100.00 |
 | U-tube, blower, supply and stack | 118.00 |
-| Insulation, bricks and jacket | 120.00 |
-| Controls, enclosure and wiring | 163.20 |
-| Total | 635.70 |
+| Insulation, bricks and jacket | 180.00 |
+| Controls, enclosure and wiring | 195.20 |
+| Total | 727.70 |
 
 *Table 4. Test article cost by group. Line items are in `bom/bom-test-article.csv`.*
 
@@ -182,6 +205,8 @@ The corrected enclosure and wiring add $36.00. Three options were considered:
 
 **Decided 2026-09-24: option 1.** The budget for the test article is $635.70, and the whole article, discharge kit included, is built at once.
 
+The build procedure (section 4) then found $92.00 of parts the BOM had not covered: a second stone wool pack, the heater cable, wiring consumables and thermocouple extension wire. They were added the same day, which sets the accepted budget at **$727.70**.
+
 The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
 
 ### 5.1 Optional controller board
@@ -196,7 +221,7 @@ The board adds $24.85:
 - less $6.00 for the two modules it replaces;
 - plus about $3.00 for a genuine DevKitC V4 in place of a generic board, whose header spacing may not fit.
 
-That takes the test article to $660.55. It is therefore an option, not the baseline. Its value is a repeatable, inspectable wiring job for the controller.
+That takes the test article to $752.55. It is therefore an option, not the baseline. Its value is a repeatable, inspectable wiring job for the controller.
 
 ## 6. Test plan
 

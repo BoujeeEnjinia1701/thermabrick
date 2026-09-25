@@ -1,6 +1,6 @@
 # Purchasing checklist
 
-Test article (TBK-PRC-002), accepted budget $635.70. Generated from `bom-test-article.csv` and `bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.
+Test article (TBK-PRC-002), accepted budget $727.70. Generated from `bom-test-article.csv` and `bom-controller-board.csv` by `bom/checklist.py`; regenerate after any BOM change instead of editing this file.
 
 Prices are the BOM's budgetary estimates (US list prices, September 2026, before tax and shipping). Record the price actually paid beside each line.
 
@@ -43,7 +43,7 @@ One order. Subtotal $12.20.
 
 ## 5. Amazon or an electrical wholesaler
 
-Controls, wiring and small parts. Buy from sellers with easy returns. Subtotal $158.00.
+Controls, wiring and small parts. Buy from sellers with easy returns. Subtotal $182.00.
 
 - [ ] **Inlet blower**, qty 1, $10.00 each, $10.00. Supplier: Amazon (9733 blower or equal).
   - Specify: 12 V, 0.8 A or less, 97 x 94 x 33 mm. High-speed 2 A to 3 A versions overload the supply.
@@ -90,10 +90,16 @@ Controls, wiring and small parts. Buy from sellers with easy returns. Subtotal $
 - [ ] **Lever connectors and PE stud**, qty 1, $5.00 each, $5.00. Supplier: Amazon or Home Depot.
   - Specify: Two 5-way lever connectors (Wago 221-415 or equal); M5 earth stud with ring lugs.
   - [ ] Received: quantity and specification match the order.
+- [ ] **Wiring consumables**, qty 1, $12.00 each, $12.00. Supplier: Amazon.
+  - Specify: Stranded 16 AWG and 22 AWG hookup wire rated 105 C; ferrules to suit; M5 ring lugs; heat-shrink.
+  - [ ] Received: quantity and specification match the order.
+- [ ] **Thermocouple extension**, qty 1, $12.00 each, $12.00. Supplier: Amazon.
+  - Specify: Type K extension grade (not copper), with miniature type K plugs and jacks.
+  - [ ] Received: Check polarity: yellow positive, red negative (ANSI).
 
 ## 6. Home Depot or Lowe's (one trip)
 
-Pipe, sheet metal, insulation and sand. Subtotal $256.50.
+Pipe, sheet metal, insulation and sand. Subtotal $324.50.
 
 - [ ] **Sand**, qty 3, $6.50 each, $19.50. Supplier: Home Depot or Lowe's (Quikrete play sand or equal).
   - Specify: Washed play sand. Avoid all-purpose or leveling sand, which contains clay.
@@ -113,7 +119,7 @@ Pipe, sheet metal, insulation and sand. Subtotal $256.50.
 - [ ] **Dilution stack**, qty 1, $12.00 each, $12.00. Supplier: Home Depot or Lowe's.
   - Specify: 4 in single-wall black stovepipe, 24 in, not galvanized.
   - [ ] Received: quantity and specification match the order.
-- [ ] **Stone wool batt**, qty 1, $60.00 each, $60.00. Supplier: ROCKWOOL Comfortbatt R15 via Home Depot or Lowe's.
+- [ ] **Stone wool batt**, qty 2, $60.00 each, $120.00. Supplier: ROCKWOOL Comfortbatt R15 via Home Depot or Lowe's.
   - Specify: ROCKWOOL Comfortbatt R15, 3.5 in, unfaced.
   - [ ] Received: quantity and specification match the order.
 - [ ] **Jacket sheet**, qty 1, $30.00 each, $30.00. Supplier: Home Depot or Lowe's.
@@ -131,8 +137,11 @@ Pipe, sheet metal, insulation and sand. Subtotal $256.50.
 - [ ] **Heater junction box**, qty 1, $8.00 each, $8.00. Supplier: Home Depot plus Amazon.
   - Specify: Steel handy box; ceramic terminal block rated 250 V, 10 A or more.
   - [ ] Received: quantity and specification match the order.
+- [ ] **Heater cable**, qty 1, $8.00 each, $8.00. Supplier: Home Depot or Lowe's.
+  - Specify: 16/3 SJT, 2 m, black, white and green conductors.
+  - [ ] Received: quantity and specification match the order.
 
-**Test article total: $635.70** across 32 lines.
+**Test article total: $727.70** across 35 lines.
 
 ## Optional: controller board (TBK-DWG-004)
 

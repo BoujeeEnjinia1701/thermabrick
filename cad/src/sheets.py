@@ -22,7 +22,8 @@ VIEWS = DWG / "_views"
 
 REVISIONS = {
     "TBK-DWG-001": [("P1", "First issue: general arrangement of the v0.2 design", "2026-09-24", "AC")],
-    "TBK-DWG-002": [("P1", "First issue: reduced-scale test article", "2026-09-24", "AC")],
+    "TBK-DWG-002": [("P1", "First issue: reduced-scale test article", "2026-09-24", "AC"),
+                    ("P2", "Bricks moved under the chime; U-tube legs to 36 in nipple length; stack follows", "2026-09-24", "AC")],
     "TBK-DWG-005": [("P1", "First issue: controller enclosure, 250 x 200 x 150 mm", "2026-09-24", "AC")],
 }
 
