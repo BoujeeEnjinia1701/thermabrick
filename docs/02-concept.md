@@ -24,7 +24,7 @@ revisions:
 - version: "0.4"
   date: '2026-09-24'
   author: Amish Chadha
-  change: Review pass: design decisions D1 to D8 marked proposed, awaiting Amish; none has been reviewed or accepted
+  change: 'Review pass: design decisions D1 to D8 marked proposed, awaiting Amish; none has been reviewed or accepted'
 ---
 
 # ThermaBrick design precis

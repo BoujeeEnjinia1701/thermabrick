@@ -36,7 +36,7 @@ revisions:
 - version: "0.7"
   date: '2026-09-24'
   author: Amish Chadha
-  change: Review pass: the $727.70 budget returned to proposed, awaiting Amish; only $635.70 was accepted by Amish
+  change: 'Review pass: the $727.70 budget returned to proposed, awaiting Amish; only $635.70 was accepted by Amish'
 ---
 
 # ThermaBrick problem statement

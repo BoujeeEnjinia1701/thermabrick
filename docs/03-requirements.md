@@ -40,7 +40,7 @@ revisions:
 - version: "0.8"
   date: '2026-09-24'
   author: Amish Chadha
-  change: Review pass: R20 shows $727.70 as the BOM total, proposed and awaiting Amish; the accepted budget remains $635.70
+  change: 'Review pass: R20 shows $727.70 as the BOM total, proposed and awaiting Amish; the accepted budget remains $635.70'
 ---
 
 # ThermaBrick requirements

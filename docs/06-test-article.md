@@ -52,7 +52,7 @@ revisions:
 - version: "0.11"
   date: '2026-09-24'
   author: Amish Chadha
-  change: Review pass: the $727.70 budget returned to proposed, awaiting Amish (accepted budget remains $635.70); controller board marked optional and deferred
+  change: 'Review pass: the $727.70 budget returned to proposed, awaiting Amish (accepted budget remains $635.70); controller board marked optional and deferred'
 ---
 
 # ThermaBrick test article design precis
