@@ -1,8 +1,11 @@
 # ThermaBrick
 
-**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Prototype budget:** $635.70 USD test article accepted ($727.70 proposed) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Prototype budget:** $635.70 USD test article (decided by Amish; on hold with TRL 4) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
+
+
+> **Out-of-phase work archived (2026-09-25).** The portfolio is capped at TRL 3, and TRL 4 is on hold by Amish's instruction. The reduced-scale test article, its test plan and report template, firmware, controller schematic and board, enclosure, purchasing checklist, build procedure and cut list were made in an earlier session that went past the cap. They are kept, unchanged and with full history, in [archive/out-of-phase-trl4/](archive/out-of-phase-trl4/README.md), and are not current work.
 
 ## Problem
 
@@ -21,20 +24,8 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.8 |
 | [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.2 |
 | [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P1 |
-| [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.11 |
-| [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.2 |
-| [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
-| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.6 |
-| [Test article test report (template)](docs/05-tests/TBK-TST-002-test-report.md) | TBK-TST-002 | 0.2 |
-| [Test analysis script](docs/05-tests/tbk_tst_001_fit.py) | | Python, NumPy |
-| [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
-| [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |
-| [Controller enclosure layout](cad/drawings/TBK-DWG-005.pdf) | TBK-DWG-005 | Rev P1 |
 | [Concept sheet](media/concept-blueprint.pdf), with [hero](media/hero.png), [cutaway](media/cutaway.png) and [exploded](media/exploded.png) renders, [heat flow](media/flow.png) and [3D viewer](media/viewer.html) | TBK-DWG-006 | Rev P2 |
-| [Test article BOM](bom/bom-test-article.csv) | | $727.70 total; $635.70 accepted |
 | [Purchasing checklist](bom/purchasing-checklist.md) | | Test article, by supplier |
-| [Build procedure](docs/07-build/test-article-build.md) and [cut list](docs/07-build/cut-list.md) | | Test article |
-| [Controller board layout (optional, deferred)](cad/drawings/TBK-DWG-004.pdf) | TBK-DWG-004 | Rev P1 |
 | [Controller board BOM (optional, deferred)](bom/bom-controller-board.csv) | | +$24.85 net |
 
 ## Key components

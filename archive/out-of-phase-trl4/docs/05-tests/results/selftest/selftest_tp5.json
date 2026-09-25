@@ -1,0 +1,146 @@
+{
+  "file": "/Users/amishchadha/Downloads/open-hardware-repos/thermabrick/docs/05-tests/results/selftest/synthetic_TP5.csv",
+  "params": {
+    "k_sand": 0.8495376595748264,
+    "h_contact": 219.26559010716622,
+    "k_ins": 1.1492717270646253,
+    "p_scale": 0.9792908105202374
+  },
+  "hours": [
+    {
+      "hour": 1,
+      "measured_W": 166.57750000000001,
+      "model_W": 166.84424604621432,
+      "error": 0.0016013329904357328,
+      "scored": false
+    },
+    {
+      "hour": 2,
+      "measured_W": 150.75472222222223,
+      "model_W": 150.43144524799436,
+      "error": -0.002144390367761317,
+      "scored": true
+    },
+    {
+      "hour": 3,
+      "measured_W": 141.34194444444447,
+      "model_W": 141.49485941255713,
+      "error": 0.0010818796126918478,
+      "scored": true
+    },
+    {
+      "hour": 4,
+      "measured_W": 133.92805555555557,
+      "model_W": 133.76138513862,
+      "error": -0.0012444772399942466,
+      "scored": true
+    },
+    {
+      "hour": 5,
+      "measured_W": 126.69444444444444,
+      "model_W": 126.66132683974497,
+      "error": -0.0002613974499410033,
+      "scored": true
+    },
+    {
+      "hour": 6,
+      "measured_W": 120.22305555555555,
+      "model_W": 120.04228053716984,
+      "error": -0.0015036634824354932,
+      "scored": true
+    },
+    {
+      "hour": 7,
+      "measured_W": 113.79166666666667,
+      "model_W": 113.83044664074512,
+      "error": 0.0003407980146037487,
+      "scored": true
+    },
+    {
+      "hour": 8,
+      "measured_W": 108.97944444444445,
+      "model_W": 107.98050053206188,
+      "error": -0.009166351668197516,
+      "scored": true
+    },
+    {
+      "hour": 9,
+      "measured_W": 198.26722222222222,
+      "model_W": 198.4184492428656,
+      "error": 0.0007627434275236727,
+      "scored": true
+    },
+    {
+      "hour": 10,
+      "measured_W": 172.00027777777777,
+      "model_W": 171.87416323663234,
+      "error": -0.0007332228922814006,
+      "scored": true
+    },
+    {
+      "hour": 11,
+      "measured_W": 157.3361111111111,
+      "model_W": 157.33311073750923,
+      "error": -1.906983451344851e-05,
+      "scored": true
+    },
+    {
+      "hour": 12,
+      "measured_W": 145.84027777777777,
+      "model_W": 145.81003444315988,
+      "error": -0.00020737299104693052,
+      "scored": true
+    },
+    {
+      "hour": 13,
+      "measured_W": 135.8988888888889,
+      "model_W": 135.80718171498623,
+      "error": -0.0006748191589532169,
+      "scored": true
+    },
+    {
+      "hour": 14,
+      "measured_W": 126.81861111111112,
+      "model_W": 126.76021222380736,
+      "error": -0.0004604914593537153,
+      "scored": true
+    },
+    {
+      "hour": 15,
+      "measured_W": 118.38222222222224,
+      "model_W": 118.42029339560108,
+      "error": 0.0003215953600480076,
+      "scored": true
+    },
+    {
+      "hour": 16,
+      "measured_W": 110.9338888888889,
+      "model_W": 110.66495520744054,
+      "error": -0.002424269843435516,
+      "scored": true
+    },
+    {
+      "hour": 17,
+      "measured_W": 146.47916666666666,
+      "model_W": 146.64622996755824,
+      "error": 0.0011405260194561294,
+      "scored": true
+    },
+    {
+      "hour": 18,
+      "measured_W": 126.22777777777777,
+      "model_W": 126.32460102255406,
+      "error": 0.000767051804926366,
+      "scored": true
+    },
+    {
+      "hour": 19,
+      "measured_W": 114.57250000000002,
+      "model_W": 114.78652752007075,
+      "error": 0.0018680531547337214,
+      "scored": true
+    }
+  ],
+  "pass": true,
+  "note": "Starts from a uniform bed at the mean of T3 and T4. The bed is not uniform after a charge, which is why the first hour is not scored."
+}

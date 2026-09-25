@@ -13,7 +13,9 @@ sys.path.insert(0, str(ROOT / ".kit"))
 sys.path.insert(0, str(ROOT / "cad" / "src"))
 
 from drawing import Sheet, project_views  # noqa: E402
+import enclosure  # noqa: E402
 import model  # noqa: E402
+import test_article  # noqa: E402
 
 DWG = ROOT / "cad" / "drawings"
 VIEWS = DWG / "_views"
@@ -104,8 +106,13 @@ SHEETS = {
     "TBK-DWG-001": dict(mod=model, title="General arrangement", rows=rows_001,
                         material="Carbon steel drum and pipe; AES blanket and stone wool; galvanized jacket. "
                                  "See bom/bom.csv"),
-    # TBK-DWG-002 to TBK-DWG-005 (test article, controller) were moved to
-    # archive/out-of-phase-trl4/ on 2026-09-25; that copy of sheets.py still builds them.
+    "TBK-DWG-002": dict(mod=test_article, title="Test article general arrangement", rows=rows_002,
+                        material="Carbon steel drum and pipe; stone wool; aluminum jacket. "
+                                 "See bom/bom-test-article.csv"),
+    "TBK-DWG-005": dict(mod=enclosure, title="Controller enclosure layout", rows=rows_005,
+                        material="Polycarbonate enclosure, steel mounting plate. Part envelopes from supplier data",
+                        iso_drop=("lid", "rex", "buttons"), iso_cut=False, iso_dir=(0.45, -1.0, 0.55),
+                        iso_label=("Isometric, lid removed", "Lid parts hidden, not to scale")),
 }
 
 

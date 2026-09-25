@@ -1,0 +1,64 @@
+{
+  "files": {
+    "tp3": "/Users/amishchadha/Downloads/open-hardware-repos/thermabrick/docs/05-tests/results/selftest/synthetic_TP3.csv",
+    "tp4": "/Users/amishchadha/Downloads/open-hardware-repos/thermabrick/docs/05-tests/results/selftest/synthetic_TP4.csv"
+  },
+  "start_T_C": 150.45499999999998,
+  "params": {
+    "k_sand": 0.8495376595748264,
+    "h_contact": 219.26559010716622,
+    "k_ins": 1.1492717270646253,
+    "p_scale": 0.9792908105202374
+  },
+  "ci95": {
+    "k_sand": [
+      0.8485005784576976,
+      0.8505760082659214
+    ],
+    "h_contact": [
+      216.42600154756042,
+      222.1424351106844
+    ],
+    "k_ins": [
+      1.1488005217255326,
+      1.149743125678762
+    ],
+    "p_scale": [
+      0.97899214802326,
+      0.9795895641305983
+    ]
+  },
+  "rms_K": {
+    "fitted": 1.4956238215606483,
+    "unfitted": 20.381285967539704,
+    "fitted_T1": 1.4916951034167396,
+    "fitted_T4": 1.4815489568334872,
+    "fitted_T3": 1.5134497856906792
+  },
+  "energy_balance_tp3": {
+    "heater_kWh": 8.241965532898602,
+    "stored_from_temps_kWh": 5.475096759692357,
+    "loss_kWh": 2.8926184635576875,
+    "closure": -0.015257245356037908
+  },
+  "t80_h": {
+    "measured": 9.933333333333334,
+    "predicted": 9.916666666666666,
+    "error": -0.0016778523489932886
+  },
+  "t_wall_limit_h": 1.3333333333333333,
+  "loss_W": {
+    "fitted_at_450": 278.1360287473935,
+    "fitted_at_300": 156.5819900165244,
+    "fitted_at_150": 62.850968510057605,
+    "predicted_at_450": 248.9000494918885,
+    "error": 0.11746072094074762
+  },
+  "pass": {
+    "TP3_rms_le_10K": true,
+    "TP3_t80_within_10pct": true,
+    "TP4_loss_within_20pct": true,
+    "energy_closure_within_10pct": true,
+    "power_correction_within_5pct": true
+  }
+}

@@ -162,3 +162,23 @@ These were never labeled as accepted, but Amish has not reviewed them. All live 
 
 - 2026-09-24: kit synced to 1.3.0 at Amish's request. Concept media regenerated with a scale figure, a 3D viewer (`media/model.glb`, `media/viewer.html`) and a heat flow diagram (`media/flow.png`, TBK-CAL-001 estimates); TBK-DWG-006 reissued at Rev P2. Recorded in `build-log/2026-09-24-kit-1-3-0.md`.
 - 2026-09-24: kit synced to 1.3.1 at Amish's request. Only `media/flow.png` changed (new layout, same values). Recorded in `build-log/2026-09-24-kit-1-3-1.md`.
+
+## Session 2026-09-25: rein-in to TRL 3
+
+Done at Amish's instruction ("yes" to the rein-in recommendation, 2026-09-25). TRL 4 is on hold for the whole portfolio.
+
+**What was done**
+
+- Moved all TRL 4 material to [archive/out-of-phase-trl4/](../archive/out-of-phase-trl4/README.md) with `git mv`, keeping history and deleting nothing: the test article precis, sizing, drawings, models and BOMs; test plan and report template; build procedure and cut list; KiCad schematic, controller board and Gerbers; firmware and logging host; purchasing checklist; build-log template and helper.
+- `cad/src/sheets.py` now builds TBK-DWG-001 only. The archived copy builds the test article and enclosure sheets.
+- README: links to archived items removed and an archive note added.
+- `project.yaml`: `trl: 3`, `trl_target: 3` unchanged. The `trl_evidence` list already pointed only at TRL 3 files (TBK-CAL-001, the model, STEP, TBK-DWG-001, `bom/bom.csv`).
+
+**Decisions**
+
+- Unchanged and still Amish's: develop to a v0.2 draft; the test article budget of $635.70. That budget now applies to archived work and is on hold.
+- Still "Proposed, awaiting Amish": the $727.70 test article budget; full-scale design decisions D1 to D8; the design choices in section 2.3.
+
+**Still open at TRL 3** (from section 3): R3 charge time (9.6 h against 8 h); 47 % standby loss per day; the full-scale budget ($3,674 against the $600 concept figure); design decision records for D1 to D8.
+
+**Recommended next step.** Decide D1 to D8 and how to close R3 and the standby loss, all on paper. TRL 4 stays on hold; when it is lifted, the archived test article is the starting point.
