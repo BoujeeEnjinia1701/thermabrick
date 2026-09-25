@@ -30,6 +30,7 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |
 | [Controller enclosure layout](cad/drawings/TBK-DWG-005.pdf) | TBK-DWG-005 | Rev P1 |
 | [Test article BOM](bom/bom-test-article.csv) | | $635.70 |
+| [Purchasing checklist](bom/purchasing-checklist.md) | | Test article, by supplier |
 | [Controller board layout (optional)](cad/drawings/TBK-DWG-004.pdf) | TBK-DWG-004 | Rev P1 |
 | [Controller board BOM (optional)](bom/bom-controller-board.csv) | | +$24.85 net |
 

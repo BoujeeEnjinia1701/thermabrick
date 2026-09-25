@@ -17,7 +17,7 @@ Jacket sheet,1,"Aluminum roll flashing, 20 in x 25 ft",Home Depot or Lowe's,30.0
 Jacket fasteners and tape,1,"Aluminum foil tape and sheet metal screws",Home Depot or Lowe's,8.00,buy,Tape also seals the pipe ends for standby tests.
 ESP32 controller,1,"ESP32 development board (ESP32-WROOM-32)",Amazon or Espressif via DigiKey,7.00,buy,Charge control on the well-wall thermocouple and 10 s logging over Wi-Fi.
 Thermocouple amplifier,1,"MAX6675 module with K probe, pack of five",Amazon,15.00,buy,"Five channels: well wall, sand center, sand near the drum wall, U-tube outlet air and room air. The two kit probes serve the air channels (400 C or below)."
-K-type thermocouples,4,"Type K, mineral insulated, 3 mm 310 or 304 stainless sheath, 500 mm, 1 m lead",Amazon (or Omega or Auber for tighter tolerance),8.00,buy,"Well wall (control), well wall (limit), sand center, sand near the drum wall."
+K-type thermocouples,4,"Type K, mineral insulated, ungrounded junction, 3 mm 310 or 304 stainless sheath, 500 mm, 1 m lead",Amazon (or Omega or Auber for tighter tolerance),8.00,buy,"Well wall (control), well wall (limit), sand center, sand near the drum wall."
 Solid state relay,1,"Zero-cross SSR, 25 A, 24 to 380 VAC load, 3 to 32 VDC control",Amazon (SSR-25DA or equal),9.00,buy,Switches all four heaters. A shorted SSR is covered by the latching relay.
 SSR heat sink,1,"Aluminum SSR heat sink with thermal pad",Amazon,6.00,buy,About 10 W dissipation at 8.3 A.
 Independent high limit,1,"REX-C100 temperature controller, relay output (R*AN), type K input, 120 VAC supply",Amazon,14.00,buy,Set as an on-off permissive that opens at 600 C well-wall temperature. Wired into the latching relay coil circuit.
