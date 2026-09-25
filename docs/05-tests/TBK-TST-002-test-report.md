@@ -3,8 +3,9 @@ doc_id: TBK-TST-002
 title: ThermaBrick test article test report
 project: ThermaBrick
 doc_type: Test report
-version: "0.1"
+version: "0.2"
 status: Draft
+environment: lab
 date: '2026-09-24'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
@@ -13,6 +14,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Template. Structure follows TBK-TST-001; sections 5, 6 and 8 and the summary rows for TP3 to TP5 are filled from the analysis results by tbk_tst_002_fill.py
+- version: "0.2"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: 'Kit 1.1.4: front matter adds environment: lab'
 ---
 
 # ThermaBrick test article test report

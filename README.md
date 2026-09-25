@@ -1,6 +1,6 @@
 # ThermaBrick
 
-**Area:** CleanTech · **Status:** Concept · **Prototype budget:** $635.70 USD test article accepted ($727.70 proposed) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Prototype budget:** $635.70 USD test article accepted ($727.70 proposed) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
@@ -24,8 +24,8 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 | [Test article design precis](docs/06-test-article.md) | TBK-PRC-002 | 0.11 |
 | [Test article sizing](docs/04-calcs/TBK-CAL-002-test-article.md) | TBK-CAL-002 | 0.2 |
 | [Test article general arrangement](cad/drawings/TBK-DWG-002.pdf) | TBK-DWG-002 | Rev P1 |
-| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.5 |
-| [Test article test report (template)](docs/05-tests/TBK-TST-002-test-report.md) | TBK-TST-002 | 0.1 |
+| [Test article test plan](docs/05-tests/TBK-TST-001-test-plan.md) | TBK-TST-001 | 0.6 |
+| [Test article test report (template)](docs/05-tests/TBK-TST-002-test-report.md) | TBK-TST-002 | 0.2 |
 | [Test analysis script](docs/05-tests/tbk_tst_001_fit.py) | | Python, NumPy |
 | [Test article firmware](firmware/README.md) | | ESP32, PlatformIO |
 | [Test article controller schematic](cad/drawings/TBK-DWG-003.pdf) | TBK-DWG-003 | Rev P2 |

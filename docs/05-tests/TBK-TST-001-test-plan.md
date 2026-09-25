@@ -3,8 +3,9 @@ doc_id: TBK-TST-001
 title: ThermaBrick test article test plan
 project: ThermaBrick
 doc_type: Test plan
-version: "0.5"
+version: "0.6"
 status: Draft
+environment: lab
 date: '2026-09-24'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
@@ -29,6 +30,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Section 12 names the report template TBK-TST-002 and the script that fills its analysis sections
+- version: "0.6"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: 'Kit 1.1.4: front matter adds environment: lab (the test article is tested in a lab setting, STANDARDS section 1)'
 ---
 
 # ThermaBrick test article test plan

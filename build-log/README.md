@@ -23,4 +23,5 @@ Conventions:
 ## Entries
 
 <!-- index start -->
+- [2026-09-24: TRL 3 recorded](2026-09-24-trl-3-recorded.md)
 <!-- index end -->

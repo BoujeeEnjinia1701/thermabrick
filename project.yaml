@@ -2,6 +2,17 @@
 name: ThermaBrick
 slug: thermabrick
 area: CleanTech
+trl: 3                   # Technology Readiness Level, see .kit/STANDARDS.md section 9
+trl_target: 4
+trl_evidence:
+  - docs/01-problem.md
+  - docs/02-concept.md
+  - docs/03-requirements.md
+  - docs/04-calcs/TBK-CAL-001-sizing.md
+  - cad/src/model.py
+  - cad/step/thermabrick.step
+  - cad/drawings/TBK-DWG-001.svg
+  - bom/bom.csv
 status: concept          # concept | design | prototype | tested | released
 shortlisted: true
 pitch: >-
