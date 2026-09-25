@@ -43,7 +43,7 @@ The monitor prints the IP address once Wi-Fi connects, then one CSV row every 10
 
 ## Wiring
 
-The complete circuit, including the 120 V side, is the schematic TBK-DWG-003 (`cad/drawings/TBK-DWG-003.pdf`), with KiCad source in `electronics/test-article/`. Table 1 lists the ESP32 connections.
+The complete circuit, including the 120 V side, is the schematic TBK-DWG-003 (`cad/drawings/TBK-DWG-003.pdf`), with KiCad source in `electronics/test-article/`. Table 1 lists the ESP32 connections. The optional controller board, TBK-DWG-004, uses the same pins. On that board GPIO 26 drives the SSR through a 2N3904 and GPIO 25 drives an IRLZ44N; high means on in both cases, so the firmware is unchanged.
 
 | Signal | ESP32 GPIO | Connects to |
 | --- | --- | --- |

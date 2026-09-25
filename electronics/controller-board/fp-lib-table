@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "TB")(type "KiCad")(uri "${KIPRJMOD}/thermabrick.pretty")(options "")(descr "ThermaBrick project footprints"))
+)

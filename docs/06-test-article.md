@@ -3,7 +3,7 @@ doc_id: TBK-PRC-002
 title: ThermaBrick test article design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.5"
+version: "0.6"
 status: Draft
 date: '2026-09-24'
 author: Amish Chadha
@@ -29,6 +29,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Controller schematic TBK-DWG-003 Rev P1 added; relay specified as DPDT; pull-down resistors added to the BOM ($599.70); PE bonding stated
+- version: "0.6"
+  date: '2026-09-24'
+  author: Amish Chadha
+  change: Added the optional controller board (TBK-DWG-004 Rev P1) and its cost, $24.85 above the hand-wired baseline
 ---
 
 # ThermaBrick test article design precis
@@ -144,6 +148,20 @@ The sequence follows TBK-PRC-001, section 6, and takes one weekend. It needs no 
 *Table 4. Test article cost by group. Line items are in `bom/bom-test-article.csv`.*
 
 The basis is the same as the full-scale BOM: US retail and marketplace list prices in September 2026, before tax and shipping. The margin is only $0.30. If quotes come in higher, defer the discharge kit first: the blower, PWM module and stack, together $25. Build and run procedures TP1 to TP4, which answer O1, O2 and O4, then add the discharge kit. The following tools are assumed to be on hand and are not in the budget: a multimeter, a bathroom scale, a vise, a pipe cutter, a drill with hole saws, snips and a stopwatch.
+
+### 5.1 Optional controller board
+
+The low-voltage controller can be built on a printed circuit board instead of hand-wired modules. The board is drawing TBK-DWG-004 Rev P1, with its KiCad source and gerbers in `electronics/controller-board/` and its parts in `bom/bom-controller-board.csv`. It measures 110 mm by 80 mm and has two layers with a ground plane.
+
+The ESP32-DevKitC V4 and the five MAX6675 modules plug into sockets. Discrete parts replace the buck and MOSFET modules: a RECOM R-78E regulator, an IRLZ44N MOSFET with a 1N5819 flyback diode, and a 2N3904 SSR driver. The nets and GPIO pins are the same as TBK-DWG-003, so the firmware is unchanged. The mains wiring stays on the panel either way.
+
+The board adds $24.85:
+
+- $27.85 of board parts, including one order of five boards;
+- less $6.00 for the two modules it replaces;
+- plus about $3.00 for a genuine DevKitC V4 in place of a generic board, whose header spacing may not fit.
+
+That takes the test article to $624.55, over the $600 budget. It is therefore an option, not the baseline. Its value is a repeatable, inspectable wiring job for the controller.
 
 ## 6. Test plan
 

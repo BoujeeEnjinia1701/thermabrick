@@ -1,0 +1,13 @@
+item,qty,spec,supplier,unit_cost_usd,make_buy,notes
+Printed circuit board,1,"110 x 80 mm, 2 layer FR-4 1.6 mm, 1 oz copper, HASL; gerbers in electronics/controller-board (minimum order of 5 shares the cost)",JLCPCB or PCBWay,15.00,buy,Cost of one order of five boards including economy shipping.
+Regulator,1,"RECOM R-78E5.0-1.0, 12 V to 5 V switching regulator, SIP-3 (U1)",DigiKey or Mouser,4.50,buy,Replaces the buck converter module in bom-test-article.csv.
+Input capacitor,1,"Aluminum electrolytic 10 uF 25 V, 5 mm diameter, 2 mm pitch (C1)",DigiKey or Mouser,0.20,buy,
+Output capacitor,1,"Aluminum electrolytic 22 uF 10 V, 5 mm diameter, 2 mm pitch (C2)",DigiKey or Mouser,0.20,buy,
+SSR driver transistor,1,"2N3904 NPN, TO-92 (Q1)",DigiKey or Mouser,0.10,buy,Drives the SSR input from 5 V.
+Blower MOSFET,1,"IRLZ44N logic-level N-MOSFET, TO-220 (Q2)",DigiKey or Mouser,1.20,buy,Replaces the MOSFET module in bom-test-article.csv.
+Flyback diode,1,"1N5819 Schottky, DO-41 (D1)",DigiKey or Mouser,0.15,buy,Across the blower.
+Resistors,2,"1 kOhm (R3) and 100 Ohm (R4), 1/4 W, axial",DigiKey or an assortment on hand,0.10,buy,R1 and R2 (10 kOhm) are already in bom-test-article.csv.
+ESP32 sockets,2,"Female header 1x19, 2.54 mm, straight",DigiKey or Amazon,0.80,buy,For the ESP32-DevKitC V4 (U2). Rows 25.4 mm apart.
+Module sockets,5,"Female header 1x5, 2.54 mm, straight",DigiKey or Amazon,0.30,buy,For the MAX6675 modules (U3 to U7).
+Screw terminals,3,"2-way screw terminal, 5.08 mm pitch (Phoenix MKDS 1,5 or equal)",DigiKey or Amazon,0.40,buy,"J1 12 V in, J2 SSR drive, J3 blower."
+Standoffs,4,"M3 x 10 mm nylon standoff with screw",Amazon,0.50,buy,Mounts the board in the control enclosure.

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TB")(type "KiCad")(uri "${KIPRJMOD}/thermabrick.kicad_sym")(options "")(descr "ThermaBrick project symbols"))
+)
