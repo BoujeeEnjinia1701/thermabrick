@@ -1,6 +1,6 @@
 # Test article build procedure
 
-Working document for building the ThermaBrick reduced-scale test article (TBK-PRC-002), from received parts to the start of test plan TBK-TST-001. Every dimension is taken from the generated cut list, `cut-list.md`, by item number (C1 to C12). Changes to this procedure are tracked in Git.
+Working document for building the ThermaBrick reduced-scale test article (TBK-PRC-002), from received parts to the start of test plan TBK-TST-001. Every dimension is taken from the generated cut list, `cut-list.md`, by item number (C1 to C12). Changes to this procedure are tracked in Git. Record each working session in the build log: `python build-log/new_entry.py "Title" --stage B` starts an entry with that stage's record table (see `build-log/README.md`).
 
 Plan on three working days for the build, then the tests in TBK-TST-001, starting with TP0. Two people are needed to set the drum on its base. The finished unit weighs about 116 kg and is not moved once it is filled, so build it where it will be tested: indoors, on a concrete slab, with 1 m clear all round.
 
