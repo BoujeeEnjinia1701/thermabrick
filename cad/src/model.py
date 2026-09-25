@@ -178,22 +178,25 @@ def build(parts=False):
     zb = d["floor_z"] + p["bend_z"]
     top_in = d["lid_z"] + p["lid_t"] + 50                       # outlet legs end inside the collector
     top_out = d["jacket_top_z"] + p["inlet_plenum_h"] - 10      # inlet legs end inside the inlet plenum
+    # Build one U-tube along +X, where every boolean is between axis-aligned solids, then rotate
+    # copies into place. Building each tube at its own angle left the one at 270 deg with an
+    # invalid solid (near-zero sine and cosine terms defeated the boolean).
+    xi0, xo0 = p["leg_inner_r"], p["leg_outer_r"]
+    span = xo0 - xi0
+    xm0 = (xi0 + xo0) / 2
+    u0 = rod(ro, top_in - zb, xi0, 0, zb) + rod(ro, top_out - zb, xo0, 0, zb)
+    u0 += Pos(xm0, 0, zb) * Rot(0, 90, 0) * Cylinder(ro, span, align=C)
+    u0 += Pos(xi0, 0, zb) * Sphere(ro) + Pos(xo0, 0, zb) * Sphere(ro)
+    env0 = u0
+    u0 -= rod(ri, top_in - zb, xi0, 0, zb) + rod(ri, top_out - zb, xo0, 0, zb)
+    u0 -= Pos(xm0, 0, zb) * Rot(0, 90, 0) * Cylinder(ri, span, align=C)
+    u0 -= Pos(xi0, 0, zb) * Sphere(ri) + Pos(xo0, 0, zb) * Sphere(ri)
     for i in range(p["n_utubes"]):
         ang = p["utube_angle0"] + 60 * i
         xi, yi = _polar(p["leg_inner_r"], ang)
         xo, yo = _polar(p["leg_outer_r"], ang)
-        span = p["leg_outer_r"] - p["leg_inner_r"]
-        xm, ym = _polar((p["leg_outer_r"] + p["leg_inner_r"]) / 2, ang)
-        u = rod(ro, top_in - zb, xi, yi, zb) + rod(ro, top_out - zb, xo, yo, zb)
-        u += Pos(xm, ym, zb) * Rot(0, 0, ang) * Rot(0, 90, 0) * Cylinder(ro, span, align=C)
-        u += Pos(xi, yi, zb) * Sphere(ro) + Pos(xo, yo, zb) * Sphere(ro)
-        u -= rod(ri, top_in - zb, xi, yi, zb) + rod(ri, top_out - zb, xo, yo, zb)
-        u -= Pos(xm, ym, zb) * Rot(0, 0, ang) * Rot(0, 90, 0) * Cylinder(ri, span, align=C)
-        u -= Pos(xi, yi, zb) * Sphere(ri) + Pos(xo, yo, zb) * Sphere(ri)
-        utubes.append(u)
-        env = rod(ro, top_in - zb, xi, yi, zb) + rod(ro, top_out - zb, xo, yo, zb)
-        env += Pos(xm, ym, zb) * Rot(0, 0, ang) * Rot(0, 90, 0) * Cylinder(ro, span, align=C)
-        envelopes.append(env + Pos(xi, yi, zb) * Sphere(ro) + Pos(xo, yo, zb) * Sphere(ro))
+        utubes.append(Rot(0, 0, ang) * u0)
+        envelopes.append(Rot(0, 0, ang) * env0)
         for (x, y) in ((xi, yi), (xo, yo)):
             lid -= rod(ro + 1, p["lid_t"] + 2, x, y, d["lid_z"] - 1)
     out["utubes"] = Compound(utubes)
