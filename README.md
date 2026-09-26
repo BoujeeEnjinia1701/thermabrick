@@ -40,18 +40,17 @@ At the same time, grids with a lot of solar already throw some of it away. The C
 
 | Country or region | Why it matters there |
 | --- | --- |
-| United States (California) | Solar output is already curtailed at grid scale, 2.4 TWh in 2022 ([US EIA](https://www.eia.gov/todayinenergy/detail.php?id=60822)), and the net billing tariff that replaced net metering in 2023 pays less for rooftop exports |
-| United States (Colorado and the Mountain West) | Sunny, cold winters: a clear January day gives a large midday surplus while heating demand peaks at night, the design case in TBK-PRB-001 |
-| Finland | Sand heat storage already supplies district heating there, including a 0.1 MW / 8 MWh prototype built in 2022 ([Wikipedia, Thermal energy storage](https://en.wikipedia.org/wiki/Thermal_energy_storage)); ThermaBrick tests the idea at single-house scale |
-| Australia | Very high rooftop solar uptake, with export limits common on residential systems, and cool winters in the southern states |
-| Northern China | Long, cold heating seasons and a large, growing rooftop solar base, where storing surplus as heat could displace coal-fired space heating |
-| Ladakh, India | High-altitude desert with strong winter sun and severe cold, where homes rely on wood, dung and kerosene for heat |
+| United States (California) | Solar output is already curtailed at grid scale, 2.4 TWh in 2022 ([US EIA](https://www.eia.gov/todayinenergy/detail.php?id=60822)), and since April 15, 2023 new rooftop systems take the Net Billing Tariff, which credits exports at avoided-cost values that are usually lower than the retail rate ([California Public Utilities Commission](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing)) |
+| Finland | Sand heat storage already supplies district heating there: a 200 kW, 8 MWh unit at Kankaanpää since 2022 and a 1 MW, 100 MWh unit at Pornainen since June 2025 ([Polar Night Energy](https://polarnightenergy.com/news/what-is-a-sand-battery/); see also [UNRIC](https://unric.org/en/sand-warms-up-the-finnish-polar-night/) on the Kankaanpää unit); ThermaBrick tests the idea at single-house scale |
+| Australia | About 4.2 million homes and small businesses had rooftop solar by June 2025 ([Clean Energy Council, September 15, 2025](https://cleanenergycouncil.org.au/news-resources/australia-powers-ahead-on-rooftop-solar-as-nation-set-to-achieve-2030-rooftop-target-new-report)), and in South Australia the market operator can direct rooftop solar exports to be curtailed during minimum-demand events ([SA Power Networks](https://www.sapowernetworks.com.au/your-power/quality-reliability/solar-curtailment-for-minimum-system-demand-events/)); storing the surplus as heat keeps it in the home |
+| China | China, the European Union and the United States account for three-quarters of recent renewable heat growth, and China dominates global solar thermal ([IEA, *Renewables 2023*, Heat](https://www.iea.org/reports/renewables-2023/heat)); a solar-to-sand store brings rooftop PV into a market already large for solar heat |
+| Mongolia (Ulaanbaatar) | January temperatures fall below −20 °C, and more than half of ger-area households still heat with traditional coal stoves, pushing winter fine-particle levels in those neighborhoods above 100 times the WHO 24-hour guideline ([World Bank, 2018](https://www.worldbank.org/en/news/feature/2018/06/26/better-air-quality-in-ulaanbaatar-begins-in-ger-areas)); clean stored heat is a direct substitute for the stove |
 
 *Table 2. Where ThermaBrick matters, by country or region.*
 
 ## What sparked the idea
 
-The starting point was Finland's sand batteries, which store surplus solar and wind power as heat in sand for district heating. A 0.1 MW / 8 MWh prototype was built in 2022, and Polar Night Energy has installed a much larger sand store that works at up to 600 °C ([Wikipedia, Thermal energy storage](https://en.wikipedia.org/wiki/Thermal_energy_storage)). Those units serve whole towns through heating networks. ThermaBrick asks whether the same physics can be scaled down to one house with rooftop PV and no heating network: a drum of sand, a set of cartridge heaters and a warm-air outlet, built from parts a maker can buy.
+The starting point was Finland's sand batteries, which store surplus renewable electricity as heat in sand for district heating. The first commercial unit, built by Polar Night Energy for the utility Vatajankoski at Kankaanpää and commissioned in 2022, is rated 200 kW and 8 MWh and feeds a network that heats homes, offices and the municipal swimming pool ([Polar Night Energy, "World's first Sand Battery"](https://polarnightenergy.com/reference/worlds-first-sand-battery/)); the United Nations Regional Information Centre reports that it holds its sand at 500 to 600 °C ([UNRIC, "Sand warms up the Finnish polar night"](https://unric.org/en/sand-warms-up-the-finnish-polar-night/)). A 1 MW, 100 MWh unit followed at Pornainen in June 2025 ([Polar Night Energy, "What is a Sand Battery?"](https://polarnightenergy.com/news/what-is-a-sand-battery/)). Those units serve district heating networks. ThermaBrick asks whether the same physics can be scaled down to one house with rooftop PV and no heating network: a drum of sand, a set of cartridge heaters and a warm-air outlet, built from parts a maker can buy.
 
 ## Problem
 
@@ -110,6 +109,12 @@ The working bill of materials is in [bom/bom.csv](bom/bom.csv).
 ## Documentation
 
 Controlled documents follow the portfolio [documentation standard](.kit/STANDARDS.md). Each carries a document ID (TBK-PRC-001 for the precis), a version and a revision history. Branded PDFs are built with `python .kit/render.py` and attached to GitHub Releases when a document is tagged, for example `TBK-PRC-001/v1.0`.
+
+## Credits
+
+Designed by Amish Chadha, with contributions from Ashok Kumar Chadha. See [CONTRIBUTORS.md](CONTRIBUTORS.md) for roles. To cite this design, use [CITATION.cff](CITATION.cff) (GitHub shows it as "Cite this repository").
+
+AI assistance (Claude) was used to accelerate concept renders, prototype documentation and first-pass sizing calculations. Design direction and all decisions are Amish Chadha's, recorded in this repository's decision records (`docs/decisions/`).
 
 ## Licenses
 

@@ -221,3 +221,19 @@ Controlled documents changed: TBK-PRB-001 0.7 to 0.8; TBK-PRC-001 0.4 to 0.5; TB
 **Cross-repo actions:** none.
 
 **TRL.** `trl: 3` and `trl_target: 3` are unchanged. TRL 4 remains on hold by Amish's instruction: nothing was built, bought, tested or measured, and `archive/out-of-phase-trl4/` was not touched.
+
+## Session 2026-09-26: sources strengthened
+
+README "Where it could be used" and "What sparked the idea", per Amish's instruction of 2026-09-26 ("Fix the weaker sources"). Every link below was fetched and checked against the claim it supports.
+
+| Item | Old source | New source |
+| --- | --- | --- |
+| United States (California) row, tariff claim | None | California Public Utilities Commission, "Net Energy Metering and Net Billing" (Net Billing Tariff from April 15, 2023, Decision D.22-12-056); US EIA curtailment link rechecked and kept |
+| United States (Colorado and the Mountain West) row | None | Row removed; no credible source found for the climate claim within this session's search budget |
+| Finland row | Wikipedia, "Thermal energy storage" (alone) | Polar Night Energy, "What is a Sand Battery?", with UNRIC alongside |
+| Australia row | None | Clean Energy Council rooftop solar report, September 15, 2025, and SA Power Networks on AEMO-directed curtailment; the uncited "export limits common" and "cool winters" claims were dropped |
+| Northern China row | None | Rewritten as "China" to state only what the IEA reports (*Renewables 2023*, Heat) |
+| Ladakh, India row | None | Replaced by "Mongolia (Ulaanbaatar)": World Bank feature, June 26, 2018 (coal stoves, winter PM2.5 above 100 times the WHO 24-hour guideline) |
+| What sparked the idea | Wikipedia, "Thermal energy storage" | Polar Night Energy, "World's first Sand Battery" and "What is a Sand Battery?"; UNRIC, "Sand warms up the Finnish polar night" |
+
+Corrections from the primary source: the Kankaanpää unit is 200 kW and 8 MWh per Polar Night Energy, not the 0.1 MW that Wikipedia gave (UNRIC also gives 100 kW; the company figure is used). The "up to 600 °C" claim is now attributed to UNRIC (500 to 600 °C storage). The inspiration event is unchanged; its line in `INSPIRATIONS.md` was updated to the new sources. No controlled document changed; TBK-PRB-001 had no link to the weak source.
