@@ -49,14 +49,14 @@ The KiCad install failed because the Homebrew package needs an administrator pas
 
 | Item | Where it was recorded as accepted | Now |
 | --- | --- | --- |
-| Test article budget of $727.70 | TBK-PRB-001, TBK-REQ-001 R20, TBK-PRC-002, BOM notes, purchasing checklist, README, `project.yaml` (budget 728) | Proposed, awaiting Amish. Accepted budget stays $635.70; `project.yaml` is back to 636 |
-| Full-scale design decisions D1 to D8 | TBK-PRC-001, Table 4 | Each marked "Proposed, awaiting Amish" |
+| Test article budget of $727.70 | TBK-PRB-001, TBK-REQ-001 R20, TBK-PRC-002, BOM notes, purchasing checklist, README, `project.yaml` (budget 728) | Proposed, awaiting Amish at the time. Decided by Amish, 2026-09-25: go with recommendation ($727.70; `project.yaml` 728; TBK-DDR-002) |
+| Full-scale design decisions D1 to D8 | TBK-PRC-001, Table 4 | Each marked "Proposed, awaiting Amish" at the time. Decided by Amish, 2026-09-25: go with recommendation (TBK-DDR-002) |
 
 *Table 3. Items reverted in this pass.*
 
 ### 2.3 Design choices never reviewed
 
-These were never labeled as accepted, but Amish has not reviewed them. All live in Draft documents and remain proposals.
+These were never labeled as accepted when this review was written. Decided by Amish, 2026-09-25: go with recommendation (TBK-DDR-002, items A4 to A11); the test article, enclosure, firmware, test plan and board items are on hold with TRL 4.
 
 - **Storage window:** 150 °C to 450 °C, with a 550 °C well-wall limit for the quartz inversion margin.
 - **Full scale:** twelve 250 W heater wells, 1-1/4 in U-tubes, and 50 mm AES blanket plus 267 mm stone wool.
@@ -149,13 +149,13 @@ These were never labeled as accepted, but Amish has not reviewed them. All live 
 
 ## 6. Awaiting Amish
 
-1. Accept, cut or reject the $727.70 test article budget.
-2. Review design proposals D1 to D8 and the unreviewed choices in section 2.3.
-3. Choose a path on the R3 charge-time miss, or wait for the test article's measurements.
-4. Decide whether 47 % daily standby loss is acceptable, or adopt the loss-reduction options.
-5. Confirm the controller board stays deferred.
+1. Accept, cut or reject the $727.70 test article budget. Decided by Amish, 2026-09-25: go with recommendation ($727.70; on hold with TRL 4).
+2. Review design proposals D1 to D8 and the unreviewed choices in section 2.3. Decided by Amish, 2026-09-25: go with recommendation (TBK-DDR-002).
+3. Choose a path on the R3 charge-time miss, or wait for the test article's measurements. Decided by Amish, 2026-09-25: go with recommendation (wait for the test article's measurements; on hold with TRL 4).
+4. Decide whether 47 % daily standby loss is acceptable, or adopt the loss-reduction options. No recommendation made; still proposed, awaiting Amish.
+5. Confirm the controller board stays deferred. Decided by Amish, 2026-09-25: go with recommendation (deferred; archived).
 6. Done after the review: the U-tube solid is fixed, TRL 3 is recorded, and the kit is on 1.3.1 with `trl_target: 3`.
-7. Install KiCad properly.
+7. Install KiCad properly. Decided by Amish, 2026-09-25: go with recommendation; on hold with TRL 4, since the electronics are archived.
 8. Done: renamed to `docs/REVIEW.md` at Amish's request, as kit 1.2.0 expects.
 
 ## 7. Log
@@ -177,8 +177,47 @@ Done at Amish's instruction ("yes" to the rein-in recommendation, 2026-09-25). T
 **Decisions**
 
 - Unchanged and still Amish's: develop to a v0.2 draft; the test article budget of $635.70. That budget now applies to archived work and is on hold.
-- Still "Proposed, awaiting Amish": the $727.70 test article budget; full-scale design decisions D1 to D8; the design choices in section 2.3.
+- Still "Proposed, awaiting Amish" at the time: the $727.70 test article budget; full-scale design decisions D1 to D8; the design choices in section 2.3. All three decided by Amish, 2026-09-25: go with recommendation (see the session below).
 
 **Still open at TRL 3** (from section 3): R3 charge time (9.6 h against 8 h); 47 % standby loss per day; the full-scale budget ($3,674 against the $600 concept figure); design decision records for D1 to D8.
 
 **Recommended next step.** Decide D1 to D8 and how to close R3 and the standby loss, all on paper. TRL 4 stays on hold; when it is lifted, the archived test article is the starting point.
+
+## Session 2026-09-25: recommendations accepted
+
+On 2026-09-25 Amish wrote: "i accept all your recommendations, go with them across all repos." Every item with a recommendation is now decided by Amish, 2026-09-25: go with recommendation. The full list is in [TBK-DDR-002](decisions/0002-recommendations-accepted.md).
+
+**Decisions applied and what changed**
+
+| Decision | Before | After |
+| --- | --- | --- |
+| Test article budget | $635.70 accepted; $727.70 proposed | $727.70 decided; on hold with TRL 4 |
+| `project.yaml` `budget_usd` | 636 | 728 |
+| R20 prototype cost | "About $600 USD in parts"; not met | Restated to the test article budget of $727.70 or less, full-scale cost reported; met (I) for the test article BOM ($727.70). Full-scale estimate unchanged at $3,674 |
+| D1 to D8 (TBK-PRC-001, Table 4) | Proposed, awaiting Amish | Decided; TBK-DDR-002 is their design decision record |
+| Section 2.3 design choices and R1 to R20 targets | Unreviewed proposals | Decided; test article, enclosure, firmware, test plan and board items on hold with TRL 4 |
+| R3 charge-time path | Open | Decided: choose the fix after the test article measures sand conductivity; on hold with TRL 4. R3 stays not met (9.6 h against 8 h) |
+| Full-scale budget | Revisit proposed | Revisit with test results decided; on hold with TRL 4 |
+| Controller board | Deferred, to be confirmed | Kept deferred (archived) |
+| KiCad install | Awaiting Amish | Decided; on hold with TRL 4 |
+
+*Table 5. Decisions applied on 2026-09-25.*
+
+No geometry, BOM line or calculation changed, because the full-scale design already embodied D1 to D8. `cad/src/model.py`, TBK-DWG-001 (Rev P1), TBK-CAL-001 (v0.2) and the concept media were regenerated only to refresh the footer, which now points to designmolecule.com.
+
+Controlled documents changed: TBK-PRB-001 0.7 to 0.8; TBK-PRC-001 0.4 to 0.5; TBK-REQ-001 0.8 to 0.9; TBK-DDR-002 0.1 new. Also changed: `project.yaml`, `README.md` (budget line, hero image and links line, links to archived files corrected, and new sections "Concept rationale", "Burning platform", "Where it could be used" and "What sparked the idea"), and `bom/bom-notes.md`.
+
+**Requirement status now (TBK-REQ-001 v0.9)**
+
+- Not met (1): R3 charge time, 10.9 kWh in 4 h and full in 9.6 h against 11 kWh and 8 h.
+- Open (3): R12 fail-safe behavior and R18 monitoring (firmware; archived and on hold), R19 durability (ratcheting, needs test).
+- Met (16): R1, R2, R4 to R11, R13 to R17 and R20, by analysis, inspection or design; none tested.
+
+**Still awaiting Amish** (no recommendation was made)
+
+- Standby loss: accept 459 W at full charge (8.7 kWh, 47 % of the window, per day idle), or adopt the Table 5 options in TBK-CAL-001 (357 W for about $450).
+- GFCI choice: 5 mA GFCI or 30 mA equipment protection, with the installing electrician.
+
+**Cross-repo actions:** none.
+
+**TRL.** `trl: 3` and `trl_target: 3` are unchanged. TRL 4 remains on hold by Amish's instruction: nothing was built, bought, tested or measured, and `archive/out-of-phase-trl4/` was not touched.

@@ -3,9 +3,9 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.8"
+version: "0.9"
 status: Draft
-date: '2026-09-24'
+date: '2026-09-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -41,11 +41,15 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: 'Review pass: R20 shows $727.70 as the BOM total, proposed and awaiting Amish; the accepted budget remains $635.70'
+- version: "0.9"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # ThermaBrick requirements
 
-The v0.2 design meets 15 of the 20 requirements below, by analysis or by design. Three depend on firmware or on testing that has not yet been done (R12, R18 and R19). Two are not met. Charge time (R3) misses by 1.6 h once standby loss is counted. Cost (R20) is about six times the target; the $600 budget now funds a reduced-scale test article instead (TBK-PRB-001, section 5). Every requirement will be confirmed by test on the first build.
+The v0.2 design meets 16 of the 20 requirements below, by analysis, inspection or design. Three depend on firmware or on testing that has not yet been done (R12, R18 and R19). One is not met: charge time (R3) misses by 1.6 h once standby loss is counted. Amish accepted the recommendation to choose how to close R3 only after the test article has measured sand conductivity, so R3 stays open while TRL 4 is on hold (TBK-DDR-002). R20 is restated to match the budget decisions: the prototype budget covers the reduced-scale test article, set at $727.70 by Amish on 2026-09-25, and the full-scale estimate is reported against it. The targets of R1 to R20 were accepted by Amish on 2026-09-25 (TBK-DDR-002). Every requirement will be confirmed by test on the first build.
 
 Verification methods are analysis (A), inspection (I), demonstration (D) and test (T). Status reflects the v0.2 analysis in TBK-CAL-001 and the BOM. "Met (A)" means shown by analysis and not yet tested.
 
@@ -55,7 +59,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R1 | Stored heat between 150 °C and 450 °C energy-weighted mean sand temperature | 18 kWh(th) or more | A: TBK-CAL-001 section 2. T: calorimetric discharge (air flow and temperature rise) | Met (A): 18.3 kWh(th) |
 | R2 | Charge power drawn only from PV surplus, following export in real time | 0 to 3.0 kW in steps of 25 W or finer; grid import from charging 50 Wh per day or less | D: log export meter and heater power through three sunny days | Met by design |
-| R3 | Charge acceptance from empty with full surplus available | 11 kWh or more in 4 h; full in 8 h or less | A: TBK-CAL-001 section 3. T: charge from 150 °C at 3.0 kW | **Not met (A):** 10.9 kWh in 4 h, full in 9.6 h |
+| R3 | Charge acceptance from empty with full surplus available | 11 kWh or more in 4 h; full in 8 h or less | A: TBK-CAL-001 section 3. T: charge from 150 °C at 3.0 kW | **Not met (A):** 10.9 kWh in 4 h, full in 9.6 h. The fix is chosen after the test article measures sand conductivity (TBK-DDR-002); on hold with TRL 4 |
 | R4 | Rated heat output | 1.0 kW held down to 170 °C sand mean or lower | A: TBK-CAL-001 section 4. T: discharge at 1.0 kW demand | Met (A): held 14.3 h, to 154 °C |
 | R5 | Boost heat output | 1.5 kW for 8 h or more from full | A: TBK-CAL-001 section 4. T | Met (A): 8.1 h |
 | R6 | Supply air temperature at the register | 55 °C or below at all times | T: log supply air through charge and discharge | Met by design (50 °C setpoint) |
@@ -87,7 +91,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R18 | Monitoring | Log all temperatures, heater power and export at 10 s intervals; report state of charge within 10 % of the calorimetric value | T: compare against R1 test | Firmware to be written |
 | R19 | Durability | 1,000 charge cycles without drum growth over 1 % in circumference or loss of heater function | T: measure drum circumference every 25 cycles | Open: sand ratcheting risk, see TBK-PRC-001 section 8 |
-| R20 | Prototype cost | About $600 USD in parts | I: against the BOM | **Not met:** $3,674 estimated for full scale. The reduced-scale test article (TBK-PRC-002) BOM totals $727.70. Amish accepted $635.70 on 2026-09-24; the rise to $727.70 is proposed, awaiting Amish (TBK-PRB-001, section 5) |
+| R20 | Prototype cost | Reduced-scale test article (TBK-PRC-002, archived): $727.70 USD or less in parts, decided by Amish on 2026-09-25 (TBK-DDR-002). Full-scale parts cost estimated and reported; its budget is revisited with the test article's results | I: against the BOMs | Met (I): test article BOM $727.70 (archived, on hold with TRL 4). Full-scale estimate $3,674 reported; revisit on hold with TRL 4 |
 
 ## 5. Traceability
 

@@ -3,9 +3,9 @@ doc_id: TBK-PRC-001
 title: ThermaBrick design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.4"
+version: "0.5"
 status: Draft
-date: '2026-09-24'
+date: '2026-09-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -25,11 +25,15 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: 'Review pass: design decisions D1 to D8 marked proposed, awaiting Amish; none has been reviewed or accepted'
+- version: "0.5"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # ThermaBrick design precis
 
-ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 9.6 h at up to 3.0 kW, then delivers 1.0 kW of warm air for 14.3 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its weaknesses are cost, standby loss and charge time. The parts are estimated at $3,674 against a $600 target. It releases 459 W passively at full charge. With that loss running, a full charge takes 9.6 h, against the 8 h in R3. A $600 reduced-scale test article (TBK-PRC-002) will measure the sand and loss properties behind all three before the full-scale build.
+ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 9.6 h at up to 3.0 kW, then delivers 1.0 kW of warm air for 14.3 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its weaknesses are cost, standby loss and charge time. The parts are estimated at $3,674 against a $600 target. It releases 459 W passively at full charge. With that loss running, a full charge takes 9.6 h, against the 8 h in R3. A reduced-scale test article (TBK-PRC-002, budget $727.70 decided by Amish on 2026-09-25) will measure the sand and loss properties behind all three before the full-scale build. It is archived and on hold with TRL 4.
 
 | Parameter | Value |
 | --- | --- |
@@ -145,40 +149,39 @@ The design layers its protection so that no single failure can overheat the unit
 
 ## 8. Key design decisions and risks
 
-The choices in Table 4 are proposals by the designer. None has been reviewed or accepted by Amish; each stays proposed until Amish reviews it, and accepted ones will then be recorded as a design decision record (TBK-DDR-001 onward) before v1.0.
+The choices in Table 4 were proposals by the designer. Amish accepted all of them on 2026-09-25, and they are recorded in design decision record TBK-DDR-002 (`docs/decisions/0002-recommendations-accepted.md`).
 
-| No. | Proposal | Alternatives considered | Reason | Status |
+| No. | Decision | Alternatives considered | Reason | Status |
 | --- | --- | --- | --- | --- |
-| D1 | Silica sand, window 150 to 450 °C | Basalt, olivine or soapstone to 600 °C and above | Cost and availability. The window keeps all sand below the 573 °C quartz inversion, and the 150 °C floor is where 1.0 kW output ends. | Proposed, awaiting Amish |
-| D2 | Cartridge heaters in capped wells | Bare nichrome coils buried in sand; electric air heater in a closed air loop | Replaceable from the top without removing sand; heaters isolated from sand and moisture; standard parts | Proposed, awaiting Amish |
-| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W; twelve of 1 in | Fastest affordable layout: 9.6 h against 15.2 h or more for fewer wells. Twelve 1 in wells reach 8.4 h at higher cost (TBK-CAL-001, Table 9) | Proposed, awaiting Amish |
-| D4 | Closed U-tubes for discharge | Air blown directly through the sand bed | No dust in room air, low pressure drop and no fluidization risk | Proposed, awaiting Amish |
-| D5 | Cold-side damper with a mixing tee and heat trap | Hot-side damper; fan pushing through the bed | Room-temperature damper and fan; convection stopped with no moving parts | Proposed, awaiting Amish |
-| D6 | Wells end at the lid | Wells run through the top insulation | Removes a 94 W thermal bridge | Proposed, awaiting Amish |
-| D7 | AES fiber hot face, stone wool bulk | Refractory ceramic fiber throughout | Handling safety and cost | Proposed, awaiting Amish |
-| D8 | 240 V, 3.0 kW, burst-fire SSRs plus contactor | 120 V at 1.8 kW | Only 240 V can absorb a full sunny day's surplus; the contactor covers SSR failure | Proposed, awaiting Amish |
+| D1 | Silica sand, window 150 to 450 °C | Basalt, olivine or soapstone to 600 °C and above | Cost and availability. The window keeps all sand below the 573 °C quartz inversion, and the 150 °C floor is where 1.0 kW output ends. | Decided by Amish, 2026-09-25: go with recommendation |
+| D2 | Cartridge heaters in capped wells | Bare nichrome coils buried in sand; electric air heater in a closed air loop | Replaceable from the top without removing sand; heaters isolated from sand and moisture; standard parts | Decided by Amish, 2026-09-25: go with recommendation |
+| D3 | Twelve wells of 250 W | Six of 500 W; six of 1-1/2 in; nine of 333 W; twelve of 1 in | Fastest affordable layout: 9.6 h against 15.2 h or more for fewer wells. Twelve 1 in wells reach 8.4 h at higher cost (TBK-CAL-001, Table 9) | Decided by Amish, 2026-09-25: go with recommendation |
+| D4 | Closed U-tubes for discharge | Air blown directly through the sand bed | No dust in room air, low pressure drop and no fluidization risk | Decided by Amish, 2026-09-25: go with recommendation |
+| D5 | Cold-side damper with a mixing tee and heat trap | Hot-side damper; fan pushing through the bed | Room-temperature damper and fan; convection stopped with no moving parts | Decided by Amish, 2026-09-25: go with recommendation |
+| D6 | Wells end at the lid | Wells run through the top insulation | Removes a 94 W thermal bridge | Decided by Amish, 2026-09-25: go with recommendation |
+| D7 | AES fiber hot face, stone wool bulk | Refractory ceramic fiber throughout | Handling safety and cost | Decided by Amish, 2026-09-25: go with recommendation |
+| D8 | 240 V, 3.0 kW, burst-fire SSRs plus contactor | 120 V at 1.8 kW | Only 240 V can absorb a full sunny day's surplus; the contactor covers SSR failure | Decided by Amish, 2026-09-25: go with recommendation |
 
-*Table 4. Key design proposals.*
+*Table 4. Key design decisions.*
 
 The main technical risks are as follows.
 
 - **Thermal ratcheting.** The sand expands while the drum is still cool, then settles into the gap when the drum expands, and the drum may grow a little each cycle. Heating from the core outward helps, and R19 sets a 1 % growth limit to watch. A compressible AES liner inside the drum wall is the fallback if growth appears.
 - **Sand conductivity.** If the sand conducts 20 % less heat than assumed, the charge time grows to 12.1 h (TBK-CAL-001, Table 8). The test article will fit the real value.
 - **GFCI nuisance trips.** Twelve MgO heaters leak a little current when damp. Bake-out cures this, but a 30 mA equipment ground-fault device may be needed if a 5 mA GFCI trips. That choice is for the installing electrician.
-- **Cost.** At $3,674, the parts cost about six times the target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The $600 budget now funds the test article.
-- **Charge time.** With standby loss counted, a full charge takes 9.6 h against the 8 h in R3. The options are to cut loss (TBK-CAL-001, Table 5), move to twelve 1 in wells (8.4 h), or relax R3 to 10 h. Choose after the test article has measured sand conductivity and loss.
+- **Cost.** At $3,674, the parts cost about six times the target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The prototype budget now funds the test article, at $727.70 (decided by Amish, 2026-09-25).
+- **Charge time.** With standby loss counted, a full charge takes 9.6 h against the 8 h in R3. The options are to cut loss (TBK-CAL-001, Table 5), move to twelve 1 in wells (8.4 h), or relax R3 to 10 h. Decided by Amish, 2026-09-25 (TBK-DDR-002): choose after the test article has measured sand conductivity and loss. That choice is on hold with TRL 4.
 
 ## 9. Open questions
 
-- [x] Decide the budget path. Amish decided on 2026-09-24 to build the reduced-scale test article (TBK-PRC-002) first. Revisiting the full-scale budget with its results is proposed.
-- [ ] Close the R3 charge-time gap of 1.6 h (section 8, charge time risk).
-- [ ] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5).
+- [x] Decide the budget path. Amish decided on 2026-09-24 to build the reduced-scale test article (TBK-PRC-002) first, and on 2026-09-25 set its budget at $727.70 and accepted revisiting the full-scale budget with its results (TBK-DDR-002). Both are on hold with TRL 4.
+- [ ] Close the R3 charge-time gap of 1.6 h (section 8, charge time risk). Decided: choose the fix after the test article measures sand conductivity (TBK-DDR-002); on hold with TRL 4.
+- [ ] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5). No recommendation has been made; proposed, awaiting Amish.
 - [ ] Confirm the fan's pressure curve and speed-control interface against 60 L/s at 150 Pa.
 - [ ] Confirm the compressive strength of the stone wool base board on the data sheet (60 kPa or more).
 - [ ] Choose between a 5 mA GFCI and 30 mA equipment protection with the electrician.
-- [ ] Write the controller schematic (`electronics/`) and firmware (`firmware/`).
-- [ ] Write test plan TBK-TST-001: charge, discharge, 24 h cool-down, limit trip and ratcheting measurement.
-- [ ] Review proposals D1 to D8 (awaiting Amish), then record the accepted ones as design decision records.
+- [ ] Controller schematic, firmware and test plan TBK-TST-001: drafted for the test article in an earlier session and archived under `archive/out-of-phase-trl4/`; on hold with TRL 4.
+- [x] Review proposals D1 to D8. Accepted by Amish on 2026-09-25 and recorded in TBK-DDR-002.
 
 ## 10. Deliverables in this revision
 
@@ -187,7 +190,7 @@ The main technical risks are as follows.
 | Problem statement v0.2 | `docs/01-problem.md` (TBK-PRB-001) |
 | Requirements v0.2 | `docs/03-requirements.md` (TBK-REQ-001) |
 | Sizing calculation v0.2 and script | `docs/04-calcs/` (TBK-CAL-001) |
-| Test article precis, sizing, drawing and BOM | TBK-PRC-002, TBK-CAL-002, TBK-DWG-002, `bom/bom-test-article.csv` |
+| Test article precis, sizing, drawing and BOM (archived, on hold with TRL 4) | TBK-PRC-002, TBK-CAL-002, TBK-DWG-002, `bom/bom-test-article.csv`, all under `archive/out-of-phase-trl4/` |
 | Parametric model | `cad/src/model.py`; exports in `cad/step/` and `cad/stl/` |
 | General arrangement, Rev P1 | `cad/drawings/TBK-DWG-001` (SVG, PDF, PNG), built by `cad/src/sheets.py` |
 | Bill of materials | `bom/bom.csv` and `bom/bom-notes.md` |

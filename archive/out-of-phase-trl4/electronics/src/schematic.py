@@ -366,7 +366,7 @@ def build(c=BASELINE):
     sch = ["kicad_sch", ["version", 20250114], ["generator", Q("thermabrick_schematic_py")],
            ["generator_version", Q("9.0")], ["uuid", Q(root)], ["paper", Q("A3")],
            ["title_block", ["title", Q(c["title"])], ["date", Q(DATE)],
-            ["rev", Q(c.get("rev", REV))], ["company", Q("Open Hardware Portfolio, amishchadha.com")],
+            ["rev", Q(c.get("rev", REV))], ["company", Q("Open Hardware Portfolio, designmolecule.com")],
             ["comment", 1, Q(c["comment"])],
             ["comment", 2, Q("Licensed CERN-OHL-S-2.0")]],
            ["lib_symbols", *lib.values()], *items,
