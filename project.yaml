@@ -1,6 +1,7 @@
 # Card metadata consumed by https://designmolecule.com
 name: ThermaBrick
 slug: thermabrick
+repo: BoujeeEnjinia1701/thermabrick         # GitHub repository, shown on every drawing and render
 area: CleanTech
 trl: 3                   # Technology Readiness Level, see .kit/STANDARDS.md section 9
 trl_target: 3            # capped at TRL 3 by .kit/PHASE.yaml (kit 1.2.0), Amish 2026-09-24
