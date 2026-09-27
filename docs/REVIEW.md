@@ -237,3 +237,27 @@ README "Where it could be used" and "What sparked the idea", per Amish's instruc
 | What sparked the idea | Wikipedia, "Thermal energy storage" | Polar Night Energy, "World's first Sand Battery" and "What is a Sand Battery?"; UNRIC, "Sand warms up the Finnish polar night" |
 
 Corrections from the primary source: the Kankaanpää unit is 200 kW and 8 MWh per Polar Night Energy, not the 0.1 MW that Wikipedia gave (UNRIC also gives 100 kW; the company figure is used). The "up to 600 °C" claim is now attributed to UNRIC (500 to 600 °C storage). The inspiration event is unchanged; its line in `INSPIRATIONS.md` was updated to the new sources. No controlled document changed; TBK-PRB-001 had no link to the weak source.
+
+## Session 2026-09-26: product appearance model and photoreal renders
+
+Amish chose this repo for the first batch of product renders on 2026-09-26. This session added `cad/src/product_model.py`, an appearance model for photoreal renders, and pointed the README hero at `media/render-hero.png` with a link to `media/render-exploded.png`. The render files are produced later by the orchestrator. No existing model, BOM, drawing or controlled document was changed.
+
+**What `product_model.py` adds**
+
+- `product_parts()`: 80 named parts (18 shell, 13 internal, 44 accessory, 5 context), each with colour, material, BOM line, group and explode offset; `TITLE` and three `RENDER_VIEWS` (hero, exploded, detail).
+- Jacket finish: three lapped rows with riveted seams, a vertical lap seam, a teal top trim ring, a dark kick plinth, a name plate, and HOT SURFACES INSIDE and HOT OUTLET warning labels.
+- An 80 deg cut sector at the front through the jacket, stone wool, AES blanket, drum, sand and base, showing the sand bed, two heater wells split open with lit cartridge heaters and their beaded leads, a U-tube, and the three base layers (stone wool board, insulating firebrick with joints, AES board).
+- Inlet damper with its servo, intake bell mouth and grille on the plenum collar; heater junction box with lid, screws, gland and a DANGER 240 V label.
+- Hot outlet duct as 4 in black stovepipe that rises and turns down as a heat trap, in a perforated guard sleeve with a HOT SURFACE label; mixing tee with the balancing damper and room-air grille; EC inline fan with collars, accent ring, rating label and lit run light, on a wall bracket; ribbed insulated flexible supply duct into a wall collar.
+- Wall-mounted control enclosure with door, hinges, latch, name plate, 1/16 DIN high-limit readout (lit), charge, discharge and fault lights (charge lit) and a DANGER 240 V label.
+- Context: a compact slab floor patch, a back wall patch, surface conduit and straps.
+
+**Where the appearance model differs from `model.py`** (each one Proposed, awaiting Amish)
+
+1. *Cut sector.* The renders remove an 80 deg sector (268 to 345 deg) to show the inside, and the two wells in it are split open. Recommendation: keep it for the hero and detail renders only; the drawings and STEP stay whole.
+2. *Duct, fan and enclosure layout.* `model.py` ends at the 4 in outlet stub and the inlet collar. The route of the hot duct (toward 35 deg, drop at 800 mm radius, tee at 1,150 mm), the fan position and bracket, the supply duct into the back wall, the junction box position (120 deg, 430 mm radius) and the enclosure position on the wall are an appearance layout only. Recommendation: treat it as illustrative; add it to TBK-DWG-001 only if Amish wants an installation layout sheet.
+3. *Sizes not in the design.* The fan body (236 mm diameter by 230 mm), guard sleeve (about 160 mm diameter), intake bell mouth and grille, and the room-air grille are assumed for appearance. Recommendation: accept as placeholders until the fan is chosen (open question on its pressure curve).
+4. *Cosmetic items not in the BOM.* The teal top trim ring, kick plinth, name plates and warning labels have no BOM lines. Recommendation: add one BOM line for warning and rating labels, since hot-surface and 240 V labels are a safety item; treat the trim ring and plinth as optional cosmetic parts.
+5. *Insulation split.* `model.py` draws all insulation as one body; the appearance model splits it into the AES hot face and the stone wool by the thicknesses in PARAMS. No dimension changes.
+
+**TRL.** This is an appearance model only: no tolerances, fabrication detail, PCB layout or firmware. `trl: 3` and `trl_target: 3` are unchanged, and TRL 4 remains on hold by Amish's instruction.
