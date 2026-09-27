@@ -261,3 +261,9 @@ Amish chose this repo for the first batch of product renders on 2026-09-26. This
 5. *Insulation split.* `model.py` draws all insulation as one body; the appearance model splits it into the AES hot face and the stone wool by the thicknesses in PARAMS. No dimension changes.
 
 **TRL.** This is an appearance model only: no tolerances, fabrication detail, PCB layout or firmware. `trl: 3` and `trl_target: 3` are unchanged, and TRL 4 remains on hold by Amish's instruction.
+
+## Session 2026-09-27: kit 1.5.0 and image quality
+
+- Kit 1.5.0 synced: STANDARDS v1.5 (sections 12 to 15: product renders, storefront images and image quality, public release, authorship and signing), `.kit/cards.py`, `.kit/image_qc.py`, `.kit/release_gate.py`, issue templates, and the `/render-product` and `/release` commands. `CLAUDE.md` now matches `.kit/CLAUDE.md`.
+- Every `media/render-*.png` recaptioned from its original render with the new layout: the title, concept label and repository sit in a band above the render and the view note in a band below it, each line wrapped to the image width, so no text overlaps other text or the render or runs off the image. `media/card.png` and `media/social-preview.png` regenerated with the same rules.
+- `python .kit/image_qc.py` and `python .kit/release_gate.py` pass. trl stays 3.
