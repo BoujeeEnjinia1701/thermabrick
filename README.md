@@ -1,5 +1,7 @@
 # ThermaBrick
 
+[![DOI](https://zenodo.org/badge/1386352909.svg)](https://zenodo.org/badge/latestdoi/1386352909) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/thermabrick/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/thermabrick)
+
 **Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Prototype budget:** $727.70 USD test article (decided by Amish, 2026-09-25; on hold with TRL 4) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
