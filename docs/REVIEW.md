@@ -299,3 +299,36 @@ Kit 1.7.0 installed (`.kit/`, `.claude/commands/`, `CLAUDE.md` from `.kit/CLAUDE
 **Safety.** Unchanged in substance: the trim ring restores R13 at the outlet; the cap-edge temperature is to be confirmed at the first firing (TBK-DEC-001). The build plan carries the silica, fiber, 240 V, first-firing and stored-heat stops.
 
 **Recommended next step.** Amish reviews TBK-DDR-003 and the register; then re-render the product images on the Mac.
+
+## Session 2026-10-02: open-decision recommendations approved
+
+Amish, 2026-10-02: "i approve your recommendations for all 555 open decisions." This approves the recommendation for every open decision in the design decisions register. 9 decisions were recorded: each moved to Decisions made, dated 2026-10-02, with the approved recommendation and its record. trl stays 3; no build or test work was done, and the CAD model, BOM quantities and prices, and pictures were not changed.
+
+### Documents changed
+
+- `docs/06-design-decisions.md` (TBK-DEC-001 v0.2): the nine open decisions moved to Decisions made; Open decisions now reads none
+- `docs/decisions/0003-design-for-construction.md` (TBK-DDR-003 v0.2): status accepted with Amish's words (P1 to P11, C1 and C2); Table 3 marked accepted; consequence added
+- `docs/decisions/0002-recommendations-accepted.md` (TBK-DDR-002 v0.2): standby loss and GFCI choice decided
+- `docs/03-requirements.md` (TBK-REQ-001 v0.11): R11 names the 5 mA GFCI breaker and the condition for 30 mA protection; R15 adds the siting rules as installer requirements; no status changed
+- `docs/04-calcs/TBK-CAL-001-sizing.md` (TBK-CAL-001 v0.4): branch circuit breaker stated as 5 mA GFCI; no result changed
+- `docs/02-concept.md` (TBK-PRC-001 v0.7): safety design: 5 mA GFCI, siting rules as installer requirements, warning labels; standby loss and GFCI open questions closed
+- `docs/01-problem.md` (TBK-PRB-001 v0.10): standby loss open decision recorded as decided
+- `README.md`: safety note: 5 mA GFCI breaker and the outlet duct guard and clearance
+- `bom/bom-notes.md`: breaker type, approved label line, and the cosmetic and functional trim rings noted; no quantity or price changed
+- PDFs regenerated with `python3 .kit/render.py`; superseded PDF versions removed by the render.
+
+### Follow-up actions to carry approved decisions into the design
+
+1. Decision 2 (bom): Add one BOM line, about USD 15, for hot-surface and 240 V warning labels on the jacket, outlet guard, junction box and enclosure, and re-run the cost total
+2. Decision 2 (pictures): Add the label positions to the build plan (TBK-BLD-001) final steps and pictures
+3. Decision 5 (bom): Change the spec of BOM line 39 to a 2-pole 20 A, 5 mA GFCI breaker
+4. Decision 8 (pictures): Regenerate the photoreal renders from `cad/src/product_model.py` so they show the functional black outlet trim ring (BOM line 44) as well as the optional teal top ring, and name the two rings distinctly in the appearance model (on Amish's Mac)
+5. Decision 1 (pictures): Regenerate the photoreal renders, `media/card.png` and `media/social-preview.png` for the accepted construction (base, plenum, cap fixings), on Amish's Mac
+6. Decision 4 (calcs): Decide the stainless upper inlet legs and microporous hot face together with the R3 charge-time fix once the test article has measured loss (on hold with TRL 4); no change now
+
+### Points found in the review
+
+- The value-engineering target ($728) is the reduced-scale test article's budget, but it is compared with the full-scale constructable design ($3,854); these are not like for like, so the $3,126 overrun is not meaningful. Set a full-scale target or compare the test article with its own estimate.
+- Value engineering text has a stray full stop mid-sentence: "(up to USD 190). with stone wool batts".
+- Two different "trim rings" now exist: the cosmetic teal top ring in the renders and the functional black outlet ring of P8; name them distinctly.
+- There is no 0001 decision record in this repo; the 2026-09-24 decision is recorded only in TBK-PRB-001.

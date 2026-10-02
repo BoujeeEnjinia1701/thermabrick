@@ -3,9 +3,9 @@ doc_id: TBK-PRB-001
 title: ThermaBrick problem statement
 project: ThermaBrick
 doc_type: Problem statement
-version: "0.9"
+version: "0.10"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -45,6 +45,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: 'Operating mass 415 kg and full-scale estimate $3,854 after the design was made constructable (TBK-DDR-003); budget worded as a value-engineering target'
+- version: "0.10"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Standby loss open decision recorded as decided on 2026-10-02 (TBK-DEC-001)'
 ---
 
 # ThermaBrick problem statement
@@ -101,7 +105,7 @@ The v0.2 draft sets the following measures, which TBK-REQ-001 turns into verifia
 ## 5. Open decisions
 
 1. **Budget.** Decided by Amish on 2026-09-24. The $600 budget funds a reduced-scale test article first: a 16 US gal drum storing about 6 kWh(th), built with the same heater cells as the full-scale design (TBK-PRC-002). Its measurements will settle sand conductivity, contact conductance and standby loss. The full-scale budget will be revisited with those results. After the controller enclosure was modeled, the test article estimate rose to $635.70. Decided 2026-09-24: accept $635.70 as the test article budget, with every part specified, rather than defer parts or rely on parts on hand. The build procedure then found $92.00 of parts the BOM had missed (insulation, cable, wiring consumables and thermocouple extension); Amish had them added to the BOM, which now totals $727.70. Decided by Amish, 2026-09-25: go with recommendation. The test article budget is raised from $635.70 to $727.70 (TBK-DDR-002). The test article is archived under `archive/out-of-phase-trl4/` and is on hold with TRL 4, so nothing will be bought until TRL 4 resumes. Revisiting the full-scale budget with the test article's results is also decided, and on hold for the same reason.
-2. **Standby loss.** Decide whether 459 W of uncontrolled output at full charge suits the target rooms, or whether to adopt the loss-reduction options in TBK-CAL-001, Table 5.
+2. **Standby loss.** Decided by Amish on 2026-10-02 (TBK-DEC-001): 459 W of uncontrolled output at full charge is accepted for now; the loss-reduction options in TBK-CAL-001, Table 5 are decided together with the R3 charge-time fix once the test article has measured loss.
 
 ## 6. Out of scope
 

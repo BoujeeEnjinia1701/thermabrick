@@ -3,9 +3,9 @@ doc_id: TBK-DDR-003
 title: ThermaBrick design for construction
 project: ThermaBrick
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-09-30'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,12 +13,16 @@ revisions:
   date: '2026-09-30'
   author: Amish Chadha
   change: Changes that make the concept physically buildable, with the reason for each; made under Amish's 2026-09-30 instruction to make the design physically buildable; open for his review
+- version: "0.2"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Accepted by Amish on 2026-10-02, including the recommendations for C1 and C2'
 ---
 
 # 0003: Design for construction
 
 - **Date:** 2026-09-30
-- **Status:** Draft. Made under Amish's 2026-09-30 instruction to make the design physically buildable; open for his review. The items in Table 3 are proposed, awaiting Amish.
+- **Status:** accepted. Amish, 2026-10-02: "i approve your recommendations for all 555 open decisions." This covers every change made under Amish's 2026-09-30 instruction to make the design physically buildable (P1 to P11 and their knock-on changes) and the recommendations for C1 and C2 in Table 3, now decided as recommended and recorded in the design decisions register (TBK-DEC-001).
 
 ## Context
 
@@ -54,16 +58,17 @@ The changes keep what ThermaBrick does: the same drum, sand mass and depth, heat
 | Drawing | TBK-DWG-001 Rev P2; making sketches TBK-DWG-101 to TBK-DWG-110 added. | Follows the model. |
 | Documents | TBK-CAL-001 v0.3, TBK-PRC-001 v0.6, TBK-REQ-001 v0.10, TBK-PRB-001 v0.9: mass, cost, build summary, R13, R15, R17 and R20 notes. No requirement changed status: R3 stays not met (9.6 h against 8 h). | Follows the model. |
 
-*Table 3. Proposed, awaiting Amish.*
+*Table 3. Proposed, then accepted by Amish as recommended on 2026-10-02.*
 
 | # | Question | Options | Recommendation |
 | --- | --- | --- | --- |
-| C1 | Hot-surface and 240 V warning labels have no BOM line, though the appearance model shows them (REVIEW 2026-09-26, item 4) and they are a safety item. | (a) add one BOM line for the labels, about USD 15; (b) leave to the installer. | (a). |
-| C2 | The air path beyond the unit (hot duct route, tee and fan position, control enclosure on the wall) is drawn in the build plan from the illustrative layout of the appearance model (REVIEW 2026-09-26, item 2); real sites differ. | (a) keep it illustrative, with the rules the plan states (450 mm from combustibles, guard, heat trap, fan below the tee); (b) add an installation layout sheet. | (a) at TRL 3. |
+| C1 | Hot-surface and 240 V warning labels have no BOM line, though the appearance model shows them (REVIEW 2026-09-26, item 4) and they are a safety item. | (a) add one BOM line for the labels, about USD 15; (b) leave to the installer. | (a). Accepted 2026-10-02; the BOM line is still to be added. |
+| C2 | The air path beyond the unit (hot duct route, tee and fan position, control enclosure on the wall) is drawn in the build plan from the illustrative layout of the appearance model (REVIEW 2026-09-26, item 2); real sites differ. | (a) keep it illustrative, with the rules the plan states (450 mm from combustibles, guard, heat trap, fan below the tee); (b) add an installation layout sheet. | (a) at TRL 3. Accepted 2026-10-02, with the rules stated as requirements an installer must meet (TBK-REQ-001, R15). |
 
 ## Consequences
 
 - `design_state: constructable` in `project.yaml`. The build plan TBK-BLD-001 (`docs/05-build-plan.md`) shows every component and step in pictures generated from the model (`cad/src/build_plan_media.py`); open items are in the design decisions register TBK-DEC-001 (`docs/06-design-decisions.md`).
 - STEP and STL exports (`cad/step/thermabrick.step`, `cad/stl/thermabrick.stl`), TBK-DWG-001 Rev P2 and the concept media are regenerated from the changed model.
 - The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` still show the concept base, a 110 mm plenum, no trim ring and no cap fixings. They are made on Amish's Mac and are now stale.
+- With C1 and C2 accepted, a warning label line (about USD 15) is to be added to the BOM, and the siting rules (450 mm from combustibles, guard, heat trap, fan below the tee) are installer requirements in TBK-REQ-001 R15.
 - The test article (TBK-PRC-002, archived) was not touched.

@@ -3,9 +3,9 @@ doc_id: TBK-PRC-001
 title: ThermaBrick design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.6"
+version: "0.7"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -33,6 +33,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: 'Design made constructable (TBK-DDR-003): mass 415 kg, parts $3,854, build sequence points to the build plan TBK-BLD-001; budget worded as a value-engineering target'
+- version: "0.7"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Decisions of 2026-10-02 (TBK-DEC-001): 5 mA GFCI breaker, siting rules as installer requirements, warning labels, standby loss accepted for now'
 ---
 
 # ThermaBrick design precis
@@ -144,8 +148,9 @@ The prototype build plan TBK-BLD-001 (`docs/05-build-plan.md`) gives the full, i
 The design layers its protection so that no single failure can overheat the unit.
 
 - **Temperature limits.** The ESP32 limits the well walls to 550 °C. The independent limit controller on T3 opens the 2-pole contactor at 600 °C and latches until reset by hand. The heaters are rated to 760 °C, so even a failure of both limits would leave some margin. An SSR that fails shorted is the most likely single failure, and it is covered by the contactor.
-- **Electrical.** Dedicated 20 A circuit with 2-pole GFCI protection, supplementary 10 A fuses per group and a steel enclosure. The heater junction box on the jacket top stays near room temperature.
-- **Surfaces.** The jacket runs at 26 °C at full charge. The hot outlet duct, up to 314 °C, is the only hot part outside the jacket. It is guarded by a perforated steel sleeve and kept 450 mm from combustibles, as for single-wall stovepipe.
+- **Electrical.** Dedicated 20 A circuit with a 2-pole 5 mA GFCI breaker, supplementary 10 A fuses per group and a steel enclosure. 30 mA equipment ground-fault protection is used only if the heaters still trip the 5 mA device after bake-out and the installing electrician confirms the code allows it at that location (decided 2026-10-02). The heater junction box on the jacket top stays near room temperature.
+- **Surfaces.** The jacket runs at 26 °C at full charge. The hot outlet duct, up to 314 °C, is the only hot part outside the jacket. It is guarded by a perforated steel sleeve and kept 450 mm from combustibles, as for single-wall stovepipe. These siting rules, with the heat trap in the outlet run and the fan below the mixing tee, are requirements an installer must meet (R15, decided 2026-10-02).
+- **Warning labels.** Hot-surface and 240 V warning labels go on the jacket, outlet guard, junction box and enclosure (decided 2026-10-02; one BOM line, about USD 15, to be added).
 - **Materials.** No zinc, paint, liner or plastic above 200 °C. The jacket is galvanized, but it runs cold. AES fiber replaces refractory ceramic fiber, which is classed as a possible carcinogen.
 - **Structure.** The unit weighs about 415 kg and must stand on a concrete slab; wood floors are not permitted.
 
@@ -172,7 +177,7 @@ The main technical risks are as follows.
 
 - **Thermal ratcheting.** The sand expands while the drum is still cool, then settles into the gap when the drum expands, and the drum may grow a little each cycle. Heating from the core outward helps, and R19 sets a 1 % growth limit to watch. A compressible AES liner inside the drum wall is the fallback if growth appears.
 - **Sand conductivity.** If the sand conducts 20 % less heat than assumed, the charge time grows to 12.1 h (TBK-CAL-001, Table 8). The test article will fit the real value.
-- **GFCI nuisance trips.** Twelve MgO heaters leak a little current when damp. Bake-out cures this, but a 30 mA equipment ground-fault device may be needed if a 5 mA GFCI trips. That choice is for the installing electrician.
+- **GFCI nuisance trips.** Twelve MgO heaters leak a little current when damp. Bake-out usually cures this. The design specifies a 5 mA GFCI breaker; a 30 mA equipment ground-fault device is a measured exception, used only if the heaters still trip the 5 mA device after bake-out and the installing electrician confirms the code allows it (decided 2026-10-02).
 - **Cost.** At $3,854, the parts cost about five times the USD 728 value-engineering target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The prototype budget now funds the test article, at $727.70 (decided by Amish, 2026-09-25).
 - **Charge time.** With standby loss counted, a full charge takes 9.6 h against the 8 h in R3. The options are to cut loss (TBK-CAL-001, Table 5), move to twelve 1 in wells (8.4 h), or relax R3 to 10 h. Decided by Amish, 2026-09-25 (TBK-DDR-002): choose after the test article has measured sand conductivity and loss. That choice is on hold with TRL 4.
 
@@ -180,10 +185,10 @@ The main technical risks are as follows.
 
 - [x] Decide the budget path. Amish decided on 2026-09-24 to build the reduced-scale test article (TBK-PRC-002) first, and on 2026-09-25 set its budget at $727.70 and accepted revisiting the full-scale budget with its results (TBK-DDR-002). Both are on hold with TRL 4.
 - [ ] Close the R3 charge-time gap of 1.6 h (section 8, charge time risk). Decided: choose the fix after the test article measures sand conductivity (TBK-DDR-002); on hold with TRL 4.
-- [ ] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5). No recommendation has been made; proposed, awaiting Amish.
+- [x] Accept 459 W standby loss, or adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5). Decided 2026-10-02 (TBK-DEC-001): accept 459 W for now; decide the upgrade together with the R3 charge-time fix once the test article has measured loss.
 - [ ] Confirm the fan's pressure curve and speed-control interface against 60 L/s at 150 Pa.
 - [ ] Confirm the compressive strength of the stone wool base board on the data sheet (60 kPa or more).
-- [ ] Choose between a 5 mA GFCI and 30 mA equipment protection with the electrician.
+- [x] Choose between a 5 mA GFCI and 30 mA equipment protection with the electrician. Decided 2026-10-02 (TBK-DEC-001): a 2-pole 5 mA GFCI breaker; 30 mA equipment ground-fault protection only if the heaters still trip it after bake-out and the installing electrician confirms the code allows it at that location.
 - [ ] Controller schematic, firmware and test plan TBK-TST-001: drafted for the test article in an earlier session and archived under `archive/out-of-phase-trl4/`; on hold with TRL 4.
 - [x] Review proposals D1 to D8. Accepted by Amish on 2026-09-25 and recorded in TBK-DDR-002.
 

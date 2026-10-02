@@ -101,7 +101,7 @@ The [prototype build plan](docs/05-build-plan.md) (TBK-BLD-001) shows how to mak
 
 ## Safety
 
-> Operates at up to 550 °C inside and weighs about 415 kg. Use a dedicated GFCI-protected 240 V circuit, keep the independent high limit in service, and stand the unit on a concrete slab. See TBK-PRC-001, sections 6 and 7.
+> Operates at up to 550 °C inside and weighs about 415 kg. Use a dedicated 240 V circuit with a 5 mA GFCI breaker, keep the hot outlet duct guarded and 450 mm from combustibles, keep the independent high limit in service, and stand the unit on a concrete slab. See TBK-PRC-001, sections 6 and 7.
 
 ## Repository layout
 

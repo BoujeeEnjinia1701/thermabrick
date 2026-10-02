@@ -3,9 +3,9 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.10"
+version: "0.11"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -49,6 +49,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: 'Design made constructable (TBK-DDR-003). R15 at 415 kg; R20 full-scale estimate $3,854 reported against the value-engineering target; R13 and R17 notes for the outlet trim ring and the screwed jacket cap'
+- version: "0.11"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Decisions of 2026-10-02 (TBK-DEC-001): R11 names the 5 mA GFCI breaker and the condition for 30 mA protection; R15 adds the siting rules as installer requirements. No status changed'
 ---
 
 # ThermaBrick requirements
@@ -76,7 +80,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | R8 | Peak temperatures | Sand and well wall 550 °C or below; heater sheath 700 °C or below; drum wall 500 °C or below | A: TBK-CAL-001 section 3. T: well-wall and sand thermocouples, plus a temporary drum-wall thermocouple beside a ring B well | Met (A): 550 °C, 634 °C and about 480 °C |
 | R9 | Accessible surface temperature at full charge, 20 °C room | 45 °C or below on the jacket; hot outlet duct guarded | A: TBK-CAL-001 section 5. T: surface survey with a contact probe | Met (A): 26 °C side |
 | R10 | Independent over-temperature protection | Hardware limit, separate from the ESP32, opens a 2-pole contactor at 600 °C well-wall temperature and latches until manually reset | I: wiring against the schematic. T: trip test with a heated thermocouple | Met by design |
-| R11 | Electrical supply and protection | Dedicated 240 V, 20 A circuit with 2-pole GFCI protection; continuous current 16 A or less; supplementary fuses per heater group | A: TBK-CAL-001 section 6. I | Met (A): 12.5 A |
+| R11 | Electrical supply and protection | Dedicated 240 V, 20 A circuit with a 2-pole 5 mA GFCI breaker (30 mA equipment ground-fault protection only if the heaters still trip it after bake-out and the installing electrician confirms the code allows it; TBK-DEC-001, 2026-10-02); continuous current 16 A or less; supplementary fuses per heater group | A: TBK-CAL-001 section 6. I | Met (A): 12.5 A |
 | R12 | Fail-safe behavior | On controller reset, loss of Wi-Fi, a sensor fault or a fan fault: heaters off, inlet damper closed | D: fault injection for each case | Firmware to be written |
 | R13 | Materials in hot zones | No zinc, paint, liner or plastic above 200 °C; AES (body-soluble) fiber in place of refractory ceramic fiber | I: against the BOM | Met by design. The hot outlet passes the galvanized jacket cap in a 180 mm hole packed with AES and covered by a black steel trim ring, so no zinc sits within 39 mm of it (TBK-DDR-003) |
 
@@ -85,7 +89,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | ID | Requirement | Target | Verification | v0.2 status |
 | --- | --- | --- | --- | --- |
 | R14 | Envelope | 1,250 mm diameter or less; 1,500 mm high or less, including ducts | I: CAD and as-built | Met: 1,209 mm by 1,462 mm |
-| R15 | Siting and floor load | Indoors, inside the heated space, on a concrete slab; 450 kg or less in service | A: TBK-CAL-001 section 7 | Met (A): 415 kg (TBK-CAL-001 v0.3) |
+| R15 | Siting and floor load | Indoors, inside the heated space, on a concrete slab; 450 kg or less in service. Installer rules (TBK-DEC-001, 2026-10-02): the hot outlet duct is kept 450 mm from combustibles and guarded by a perforated steel sleeve, the outlet run forms a heat trap, and the fan sits below the mixing tee | A: TBK-CAL-001 section 7 | Met (A): 415 kg (TBK-CAL-001 v0.3); the installer rules are checked at installation |
 | R16 | Buildability | No welding, machining or pressure parts; hand tools, a pipe threader and pop rivets only | I: build log | Met by design |
 | R17 | Serviceability | Any heater replaceable from the top without removing sand | D: replace one heater | Met by design: heaters sit in wells; the jacket cap is screwed, not riveted, so it and the top insulation lift off to reach them (TBK-DDR-003) |
 

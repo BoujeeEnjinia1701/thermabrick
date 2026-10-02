@@ -3,9 +3,9 @@ doc_id: TBK-DDR-002
 title: ThermaBrick recommendations accepted
 project: ThermaBrick
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,12 +13,16 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Record the recommendations accepted by Amish on 2026-09-25, what changed in the repo, and the items still open
+- version: "0.2"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Standby loss and GFCI choice decided by Amish on 2026-10-02 (TBK-DEC-001)'
 ---
 
 # 0002: Recommendations accepted
 
 - **Date:** 2026-09-25
-- **Status:** accepted. Every item below that carried a recommendation is decided by Amish, 2026-09-25: go with recommendation.
+- **Status:** accepted. Every item below that carried a recommendation is decided by Amish, 2026-09-25: go with recommendation. The two items still open then (standby loss and GFCI choice) were decided by Amish on 2026-10-02 (TBK-DEC-001).
 
 ## Context
 
@@ -55,10 +59,10 @@ Numbers before and after:
 
 ## Still open
 
-These items carried no recommendation and stay "Proposed, awaiting Amish".
+These items carried no recommendation and stayed open. Recommendations were written for them in the design decisions register (TBK-DEC-001), and Amish approved them on 2026-10-02 ("i approve your recommendations for all 555 open decisions."):
 
-- **Standby loss.** Whether 459 W at full charge (8.7 kWh, 47 % of the window, over 24 h idle) is acceptable, or whether to adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5: 357 W for about $450). TBK-PRB-001, section 5, item 2.
-- **GFCI choice.** A 5 mA GFCI or 30 mA equipment ground-fault protection, to be chosen with the installing electrician (TBK-PRC-001, sections 8 and 9).
+- **Standby loss.** Whether 459 W at full charge (8.7 kWh, 47 % of the window, over 24 h idle) is acceptable, or whether to adopt the stainless leg sections and microporous panel (TBK-CAL-001, Table 5: 357 W for about $450). TBK-PRB-001, section 5, item 2. Decided 2026-10-02: 459 W standby loss accepted for now (option a); the stainless upper inlet legs and microporous hot face (357 W, about USD 450) are decided together with the R3 charge-time fix once the test article has measured loss.
+- **GFCI choice.** A 5 mA GFCI or 30 mA equipment ground-fault protection, to be chosen with the installing electrician (TBK-PRC-001, sections 8 and 9). Decided 2026-10-02: a 2-pole 5 mA GFCI breaker; 30 mA equipment ground-fault protection only if the heaters still trip it after bake-out and the installing electrician confirms the code allows it at that location.
 
 Confirmations that need data, not a decision, also remain: the fan's pressure curve, the stone wool base board's compressive strength, and every price in the BOM.
 

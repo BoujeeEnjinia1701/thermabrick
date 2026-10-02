@@ -3,9 +3,9 @@ doc_id: TBK-DEC-001
 title: ThermaBrick design decisions register
 project: ThermaBrick
 doc_type: Design decisions register
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,6 +13,10 @@ revisions:
     date: '2026-10-01'
     author: Amish Chadha
     change: Register opened with the open decisions from REVIEW.md, TBK-PRC-001, TBK-DDR-002 and TBK-DDR-003; budget treated as a value-engineering target
+  - version: "0.2"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: 'Amish approved the recommendations for all nine open decisions on 2026-10-02 (TBK-DDR-003 accepted); moved to decisions made'
 ---
 
 # ThermaBrick design decisions register
@@ -21,17 +25,7 @@ Every design decision still to be made, and every decision made, in one place. E
 
 ## Open decisions
 
-| # | Decision needed | Options | Recommendation | Affects in the build | Source |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Review the design-for-construction changes P1 to P11 | Accept them; ask for changes to any | Accept: each keeps what the unit does and the safety case | The whole build plan | TBK-DDR-003, Table 1 |
-| 2 | Warning labels for hot surfaces and 240 V | (a) add one BOM line, about USD 15; (b) leave to the installer | (a) | Labels on the jacket, outlet guard, junction box and enclosure | TBK-DDR-003, C1; REVIEW 2026-09-26, item 4 |
-| 3 | Air path layout beyond the unit (duct route, tee, fan, control enclosure on the wall) | (a) keep the plan's layout illustrative, with its siting rules; (b) add an installation layout sheet | (a) at TRL 3 | Build plan step 20 | TBK-DDR-003, C2; REVIEW 2026-09-26, item 2 |
-| 4 | Standby loss: accept 459 W at full charge (8.7 kWh, 47 % of the window, per day idle) | (a) accept; (b) stainless upper inlet legs and a microporous hot face, 357 W for about USD 450 | None made | Inlet legs and the hot face of the insulation | TBK-PRC-001, section 9; TBK-CAL-001, Table 5 |
-| 5 | Ground-fault protection | (a) 5 mA GFCI breaker; (b) 30 mA equipment ground-fault protection if MgO heaters trip a 5 mA device | Choose with the installing electrician | Main panel breaker (BOM line 39) | TBK-PRC-001, sections 8 and 9 |
-| 6 | Renders: the 80 degree cut sector | Keep it for the hero and detail renders only; drawings and STEP stay whole | Keep for those renders | None; appearance only | REVIEW 2026-09-26, item 1 |
-| 7 | Renders: fan, guard sleeve, intake and grille sizes | Accept as placeholders until the fan is chosen | Accept as placeholders | None; appearance only | REVIEW 2026-09-26, item 3 |
-| 8 | Renders: cosmetic trim ring and kick plinth | Optional cosmetic parts, no BOM line | Treat as optional | None | REVIEW 2026-09-26, item 4 |
-| 9 | Renders: insulation split into AES hot face and stone wool | Keep the split | Keep | None; no dimension changes | REVIEW 2026-09-26, item 5 |
+None. All open decisions were decided on 2026-10-02.
 
 ## To confirm when parts are bought
 
@@ -62,6 +56,15 @@ Value-engineering target: USD 728 (a hypothetical control target, not a limit; `
 | 2026-09-25 | Requirement targets R1 to R20 as written, including the 500 °C drum-wall limit | Amish, same instruction | [TBK-DDR-002](decisions/0002-recommendations-accepted.md), A4, A5 |
 | 2026-09-25 | R3 charge-time miss: choose the fix after the test article measures sand conductivity (on hold with TRL 4) | Amish, same instruction | [TBK-DDR-002](decisions/0002-recommendations-accepted.md), A6 |
 | 2026-09-25 | Controller board stays deferred; KiCad install on hold with TRL 4 | Amish, same instruction | [TBK-DDR-002](decisions/0002-recommendations-accepted.md) |
-| 2026-09-30 | The design is made physically buildable as the build plan is drawn | Amish: "If you are realising that the design cannot be built as per concept - fix the design assumptions to match and be physically feasible as you draw the illustrations." | [TBK-DDR-003](decisions/0003-design-for-construction.md) (its changes open for review, decision 1 above) |
+| 2026-09-30 | The design is made physically buildable as the build plan is drawn | Amish: "If you are realising that the design cannot be built as per concept - fix the design assumptions to match and be physically feasible as you draw the illustrations." | [TBK-DDR-003](decisions/0003-design-for-construction.md) (its changes accepted on 2026-10-02, below) |
 | 2026-09-30 | Outstanding decisions live in this register, not in the build plan | Amish: "don't log outstanding decisions in this build plan - that is not the place for it." | This register |
 | 2026-10-01 | Budgets are value-engineering targets, not limits | Amish: "the budgets are a hypothethical control target to ensure we are thinking along a value engineering lens." | This register, Value engineering |
+| 2026-10-02 | Design for construction accepted: the changes P1 to P11 and their knock-on changes, as made | Amish: "i approve your recommendations for all 555 open decisions." | TBK-DDR-003, Table 1 |
+| 2026-10-02 | Warning labels: one BOM line, about USD 15, for hot-surface and 240 V warning labels on the jacket, outlet guard, junction box and enclosure (option a) | Amish: "i approve your recommendations for all 555 open decisions." | TBK-DDR-003, C1; REVIEW 2026-09-26, item 4 |
+| 2026-10-02 | Air path beyond the unit: the layout stays illustrative at TRL 3 (option a), and its siting rules become requirements an installer must meet: the hot outlet duct is kept 450 mm from combustibles and guarded by a perforated steel sleeve, the outlet run forms a heat trap, and the fan sits below the mixing tee | Amish: "i approve your recommendations for all 555 open decisions." | TBK-DDR-003, C2; REVIEW 2026-09-26, item 2 |
+| 2026-10-02 | Standby loss: 459 W standby loss accepted for now (option a); the stainless upper inlet legs and microporous hot face (357 W, about USD 450) are decided together with the R3 charge-time fix once the test article has measured loss | Amish: "i approve your recommendations for all 555 open decisions." | TBK-PRC-001, section 9; TBK-CAL-001, Table 5 |
+| 2026-10-02 | Ground-fault protection: a 2-pole 5 mA GFCI breaker; 30 mA equipment ground-fault protection only if the heaters still trip it after bake-out and the installing electrician confirms the code allows it at that location | Amish: "i approve your recommendations for all 555 open decisions." | TBK-PRC-001, sections 8 and 9 |
+| 2026-10-02 | The 80 degree cut sector is kept for the hero and detail renders only; drawings and STEP files stay whole | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 1 |
+| 2026-10-02 | Fan, guard sleeve, intake and grille sizes in the renders accepted as placeholders until the fan is chosen | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 3 |
+| 2026-10-02 | The teal top trim ring and kick plinth are optional cosmetic parts with no BOM line; the renders must also show the functional black outlet trim ring (BOM line 44) | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 4 |
+| 2026-10-02 | The insulation stays drawn as an AES hot face over stone wool | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 5 |

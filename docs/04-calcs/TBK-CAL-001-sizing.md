@@ -3,9 +3,9 @@ doc_id: TBK-CAL-001
 title: ThermaBrick thermal and electrical sizing
 project: ThermaBrick
 doc_type: Calculation
-version: "0.3"
+version: "0.4"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -21,6 +21,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: 'Re-run for the constructable design (TBK-DDR-003). Insulation mass 75 to 80 kg for the base batt ring and two more firebricks; operating mass 415 kg, firebrick load 15.0 kPa. Thermal and electrical results unchanged'
+- version: "0.4"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Branch circuit breaker stated as 5 mA GFCI, per the decision of 2026-10-02 (TBK-DEC-001); no result changed'
 ---
 
 # ThermaBrick thermal and electrical sizing
@@ -200,7 +204,7 @@ The twelve heaters form two groups of six in parallel, each switched by its own 
 | Heater resistance, hot | 230.4 Ω each |
 | Group current and power | 6.25 A, 1.5 kW |
 | Total current and power | 12.5 A, 3.0 kW |
-| Branch circuit | 20 A, 2-pole GFCI breaker, 12 AWG copper |
+| Branch circuit | 20 A, 2-pole 5 mA GFCI breaker, 12 AWG copper |
 | Continuous load limit (80 % of 20 A) | 16 A, so 12.5 A has 22 % margin |
 | SSR on-state loss | 7.5 W each at 1.2 V drop |
 | SSR heat sink | 2 K/W or better, which keeps the SSR case below 50 °C in a 30 °C enclosure |
