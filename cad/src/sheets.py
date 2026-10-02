@@ -19,7 +19,8 @@ DWG = ROOT / "cad" / "drawings"
 VIEWS = DWG / "_views"
 
 REVISIONS = {
-    "TBK-DWG-001": [("P1", "First issue: general arrangement of the v0.2 design", "2026-09-24", "AC")],
+    "TBK-DWG-001": [("P1", "First issue: general arrangement of the v0.2 design", "2026-09-24", "AC"),
+                    ("P2", "Made constructable: base, fittings, plenum, cap, box (TBK-DDR-003)", "2026-09-30", "AC")],
     "TBK-DWG-002": [("P1", "First issue: reduced-scale test article", "2026-09-24", "AC"),
                     ("P2", "Bricks moved under the chime; U-tube legs to 36 in nipple length; stack follows", "2026-09-24", "AC")],
     "TBK-DWG-005": [("P1", "First issue: controller enclosure, 250 x 200 x 150 mm", "2026-09-24", "AC")],
@@ -43,11 +44,11 @@ def rows_001():
         ("Storage", f"{P['sand_mass_kg']:.0f} kg dry silica sand, 18.3 kWh(th) between 150 and 450 °C mean"),
         ("Charge", f"12 cartridge heaters, 250 W each, 3.0 kW at 240 V; sand and well wall 550 °C max"),
         ("Discharge", "Six 1-1/4 in U-tubes, 1.0 kW rated, 1.5 kW boost; supply air 50 °C via mixing tee"),
-        ("Envelope", f"{d['overall_d']:,.0f} mm dia x {d['overall_h']:,.0f} mm high; about 410 kg; slab floor only"),
+        ("Envelope", f"{d['overall_d']:,.0f} mm dia x {d['overall_h']:,.0f} mm high; about 415 kg; slab floor only"),
         ("Section A-A", "Front view is cut on the XZ plane through four heater wells; sand omitted for clarity"),
         ("Sand level", f"{d['sand_depth']:.0f} mm above drum floor; headspace filled with {d['ins_top_int']:.0f} mm "
                        "AES blanket and stone wool"),
-        ("Reference", "TBK-PRC-001 design precis, TBK-CAL-001 sizing, bom/bom.csv"),
+        ("Reference", "TBK-PRC-001 design precis, TBK-CAL-001 sizing, TBK-BLD-001 build plan, bom/bom.csv"),
     ]
 
 
@@ -131,14 +132,15 @@ def make(dwg_no):
 
     # Section A-A: keep y >= 0, drop the sand, view from -Y
     keep = Pos(0, big / 2, 0) * Box(big, big, big, align=(Align.CENTER, Align.CENTER, Align.MIN))
-    sec = Compound(_solid([parts[n] & keep for n in parts if n != "sand"]))
+    names = getattr(cfg["mod"], "ASSEMBLY", list(parts))
+    sec = Compound(_solid([parts[n] & keep for n in names if n != "sand"]))
     views["front"] = visible(sec, "section_aa", (c.X, c.Y - dist, c.Z))
     # Right view: exterior, visible edges only
     views["right"] = visible(assy, "right_exterior", (c.X + dist, c.Y, c.Z))
     # Isometric cutaway: remove the quadrant facing the viewer (x > 0, y < 0), sand kept.
     # A sheet may instead drop named parts (the enclosure lid) and skip the cut.
     quad = Pos(big / 2, -big / 2, -10) * Box(big, big, big, align=(Align.CENTER, Align.CENTER, Align.MIN))
-    keep_parts = [n for n in parts if n not in cfg.get("iso_drop", ())]
+    keep_parts = [n for n in names if n not in cfg.get("iso_drop", ())]
     if cfg.get("iso_cut", True):
         cut = Compound(_solid([parts[n] - quad for n in keep_parts]))
     else:

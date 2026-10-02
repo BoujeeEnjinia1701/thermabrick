@@ -14,7 +14,10 @@ trl_evidence:
   - cad/step/thermabrick.step
   - cad/drawings/TBK-DWG-001.svg
   - bom/bom.csv
+  - docs/05-build-plan.md
+  - docs/06-design-decisions.md
 status: concept          # concept | design | prototype | tested | released
+design_state: constructable   # STANDARDS section 18; made constructable 2026-09-30 (TBK-DDR-003)
 shortlisted: true
 pitch: >-
   Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.

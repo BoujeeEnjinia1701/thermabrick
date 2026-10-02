@@ -3,9 +3,9 @@ doc_id: TBK-PRB-001
 title: ThermaBrick problem statement
 project: ThermaBrick
 doc_type: Problem statement
-version: "0.8"
+version: "0.9"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -41,6 +41,10 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.9"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: 'Operating mass 415 kg and full-scale estimate $3,854 after the design was made constructable (TBK-DDR-003); budget worded as a value-engineering target'
 ---
 
 # ThermaBrick problem statement
@@ -80,8 +84,8 @@ The operating context sets the design. The unit charges from about 10:00 to 16:0
 - **Garage-buildable.** No welding, no pressure vessel and no custom machining. Cutting and threading pipe, riveting sheet metal and basic electrical assembly are acceptable.
 - **Safe at the temperatures involved.** Independent hardware over-temperature protection, no coated or galvanized steel in hot zones, cool touchable surfaces and insulation fibers that are safe to handle.
 - **Standard supply.** 240 V split phase on one 20 A circuit, the normal North American arrangement for a fixed heater.
-- **Indoor siting on a concrete slab.** The unit weighs about 410 kg in service.
-- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimates $3,674 for the full-scale design, about six times the target. The budget now funds a reduced-scale test article, with a budget of $727.70 decided by Amish on 2026-09-25 (TBK-DDR-002). The test article is archived and on hold with TRL 4 (section 5).
+- **Indoor siting on a concrete slab.** The unit weighs about 415 kg in service.
+- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimated $3,674 for the full-scale design; the constructable design (TBK-DDR-003) is estimated at $3,854, USD 3,126 over the USD 728 value-engineering target. The target is a hypothetical control figure for value engineering, not a spending limit. The budget now funds a reduced-scale test article, with a budget of $727.70 decided by Amish on 2026-09-25 (TBK-DDR-002). The test article is archived and on hold with TRL 4 (section 5).
 
 ## 4. What success looks like
 

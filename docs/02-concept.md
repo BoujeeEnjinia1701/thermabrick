@@ -3,9 +3,9 @@ doc_id: TBK-PRC-001
 title: ThermaBrick design precis
 project: ThermaBrick
 doc_type: Design precis
-version: "0.5"
+version: "0.6"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -29,11 +29,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.6"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: 'Design made constructable (TBK-DDR-003): mass 415 kg, parts $3,854, build sequence points to the build plan TBK-BLD-001; budget worded as a value-engineering target'
 ---
 
 # ThermaBrick design precis
 
-ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 9.6 h at up to 3.0 kW, then delivers 1.0 kW of warm air for 14.3 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its weaknesses are cost, standby loss and charge time. The parts are estimated at $3,674 against a $600 target. It releases 459 W passively at full charge. With that loss running, a full charge takes 9.6 h, against the 8 h in R3. A reduced-scale test article (TBK-PRC-002, budget $727.70 decided by Amish on 2026-09-25) will measure the sand and loss properties behind all three before the full-scale build. It is archived and on hold with TRL 4.
+ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, insulated to 1.21 m diameter and charged by twelve 250 W cartridge heaters from surplus rooftop PV. It stores 18.3 kWh(th) between 150 °C and 450 °C. It fills in 9.6 h at up to 3.0 kW, then delivers 1.0 kW of warm air for 14.3 h through six steel U-tubes buried in the sand. The design needs no welding and no pressure parts. It keeps all sand below the 573 °C quartz inversion and the jacket below 30 °C. Its weaknesses are cost, standby loss and charge time. The constructable design's parts are estimated at $3,854 (TBK-DDR-003), USD 3,126 over the USD 728 value-engineering target. It releases 459 W passively at full charge. With that loss running, a full charge takes 9.6 h, against the 8 h in R3. A reduced-scale test article (TBK-PRC-002, budget $727.70 decided by Amish on 2026-09-25) will measure the sand and loss properties behind all three before the full-scale build. It is archived and on hold with TRL 4.
 
 | Parameter | Value |
 | --- | --- |
@@ -44,15 +48,15 @@ ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry silica sand, ins
 | Discharge | Six 1-1/4 in U-tubes; 1.0 kW for 14.3 h, to 154 °C sand mean; 1.5 kW boost for 8.1 h |
 | Supply air | 30 L/s at 50 °C (1.0 kW), mixed from exchanger outlet air and room air |
 | Standby loss | 459 W at full charge; 8.7 kWh over 24 h idle |
-| Envelope and mass | 1,209 mm diameter by 1,462 mm high; about 410 kg in service |
+| Envelope and mass | 1,209 mm diameter by 1,462 mm high; about 415 kg in service |
 | Controls | ESP32, seven thermocouple channels, live PV export from an energy meter, independent 600 °C hardware limit |
-| Parts cost | $3,674 estimated (bom/bom.csv) |
+| Parts cost | $3,854 estimated (bom/bom.csv), against a USD 728 value-engineering target |
 
 *Table 1. Key parameters of the v0.2 design.*
 
-![General arrangement drawing TBK-DWG-001 Rev P1](../cad/drawings/TBK-DWG-001.svg)
+![General arrangement drawing TBK-DWG-001 Rev P2](../cad/drawings/TBK-DWG-001.svg)
 
-*Figure 1. General arrangement, TBK-DWG-001 Rev P1, generated from `cad/src/model.py`. The front view is a section with the sand omitted; the isometric view has one quarter cut away.*
+*Figure 1. General arrangement, TBK-DWG-001 Rev P2, generated from `cad/src/model.py`. The front view is a section with the sand omitted; the isometric view has one quarter cut away.*
 
 ## 1. Architecture
 
@@ -119,14 +123,14 @@ State of charge is the energy-weighted mean of the four sand thermocouples, conv
 
 ## 6. Build and commissioning
 
-The build takes about three weekends. It needs a pipe threader (rental), a drill with hole saws, snips and a rivet gun.
+The prototype build plan TBK-BLD-001 (`docs/05-build-plan.md`) gives the full, illustrated sequence for the constructable design (TBK-DDR-003); this section is the summary. The build takes about three weekends. It needs a pipe threader (rental), a drill with hole saws, snips and a rivet gun.
 
-1. **Drum.** Strip the exterior paint, then burn the drum empty outdoors to 300 °C to remove residues. Drill the lid from a full-size template printed from the model: twelve 28.7 mm holes for the wells and twelve 44.2 mm holes for the U-tube legs.
-2. **Base.** Lay two layers of stone wool board over the full diameter on the slab. Add a course of insulating firebrick under the drum footprint and a 25 mm AES board on top.
-3. **Internals.** Set the drum on the base. Stand the capped wells and assembled U-tubes on the floor, using the lid as a top template on spacers. Fix thermocouples T1 to T7 to the wells and to steel wire guides.
+1. **Drum.** Strip the exterior paint, then burn the drum empty outdoors to 300 °C to remove residues. Drill the lid through a plywood setting template made from the model: twelve 36 mm holes for the wells (each also passes a well-wall thermocouple), twelve 48 mm holes for the U-tube legs and four 6 mm holes for the sand thermocouples.
+2. **Base.** Lay two layers of stone wool board over the full diameter on the slab. Add a 610 mm disc of insulating firebrick under the drum footprint and a 25 mm AES board disc on top, with a ring of 89 mm stone wool batt round them out to the jacket.
+3. **Internals.** Set the drum on the base. Level a 14 mm first lift of sand and stand the capped wells on it; stand the U-tubes (two elbows and a 4 in nipple each) on the floor. Fix thermocouples T1 to T3 to the wells and T4 to T7 to stainless guide rods, then clamp the setting template on the rim to hold every pipe upright during the fill.
 4. **Sand.** Fill in 100 mm lifts to 571 mm, settling each lift around the pipes by rodding. Weigh every bag; the total is 210 kg.
-5. **Top and side.** In the headspace, lay 50 mm of AES blanket on the sand and fill the rest with stone wool, cut around the pipes. Fit the lid, ring, collector and outlet. Wrap two layers of AES blanket and three of stone wool around the drum. Close the jacket, add the top insulation, the top cap and the inlet plenum, then connect the ducts.
-6. **Electrical.** Drop the heaters into the wells and land the leads in the junction box. Wire the enclosure, then have the 240 V circuit connected.
+5. **Top and side.** In the headspace, lay 50 mm of AES blanket on the sand and fill the rest with stone wool, cut around the pipes. Lift off the template and fit the lid, ring, collector (riveted to the lid by six tabs) and outlet. Wrap two layers of AES blanket and three of stone wool around the drum. Close the jacket, add the top insulation, the screwed top cap with the outlet trim ring, and the inlet plenum, then connect the ducts.
+6. **Electrical.** Drop the heaters into the wells before the top insulation goes on and land their 72 in leads in the junction box on the cap. Wire the enclosure, then have the 240 V circuit connected.
 7. **Bake-out.** Check each heater's insulation resistance; it should read 1 MΩ or more at 500 V. Hold the bed at a 150 °C sand mean for 24 h with the collector outlet open and the room ventilated, to drive out moisture and burn off the stone wool binder. Then step to 300 °C and finally 450 °C, logging throughout.
 
 > **Safety:** Respirable crystalline silica. Fill the drum outdoors or with local exhaust, and wear a P100 or N95 respirator while pouring and sieving sand.
@@ -143,7 +147,7 @@ The design layers its protection so that no single failure can overheat the unit
 - **Electrical.** Dedicated 20 A circuit with 2-pole GFCI protection, supplementary 10 A fuses per group and a steel enclosure. The heater junction box on the jacket top stays near room temperature.
 - **Surfaces.** The jacket runs at 26 °C at full charge. The hot outlet duct, up to 314 °C, is the only hot part outside the jacket. It is guarded by a perforated steel sleeve and kept 450 mm from combustibles, as for single-wall stovepipe.
 - **Materials.** No zinc, paint, liner or plastic above 200 °C. The jacket is galvanized, but it runs cold. AES fiber replaces refractory ceramic fiber, which is classed as a possible carcinogen.
-- **Structure.** The unit weighs about 410 kg and must stand on a concrete slab; wood floors are not permitted.
+- **Structure.** The unit weighs about 415 kg and must stand on a concrete slab; wood floors are not permitted.
 
 > **Safety:** Stored energy. A charged unit stays hot for days after power is removed. Label it, and do not open the lid or pull a heater until the sand mean reads below 60 °C.
 
@@ -169,7 +173,7 @@ The main technical risks are as follows.
 - **Thermal ratcheting.** The sand expands while the drum is still cool, then settles into the gap when the drum expands, and the drum may grow a little each cycle. Heating from the core outward helps, and R19 sets a 1 % growth limit to watch. A compressible AES liner inside the drum wall is the fallback if growth appears.
 - **Sand conductivity.** If the sand conducts 20 % less heat than assumed, the charge time grows to 12.1 h (TBK-CAL-001, Table 8). The test article will fit the real value.
 - **GFCI nuisance trips.** Twelve MgO heaters leak a little current when damp. Bake-out cures this, but a 30 mA equipment ground-fault device may be needed if a 5 mA GFCI trips. That choice is for the installing electrician.
-- **Cost.** At $3,674, the parts cost about six times the target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The prototype budget now funds the test article, at $727.70 (decided by Amish, 2026-09-25).
+- **Cost.** At $3,854, the parts cost about five times the USD 728 value-engineering target. Heaters, insulation and pipe account for 53 % of it (`bom/bom-notes.md`). The prototype budget now funds the test article, at $727.70 (decided by Amish, 2026-09-25).
 - **Charge time.** With standby loss counted, a full charge takes 9.6 h against the 8 h in R3. The options are to cut loss (TBK-CAL-001, Table 5), move to twelve 1 in wells (8.4 h), or relax R3 to 10 h. Decided by Amish, 2026-09-25 (TBK-DDR-002): choose after the test article has measured sand conductivity and loss. That choice is on hold with TRL 4.
 
 ## 9. Open questions
@@ -192,7 +196,7 @@ The main technical risks are as follows.
 | Sizing calculation v0.2 and script | `docs/04-calcs/` (TBK-CAL-001) |
 | Test article precis, sizing, drawing and BOM (archived, on hold with TRL 4) | TBK-PRC-002, TBK-CAL-002, TBK-DWG-002, `bom/bom-test-article.csv`, all under `archive/out-of-phase-trl4/` |
 | Parametric model | `cad/src/model.py`; exports in `cad/step/` and `cad/stl/` |
-| General arrangement, Rev P1 | `cad/drawings/TBK-DWG-001` (SVG, PDF, PNG), built by `cad/src/sheets.py` |
+| General arrangement, Rev P2 | `cad/drawings/TBK-DWG-001` (SVG, PDF, PNG), built by `cad/src/sheets.py` |
 | Bill of materials | `bom/bom.csv` and `bom/bom-notes.md` |
 
 *Table 5. Deliverables of the v0.2 draft.*

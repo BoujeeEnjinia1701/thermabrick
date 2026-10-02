@@ -2,13 +2,13 @@
 
 [![DOI](https://zenodo.org/badge/1386352909.svg)](https://zenodo.org/badge/latestdoi/1386352909) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/thermabrick/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/thermabrick)
 
-**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Prototype budget:** $727.70 USD test article (decided by Amish, 2026-09-25; on hold with TRL 4) (full-scale estimate $3,674) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Value-engineering target:** USD 728, the test article budget decided by Amish on 2026-09-25 (on hold with TRL 4); estimated cost of the constructable full-scale design USD 3,854 (USD 3,126 over the target) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
 ![ThermaBrick: sand thermal battery for solar space heating, product render](media/render-hero.png)
 
-[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement TBK-DWG-001 (PDF)](cad/drawings/TBK-DWG-001.pdf) · [Sizing calculations](docs/04-calcs/TBK-CAL-001-sizing.md) · [Review note](docs/REVIEW.md)
+[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement TBK-DWG-001 (PDF)](cad/drawings/TBK-DWG-001.pdf) · [Sizing calculations](docs/04-calcs/TBK-CAL-001-sizing.md) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Review note](docs/REVIEW.md)
 
 > **Out-of-phase work archived (2026-09-25).** The portfolio is capped at TRL 3, and TRL 4 is on hold by Amish's instruction. The reduced-scale test article, its test plan and report template, firmware, controller schematic and board, enclosure, purchasing checklist, build procedure and cut list were made in an earlier session that went past the cap. They are kept, unchanged and with full history, in [archive/out-of-phase-trl4/](archive/out-of-phase-trl4/README.md), and are not current work.
 
@@ -62,17 +62,20 @@ Surplus rooftop solar gets exported cheaply or curtailed, while heating still bu
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
-The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °C. Twelve 250 W heaters charge it at up to 3.0 kW, filling it in 9.6 h, and six steel U-tubes deliver 1.0 kW of warm air for about 14 h. A reduced-scale test article (about 6 kWh(th), budget $727.70) is the next step, to measure the sand and insulation properties the design depends on. It is archived and on hold with TRL 4.
+The v0.2 design, made constructable on 2026-09-30 (TBK-DDR-003), stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °C. Twelve 250 W heaters charge it at up to 3.0 kW, filling it in 9.6 h, and six steel U-tubes deliver 1.0 kW of warm air for about 14 h. A reduced-scale test article (about 6 kWh(th), budget $727.70) is the next step, to measure the sand and insulation properties the design depends on. It is archived and on hold with TRL 4.
 
 | Document | ID | Version |
 | --- | --- | --- |
-| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.8 |
-| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.5 |
-| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.9 |
-| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.2 |
-| [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P1 |
-| [Concept sheet](media/concept-blueprint.pdf), with [hero](media/hero.png), [cutaway](media/cutaway.png) and [exploded](media/exploded.png) renders, [heat flow](media/flow.png) and [3D viewer](media/viewer.html) | TBK-DWG-006 | Rev P2 |
+| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.9 |
+| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.6 |
+| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.10 |
+| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.3 |
+| [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P2 |
+| [Concept sheet](media/concept-blueprint.pdf), with [hero](media/hero.png), [cutaway](media/cutaway.png) and [exploded](media/exploded.png) renders, [heat flow](media/flow.png) and [3D viewer](media/viewer.html) | TBK-DWG-006 | Rev P3 |
 | [Recommendations accepted](docs/decisions/0002-recommendations-accepted.md) | TBK-DDR-002 | 0.1 |
+| [Design for construction](docs/decisions/0003-design-for-construction.md) | TBK-DDR-003 | 0.1 |
+| [Prototype build plan](docs/05-build-plan.md), with making sketches TBK-DWG-101 to 110 | TBK-BLD-001 | 0.1 |
+| [Design decisions register](docs/06-design-decisions.md) | TBK-DEC-001 | 0.1 |
 | [Purchasing checklist](archive/out-of-phase-trl4/bom/purchasing-checklist.md) (archived) | | Test article, by supplier |
 | [Controller board BOM (optional, deferred; archived)](archive/out-of-phase-trl4/bom/bom-controller-board.csv) | | +$24.85 net |
 
@@ -90,9 +93,15 @@ The v0.2 design stores 18.3 kWh(th) in 210 kg of sand between 150 °C and 450 °
 
 The working bill of materials is in [bom/bom.csv](bom/bom.csv).
 
+## Building the prototype
+
+The [prototype build plan](docs/05-build-plan.md) (TBK-BLD-001) shows how to make each of the 21 components and put them together, with a making sketch for every made part, close-ups of the joints and a picture for every assembly step. Writing it made the design constructable: the wells and U-tubes now have a seat and fittings that match the drawings, the base and plenum can be built and fixed, the hot outlet clears the galvanized cap, and the heater leads and thermocouples reach the outside (TBK-DDR-003). Decisions still open are in the [design decisions register](docs/06-design-decisions.md). It is a plan only; building to it is TRL 4 work, which is on hold.
+
+![ThermaBrick prototype: every component, pulled apart and numbered in build order](docs/05-build-plan/overview.png)
+
 ## Safety
 
-> Operates at up to 550 °C inside and weighs about 410 kg. Use a dedicated GFCI-protected 240 V circuit, keep the independent high limit in service, and stand the unit on a concrete slab. See TBK-PRC-001, sections 6 and 7.
+> Operates at up to 550 °C inside and weighs about 415 kg. Use a dedicated GFCI-protected 240 V circuit, keep the independent high limit in service, and stand the unit on a concrete slab. See TBK-PRC-001, sections 6 and 7.
 
 ## Repository layout
 

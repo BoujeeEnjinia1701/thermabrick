@@ -3,9 +3,9 @@ doc_id: TBK-CAL-001
 title: ThermaBrick thermal and electrical sizing
 project: ThermaBrick
 doc_type: Calculation
-version: "0.2"
+version: "0.3"
 status: Draft
-date: '2026-09-24'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,6 +17,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Corrected the charge and discharge results to include standby loss, which v0.1 omitted. Full charge now takes 9.6 h, so R3 is not met; rated output holds for 14.3 h. Updated Tables 1, 3, 8 and 9 and Figures 1 and 2
+- version: "0.3"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: 'Re-run for the constructable design (TBK-DDR-003). Insulation mass 75 to 80 kg for the base batt ring and two more firebricks; operating mass 415 kg, firebrick load 15.0 kPa. Thermal and electrical results unchanged'
 ---
 
 # ThermaBrick thermal and electrical sizing
@@ -39,7 +43,7 @@ Version 0.1 of this note omitted standby loss from the charge and discharge runs
 | Standby loss at 450 °C, 300 °C and 150 °C | 459 W, 259 W, 103 W | R7: 500 W or less |
 | Heat lost in 24 h idle from full | 8.7 kWh (47 % of window) | R7: 9 kWh or less |
 | Jacket surface temperature, side | 26 °C | R9: 45 °C or less |
-| Operating mass and load on the floor slab | 410 kg; 3.5 kPa average | R15: 450 kg or less |
+| Operating mass and load on the floor slab | 415 kg; 3.5 kPa average | R15: 450 kg or less |
 
 *Table 1. Summary of sizing results against the requirements.*
 
@@ -208,7 +212,7 @@ Burst-fire control in whole mains cycles over a 1 s window sets each group in 25
 
 ## 7. Mass and floor load
 
-The operating mass is about 410 kg (Table 7).
+The operating mass is about 415 kg (Table 7). Version 0.3 adds 5 kg of insulation for the constructable base (TBK-DDR-003): a ring of stone wool batt round the firebrick disc and two more firebricks. The other changes made for construction (U-tube elbows standing on the drum floor, wells standing on a levelled first lift of sand at their concept height, a taller inlet plenum, longer leads) change no input of the sizing model, so no thermal or electrical result changes. The U-tube runs sit 22 mm lower in the bed, which the one-dimensional model does not resolve.
 
 | Item | Mass |
 | --- | --- |
@@ -216,14 +220,14 @@ The operating mass is about 410 kg (Table 7).
 | Twelve heater wells with caps | 18 kg |
 | Six U-tubes with elbows | 55 kg |
 | Drum, lid and ring | 26 kg |
-| Insulation, firebrick and board | 75 kg |
+| Insulation, firebrick and board | 80 kg |
 | Jacket, plenum, collector and ducts | 20 kg |
 | Heaters | 5 kg |
-| Total | 410 kg |
+| Total | 415 kg |
 
 *Table 7. Operating mass.*
 
-Spread over the 1.21 m diameter footprint, the load is 3.5 kPa. That is above the 1.9 kPa (40 psf) live load that a typical residential wood floor is designed for, so ThermaBrick must stand on a concrete slab. Under the drum, the firebrick course carries 14.8 kPa into the stone wool board beneath. The board must be rated at 60 kPa or more at 10 % strain, a safety factor of 4.
+Spread over the 1.21 m diameter footprint, the load is 3.5 kPa. That is above the 1.9 kPa (40 psf) live load that a typical residential wood floor is designed for, so ThermaBrick must stand on a concrete slab. Under the drum, the firebrick course carries 15.0 kPa into the stone wool board beneath. The board must be rated at 60 kPa or more at 10 % strain, a safety factor of 4.
 
 ## 8. Sensitivity and limitations
 

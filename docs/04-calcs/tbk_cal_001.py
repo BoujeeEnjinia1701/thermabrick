@@ -431,7 +431,7 @@ def mass_and_floor():
     m_wells = N_HEATERS * 1.68 * (D["well_top_z"] - D["floor_z"]) / 1000   # 3/4 in Sch 40: 1.68 kg/m
     leg_m = (D["jacket_top_z"] - D["floor_z"]) / 1000 * 2 + 0.16
     m_tubes = P["n_utubes"] * (3.39 * leg_m + 2 * 0.6)                     # 1-1/4 in Sch 40: 3.39 kg/m + elbows
-    m_ins = 75.0                       # AES, stone wool, firebrick and board (estimate)
+    m_ins = 80.0                       # AES, stone wool, firebrick and board (estimate); +5 kg for the base batt ring and two more bricks (TBK-DDR-003)
     m_jacket = 20.0                    # jacket, plenum, collector, duct stubs
     m_heaters = N_HEATERS * 0.45
     total = m_sand + m_drum + m_wells + m_tubes + m_ins + m_jacket + m_heaters

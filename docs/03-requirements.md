@@ -3,9 +3,9 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.9"
+version: "0.10"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -45,6 +45,10 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.10"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: 'Design made constructable (TBK-DDR-003). R15 at 415 kg; R20 full-scale estimate $3,854 reported against the value-engineering target; R13 and R17 notes for the outlet trim ring and the screwed jacket cap'
 ---
 
 # ThermaBrick requirements
@@ -74,16 +78,16 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | R10 | Independent over-temperature protection | Hardware limit, separate from the ESP32, opens a 2-pole contactor at 600 °C well-wall temperature and latches until manually reset | I: wiring against the schematic. T: trip test with a heated thermocouple | Met by design |
 | R11 | Electrical supply and protection | Dedicated 240 V, 20 A circuit with 2-pole GFCI protection; continuous current 16 A or less; supplementary fuses per heater group | A: TBK-CAL-001 section 6. I | Met (A): 12.5 A |
 | R12 | Fail-safe behavior | On controller reset, loss of Wi-Fi, a sensor fault or a fan fault: heaters off, inlet damper closed | D: fault injection for each case | Firmware to be written |
-| R13 | Materials in hot zones | No zinc, paint, liner or plastic above 200 °C; AES (body-soluble) fiber in place of refractory ceramic fiber | I: against the BOM | Met by design |
+| R13 | Materials in hot zones | No zinc, paint, liner or plastic above 200 °C; AES (body-soluble) fiber in place of refractory ceramic fiber | I: against the BOM | Met by design. The hot outlet passes the galvanized jacket cap in a 180 mm hole packed with AES and covered by a black steel trim ring, so no zinc sits within 39 mm of it (TBK-DDR-003) |
 
 ## 3. Physical and installation
 
 | ID | Requirement | Target | Verification | v0.2 status |
 | --- | --- | --- | --- | --- |
 | R14 | Envelope | 1,250 mm diameter or less; 1,500 mm high or less, including ducts | I: CAD and as-built | Met: 1,209 mm by 1,462 mm |
-| R15 | Siting and floor load | Indoors, inside the heated space, on a concrete slab; 450 kg or less in service | A: TBK-CAL-001 section 7 | Met (A): 410 kg |
+| R15 | Siting and floor load | Indoors, inside the heated space, on a concrete slab; 450 kg or less in service | A: TBK-CAL-001 section 7 | Met (A): 415 kg (TBK-CAL-001 v0.3) |
 | R16 | Buildability | No welding, machining or pressure parts; hand tools, a pipe threader and pop rivets only | I: build log | Met by design |
-| R17 | Serviceability | Any heater replaceable from the top without removing sand | D: replace one heater | Met by design: heaters sit in wells |
+| R17 | Serviceability | Any heater replaceable from the top without removing sand | D: replace one heater | Met by design: heaters sit in wells; the jacket cap is screwed, not riveted, so it and the top insulation lift off to reach them (TBK-DDR-003) |
 
 ## 4. Controls, openness and cost
 
@@ -91,7 +95,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R18 | Monitoring | Log all temperatures, heater power and export at 10 s intervals; report state of charge within 10 % of the calorimetric value | T: compare against R1 test | Firmware to be written |
 | R19 | Durability | 1,000 charge cycles without drum growth over 1 % in circumference or loss of heater function | T: measure drum circumference every 25 cycles | Open: sand ratcheting risk, see TBK-PRC-001 section 8 |
-| R20 | Prototype cost | Reduced-scale test article (TBK-PRC-002, archived): $727.70 USD or less in parts, decided by Amish on 2026-09-25 (TBK-DDR-002). Full-scale parts cost estimated and reported; its budget is revisited with the test article's results | I: against the BOMs | Met (I): test article BOM $727.70 (archived, on hold with TRL 4). Full-scale estimate $3,674 reported; revisit on hold with TRL 4 |
+| R20 | Prototype cost | Reduced-scale test article (TBK-PRC-002, archived): $727.70 USD or less in parts, decided by Amish on 2026-09-25 (TBK-DDR-002). Full-scale parts cost estimated and reported; its budget is revisited with the test article's results | I: against the BOMs | Met (I): test article BOM $727.70 (archived, on hold with TRL 4). Full-scale estimate of the constructable design $3,854 reported, USD 3,126 over the USD 728 value-engineering target; revisit on hold with TRL 4 |
 
 ## 5. Traceability
 

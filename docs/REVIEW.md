@@ -267,3 +267,35 @@ Amish chose this repo for the first batch of product renders on 2026-09-26. This
 - Kit 1.5.0 synced: STANDARDS v1.5 (sections 12 to 15: product renders, storefront images and image quality, public release, authorship and signing), `.kit/cards.py`, `.kit/image_qc.py`, `.kit/release_gate.py`, issue templates, and the `/render-product` and `/release` commands. `CLAUDE.md` now matches `.kit/CLAUDE.md`.
 - Every `media/render-*.png` recaptioned from its original render with the new layout: the title, concept label and repository sit in a band above the render and the view note in a band below it, each line wrapped to the image width, so no text overlaps other text or the render or runs off the image. `media/card.png` and `media/social-preview.png` regenerated with the same rules.
 - `python .kit/image_qc.py` and `python .kit/release_gate.py` pass. trl stays 3.
+
+## Session 2026-10-01: kit 1.7.0, design for construction and the prototype build plan
+
+Kit 1.7.0 installed (`.kit/`, `.claude/commands/`, `CLAUDE.md` from `.kit/CLAUDE.md`). Following `/build-plan` and `.kit/STANDARDS.md` section 18, the model was reviewed for constructability with build123d checks, made physically buildable under Amish's 2026-09-30 instruction ("fix the design assumptions to match and be physically feasible"), and the illustrated build plan and the design decisions register were written. `design_state: constructable` is set in `project.yaml`. Nothing was built, bought or tested; TRL stays 3.
+
+**Design changes made for construction** (TBK-DDR-003, Draft, open for Amish's review)
+
+1. Heater wells stand on a levelled 14 mm first lift of sand at their concept height (they hung unsupported); cut length 876 mm (the BOM said 906 mm).
+2. U-tubes: two elbows and a 1-1/4 x 4 in nipple (the 2-1/2 in nipple gave 118 mm leg spacing, not 155 mm), elbows resting on the drum floor; leg cut lengths 1,175 and 866 mm.
+3. Lid holes 36 mm (wells, with room for the T1 to T3 sheaths) and 48 mm (legs), four 6 mm holes for T4 to T7, AES rope collars.
+4. Plywood setting template on the drum rim holds the pipes during the sand fill (the concept used the lid, which blocks the fill). New BOM line 43.
+5. Base: 610 mm firebrick disc (16 bricks, was 14) and AES disc, with an 89 mm stone wool batt ring out to the jacket (the concept left a void).
+6. Inlet plenum 140 mm tall (was 110), collar hole cut through, flanges riveted to the cap; inlet legs 30 mm longer.
+7. Collector fixed to the lid by six tabs between the wells with steel rivets; top disc with a folded, riveted edge.
+8. Hot outlet passes the galvanized cap in a 180 mm hole packed with AES and covered by a black steel trim ring (the cap touched the 314 °C pipe, against R13). New BOM line 44.
+9. Heaters with 72 in leads (36 in could not reach the junction box); junction box placed on the cap at 120°, 430 mm out, over a grommeted hole. New BOM line 46.
+10. Thermocouples: routes through the lid, T4 bent across the sand surface to a lid hole, stainless guide rods for T4 to T7 (new BOM line 45), 1,500 mm sheaths (was 1,000 mm), one exit grommet in the cap.
+11. Jacket cap from three lapped strips with a 25 mm skirt held by screws, so it lifts off for heater service (R17).
+
+`python cad/src/model.py --check` runs 72 constructability checks; all pass.
+
+**Key results.** Operating mass 415 kg (was 410 kg; R15 450 kg met); TBK-CAL-001 v0.3 re-run, thermal and electrical results unchanged; R3 is still **not met** (9.6 h against 8 h). Value-engineering target: USD 728. Estimated cost of the constructable design: USD 3,854 (USD 3,126 over the target; +USD 180 for construction).
+
+**Files.** `cad/src/model.py`, `cad/src/build_plan_media.py` (new), `cad/src/sheets.py`, `cad/step/thermabrick.step`, `cad/stl/thermabrick.stl`, TBK-DWG-001 Rev P2, TBK-DWG-101 to 110 (new), `docs/05-build-plan/` (overview, 3 layouts, 9 joints, 20 steps, wiring), `docs/05-build-plan.md` TBK-BLD-001 v0.1 (new), `docs/06-design-decisions.md` TBK-DEC-001 v0.1 (new), `docs/decisions/0003-design-for-construction.md` TBK-DDR-003 v0.1 (new), TBK-CAL-001 v0.3, TBK-PRC-001 v0.6, TBK-REQ-001 v0.10, TBK-PRB-001 v0.9, `bom/bom.csv`, `bom/bom-notes.md`, `project.yaml`, `README.md`, concept media (`media/hero.png`, `cutaway.png`, `exploded.png`, `flow.png`, `concept-blueprint.*`, `model.glb`, `viewer.html`).
+
+**Proposed, awaiting Amish** (all in TBK-DEC-001): review of the changes above; a BOM line for warning labels; keep the air path layout illustrative; plus the items carried over (standby loss, ground-fault device, render deviations).
+
+**Stale, made on Amish's Mac.** `media/render-*.png`, `media/card.png`, `media/social-preview.png` and `cad/src/product_model.py` still show the concept base, the 110 mm plenum and no trim ring or cap fixings; the visible changes are small but real, so they should be re-rendered.
+
+**Safety.** Unchanged in substance: the trim ring restores R13 at the outlet; the cap-edge temperature is to be confirmed at the first firing (TBK-DEC-001). The build plan carries the silica, fiber, 240 V, first-firing and stored-heat stops.
+
+**Recommended next step.** Amish reviews TBK-DDR-003 and the register; then re-render the product images on the Mac.
