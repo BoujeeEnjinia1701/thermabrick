@@ -366,3 +366,9 @@ None.
 ## 2026-10-02: photoreal renders redone on the constructable design
 
 Rendered with Blender Cycles on Amish's Mac from the updated appearance model; captioned with `.kit/photo_caption.py`; `media/card.png` and `media/social-preview.png` regenerated with `.kit/cards.py`. Views: hero, exploded, detail. image_qc passes. Appearance deviations are those logged above as proposed, awaiting Amish.
+
+## 2026-10-03: decisions recorded
+
+Amish decided on 2026-10-03: "Cost over target - i accept all the cost variations and overruns". Recorded for this repo: the full-scale estimate of USD 3,869 against the USD 728 target (USD 3,141 over).
+
+- `docs/06-design-decisions.md`: row added to decisions made; value engineering section says the overrun was accepted by Amish on 2026-10-03.

@@ -3,9 +3,9 @@ doc_id: TBK-DEC-001
 title: ThermaBrick design decisions register
 project: ThermaBrick
 doc_type: Design decisions register
-version: "0.3"
+version: "0.4"
 status: Draft
-date: '2026-10-02'
+date: '2026-10-03'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -21,6 +21,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: 'Cost restated to USD 3,869 with the warning labels (BOM line 47) and the approved wording; stray full stop fixed'
+  - version: "0.4"
+    date: '2026-10-03'
+    author: Amish Chadha
+    change: "Amish accepted the cost overrun against the value-engineering target on 2026-10-03; row added to decisions made; value engineering section updated"
 ---
 
 # ThermaBrick design decisions register
@@ -45,6 +49,8 @@ None. All open decisions were decided on 2026-10-02.
 ## Value engineering
 
 Value-engineering target: USD 728 (a hypothetical control target, not a limit; `budget_usd` in `project.yaml`, set as the reduced-scale test article budget by Amish on 2026-09-25). Estimated cost of the constructable design: USD 3,869 (USD 3,141 over the target). Main cost drivers and savings worth trying:
+
+Amish accepted this overrun on 2026-10-03: the full-scale estimate of USD 3,869 against the USD 728 target (USD 3,141 over). Amish: "Cost over target - i accept all the cost variations and overruns". It stays reported against the target as an accepted overrun, and the savings below remain worth trying.
 
 - The largest groups are insulation (USD 871), controls and instrumentation (USD 863), heaters and wells (USD 776) and the discharge exchanger and air path (USD 740). The largest single lines are the twelve cartridge heaters (USD 588), the stone wool batts (USD 225), the four stone wool boards (USD 180) and the eight thermocouples (USD 208).
 - Making the design constructable added USD 180, and the approved warning labels USD 15: longer heater leads and thermocouples, 4 in nipples, two firebricks, a second AES rope, fasteners, and the template, trim ring, guide rods and grommets.
@@ -72,3 +78,4 @@ Value-engineering target: USD 728 (a hypothetical control target, not a limit; `
 | 2026-10-02 | Fan, guard sleeve, intake and grille sizes in the renders accepted as placeholders until the fan is chosen | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 3 |
 | 2026-10-02 | The teal top trim ring and kick plinth are optional cosmetic parts with no BOM line; the renders must also show the functional black outlet trim ring (BOM line 44) | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 4 |
 | 2026-10-02 | The insulation stays drawn as an AES hot face over stone wool | Amish: "i approve your recommendations for all 555 open decisions." | REVIEW 2026-09-26, item 5 |
+| 2026-10-03 | Cost overrun accepted: the full-scale estimate of USD 3,869 against the USD 728 target (USD 3,141 over) | Amish: "Cost over target - i accept all the cost variations and overruns" | [REVIEW.md](REVIEW.md), session 2026-10-03 |
