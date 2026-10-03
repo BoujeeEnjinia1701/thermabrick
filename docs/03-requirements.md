@@ -3,7 +3,7 @@ doc_id: TBK-REQ-001
 title: ThermaBrick requirements
 project: ThermaBrick
 doc_type: Requirements
-version: "0.11"
+version: "0.12"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -53,6 +53,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: 'Decisions of 2026-10-02 (TBK-DEC-001): R11 names the 5 mA GFCI breaker and the condition for 30 mA protection; R15 adds the siting rules as installer requirements. No status changed'
+- version: "0.12"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'R20 full-scale estimate $3,869 (warning labels, BOM line 47); no status changed'
 ---
 
 # ThermaBrick requirements
@@ -99,7 +103,7 @@ Verification methods are analysis (A), inspection (I), demonstration (D) and tes
 | --- | --- | --- | --- | --- |
 | R18 | Monitoring | Log all temperatures, heater power and export at 10 s intervals; report state of charge within 10 % of the calorimetric value | T: compare against R1 test | Firmware to be written |
 | R19 | Durability | 1,000 charge cycles without drum growth over 1 % in circumference or loss of heater function | T: measure drum circumference every 25 cycles | Open: sand ratcheting risk, see TBK-PRC-001 section 8 |
-| R20 | Prototype cost | Reduced-scale test article (TBK-PRC-002, archived): $727.70 USD or less in parts, decided by Amish on 2026-09-25 (TBK-DDR-002). Full-scale parts cost estimated and reported; its budget is revisited with the test article's results | I: against the BOMs | Met (I): test article BOM $727.70 (archived, on hold with TRL 4). Full-scale estimate of the constructable design $3,854 reported, USD 3,126 over the USD 728 value-engineering target; revisit on hold with TRL 4 |
+| R20 | Prototype cost | Reduced-scale test article (TBK-PRC-002, archived): $727.70 USD or less in parts, decided by Amish on 2026-09-25 (TBK-DDR-002). Full-scale parts cost estimated and reported; its budget is revisited with the test article's results | I: against the BOMs | Met (I): test article BOM $727.70 (archived, on hold with TRL 4). Full-scale estimate of the constructable design $3,869 reported, USD 3,141 over the USD 728 value-engineering target; revisit on hold with TRL 4 |
 
 ## 5. Traceability
 

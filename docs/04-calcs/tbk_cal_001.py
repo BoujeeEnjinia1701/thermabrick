@@ -434,7 +434,8 @@ def mass_and_floor():
     m_ins = 80.0                       # AES, stone wool, firebrick and board (estimate); +5 kg for the base batt ring and two more bricks (TBK-DDR-003)
     m_jacket = 20.0                    # jacket, plenum, collector, duct stubs
     m_heaters = N_HEATERS * 0.45
-    total = m_sand + m_drum + m_wells + m_tubes + m_ins + m_jacket + m_heaters
+    m_labels = 0.05                    # five self-adhesive warning labels, BOM line 47 (about 10 g each)
+    total = m_sand + m_drum + m_wells + m_tubes + m_ins + m_jacket + m_heaters + m_labels
     A_foot = pi * (D["jacket_r_o"] / 1000) ** 2
     A_drum = pi * (D["drum_r_o"] / 1000) ** 2
     return dict(total=total, kPa_foot=total * 9.81 / A_foot / 1000,

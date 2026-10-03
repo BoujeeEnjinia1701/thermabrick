@@ -1,6 +1,6 @@
 """ThermaBrick prototype build plan pictures (TBK-BLD-001, STANDARDS section 18).
 
-Run from the repo root:  python cad/src/build_plan_media.py [overview|sheets|layouts|joints|steps|wiring ...]
+Run from the repo root:  python cad/src/build_plan_media.py [overview|sheets|layouts|joints|steps|wiring|labels ...]
 With no argument it draws everything. Every picture is drawn from cad/src/model.py (build), so the
 pictures and the model never disagree:
     docs/05-build-plan/overview.png        every component pulled apart, numbered in build order
@@ -9,6 +9,7 @@ pictures and the model never disagree:
     docs/05-build-plan/joint-NN.png        close-ups of the joints that need explaining
     docs/05-build-plan/step-NN.png         one picture per assembly step
     docs/05-build-plan/wiring.png          block-level wiring and the safety chain (matplotlib)
+    docs/05-build-plan/step-22.png         warning label positions (matplotlib)
 Uses .kit/build_views.py. BUILD PLAN ILLUSTRATION, PLAN NOT YET BUILT. Licensed MIT.
 """
 import sys
@@ -678,6 +679,82 @@ def steps(only=None):
     return out
 
 
+# ----------------------------------------------------------------- warning label positions (step 22)
+def label_positions():
+    """Where the five warning labels go (BOM line 47). Panels 1 to 3 are drawn from model.py; panels 4 and 5
+    follow the air path and enclosure layout of the appearance model (not part of model.py)."""
+    from matplotlib.patches import Rectangle, Circle
+    from matplotlib.transforms import Affine2D
+    fig, plt = _fig(14, 6.4, "Step 22: warning labels, five in all",
+                    "Stick each label to clean, dry metal after the unit is finished. Positions are to scale within each panel (mm)")
+    WARN = "#F59E0B"
+    ro, zt = D["jacket_r_o"], D["jacket_top_z"]
+    ang, zl, lw_, lh_ = P["label_jacket"]
+    # 1 jacket side
+    ax = fig.add_axes([0.03, 0.14, 0.17, 0.70]); ax.set_aspect("equal"); ax.axis("off")
+    ax.add_patch(Rectangle((-ro, 0), 2 * ro, zt, fc="#E5E7EB", ec=MUT, lw=1))
+    ax.add_patch(Rectangle((-ro, zt - P["cap_skirt"]), 2 * ro, P["cap_skirt"], fc="#CBD5E1", ec=MUT, lw=1))
+    ax.add_patch(Rectangle((-lw_ / 2, zl - lh_ / 2), lw_, lh_, fc=WARN, ec=INK, lw=1.2))
+    ax.annotate("HOT SURFACES\nINSIDE", (lw_ / 2, zl), (ro * 0.2, zl - 330), fontsize=7.5, color=INK,
+                arrowprops=dict(arrowstyle="-", color=INK, lw=0.8), ha="left")
+    ax.set_xlim(-ro - 20, ro + 20); ax.set_ylim(-20, zt + 120)
+    ax.set_title("1  Jacket side, from the front (0°)", fontsize=8.5, color=INK, loc="left")
+    # 2 cap plan
+    ax = fig.add_axes([0.22, 0.14, 0.27, 0.70]); ax.set_aspect("equal"); ax.axis("off")
+    rc = ro + P["jacket_t"]
+    ax.add_patch(Circle((0, 0), rc, fc="#E5E7EB", ec=MUT, lw=1))
+    pl_ro, pl_ri = P["leg_outer_r"] + 45, P["leg_outer_r"] - 45
+    ax.add_patch(Circle((0, 0), pl_ro, fc="none", ec="#0F766E", lw=1.0, ls="--"))
+    ax.add_patch(Circle((0, 0), pl_ri, fc="#E5E7EB", ec="#0F766E", lw=1.0, ls="--"))
+    ax.text(0, -(pl_ri + pl_ro) / 2 - 8, "inlet plenum", fontsize=6.5, color="#0F766E", ha="center")
+    ax.add_patch(Circle((0, 0), P["trim_ring"][0] / 2, fc="#374151", ec=INK, lw=1))
+    ax.add_patch(Circle((0, 0), P["trim_ring"][1] / 2, fc="white", ec=INK, lw=1))
+    jang, jr, jx, jy, jh = P["jbox"]
+    jx0, jy0 = _polar(jr, jang)
+    ax.add_patch(Rectangle((-jx / 2, -jy / 2), jx, jy, fc="#DDD6FE", ec="#6D28D9", lw=1,
+                           transform=Affine2D().rotate_deg(jang).translate(jx0, jy0) + ax.transData))
+    ax.text(jx0, jy0 + 120, "junction box", fontsize=6.5, color="#6D28D9", ha="center")
+    ang2, rl, w2, h2 = P["label_cap"]
+    lx, ly = _polar(rl, ang2)
+    ax.add_patch(Rectangle((-w2 / 2, -h2 / 2), w2, h2, fc=WARN, ec=INK, lw=1.2,
+                           transform=Affine2D().rotate_deg(ang2 + 90).translate(lx, ly) + ax.transData))
+    ax.annotate("HOT OUTLET", (lx, ly), (lx + 60, ly - 120), fontsize=7.5, color=INK, ha="center",
+                arrowprops=dict(arrowstyle="-", color=INK, lw=0.8))
+    ax.set_xlim(-rc - 10, rc + 10); ax.set_ylim(-rc - 10, rc + 10)
+    ax.set_title("2  Jacket cap, from above", fontsize=8.5, color=INK, loc="left")
+    # 3 junction box face
+    ax = fig.add_axes([0.51, 0.34, 0.12, 0.30]); ax.set_aspect("equal"); ax.axis("off")
+    bw, bh = P["label_jbox"]
+    ax.add_patch(Rectangle((-jy / 2, 0), jy, jh, fc="#DDD6FE", ec="#6D28D9", lw=1))
+    ax.add_patch(Rectangle((-bw / 2, jh / 2 - bh / 2), bw, bh, fc=WARN, ec=INK, lw=1.2))
+    ax.text(0, jh / 2, "DANGER\n240 V", fontsize=7, color=INK, ha="center", va="center", fontweight="bold")
+    ax.set_xlim(-jy / 2 - 10, jy / 2 + 10); ax.set_ylim(-10, jh + 10)
+    ax.set_title("3  Junction box, outer face", fontsize=8.5, color=INK, loc="left")
+    # 4 guard sleeve drop
+    ax = fig.add_axes([0.66, 0.14, 0.12, 0.70]); ax.set_aspect("equal"); ax.axis("off")
+    rs = P["outlet_d"] / 2 + 28
+    ax.add_patch(Rectangle((-rs, 0), 2 * rs, 420, fc="#D1D5DB", ec=MUT, lw=1, hatch="..."))
+    ax.add_patch(Rectangle((-rs - 3, 255), 2 * rs + 6, 60, fc=WARN, ec=INK, lw=1.2))
+    ax.annotate("HOT SURFACE, on the drop,\nfacing the room", (rs + 3, 285), (rs + 25, 120), fontsize=7, color=INK,
+                arrowprops=dict(arrowstyle="-", color=INK, lw=0.8))
+    ax.set_xlim(-rs - 30, rs + 260); ax.set_ylim(-20, 460)
+    ax.set_title("4  Outlet guard sleeve", fontsize=8.5, color=INK, loc="left")
+    # 5 enclosure door
+    ax = fig.add_axes([0.81, 0.30, 0.17, 0.34]); ax.set_aspect("equal"); ax.axis("off")
+    ew, eh = 300.0, 250.0
+    ax.add_patch(Rectangle((-ew / 2, -eh / 2), ew, eh, fc="#E2E8F0", ec=MUT, lw=1))
+    ax.add_patch(Rectangle((60 - 35, -78 - 24), 70, 48, fc=WARN, ec=INK, lw=1.2))
+    ax.text(60, -78, "DANGER\n240 V", fontsize=6, color=INK, ha="center", va="center", fontweight="bold")
+    ax.set_xlim(-ew / 2 - 10, ew / 2 + 10); ax.set_ylim(-eh / 2 - 10, eh / 2 + 10)
+    ax.set_title("5  Control enclosure door", fontsize=8.5, color=INK, loc="left")
+    fig.text(0.03, 0.075, "Vinyl labels rated 105 °C or higher. Labels 1 and 2 are 96 x 64 mm, label 3 is 90 x 44 mm, label 4 is 84 x 60 mm, "
+             "label 5 is 70 x 48 mm. In panel 2 the dark ring is the outlet trim ring.", fontsize=8, color=MUT)
+    out = OUT / "step-22.png"
+    OUT.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out, facecolor="white"); plt.close(fig)
+    return out
+
+
 # ----------------------------------------------------------------- wiring
 def wiring():
     import matplotlib
@@ -741,8 +818,8 @@ def wiring():
 
 
 if __name__ == "__main__":
-    what = sys.argv[1:] or ["overview", "sheets", "layouts", "joints", "steps", "wiring"]
-    fns = {"overview": overview, "sheets": sheets, "layouts": layouts, "joints": joints, "steps": steps, "wiring": wiring}
+    what = sys.argv[1:] or ["overview", "sheets", "layouts", "joints", "steps", "wiring", "labels"]
+    fns = {"overview": overview, "sheets": sheets, "layouts": layouts, "joints": joints, "steps": steps, "wiring": wiring, "labels": label_positions}
     for w in what:
         if w.startswith("steps:"):
             r = steps([int(n) for n in w[6:].split(",")])

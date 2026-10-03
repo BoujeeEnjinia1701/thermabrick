@@ -3,7 +3,7 @@ doc_id: TBK-DDR-003
 title: ThermaBrick design for construction
 project: ThermaBrick
 doc_type: Design decision record
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: 'Accepted by Amish on 2026-10-02, including the recommendations for C1 and C2'
+- version: "0.3"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Cost update for the approved warning labels (C1): BOM line 47, GA Rev P3'
 ---
 
 # 0003: Design for construction
@@ -55,6 +59,7 @@ The changes keep what ThermaBrick does: the same drum, sand mass and depth, heat
 | Mass | Insulation estimate 75 to 80 kg (base batt ring, two more firebricks); operating mass 415 kg (was 410 kg), within R15's 450 kg. Firebrick load 15.0 kPa (was 14.8 kPa). | TBK-CAL-001 v0.3, section 7, re-run with the sizing script. |
 | Thermal and electrical | Unchanged. The changes alter no input of the sizing model. The U-tube runs sit 22 mm lower in the bed, which the one-dimensional model does not resolve. | TBK-CAL-001 v0.3 |
 | Cost | BOM $3,853.50 (was $3,673.50, +$180.00): longer heater leads (+$48), longer thermocouples (+$32), 4 in nipples (+$12), two firebricks (+$12), second AES rope (+$20), fasteners (+$5) and lines 43 to 46 (+$51). Value-engineering target: USD 728. Estimated cost of the constructable design: USD 3,854 (USD 3,126 over the target). | `bom/bom.csv`, `bom/bom-notes.md` |
+| Update, 2026-10-02 | The approved warning labels (C1) add BOM line 47, USD 15: BOM $3,868.50. Value-engineering target: USD 728. Estimated cost of the constructable design: USD 3,869 (USD 3,141 over the target). Mass unchanged at 415 kg; GA TBK-DWG-001 Rev P3. | `bom/bom.csv` |
 | Drawing | TBK-DWG-001 Rev P2; making sketches TBK-DWG-101 to TBK-DWG-110 added. | Follows the model. |
 | Documents | TBK-CAL-001 v0.3, TBK-PRC-001 v0.6, TBK-REQ-001 v0.10, TBK-PRB-001 v0.9: mass, cost, build summary, R13, R15, R17 and R20 notes. No requirement changed status: R3 stays not met (9.6 h against 8 h). | Follows the model. |
 
@@ -68,7 +73,7 @@ The changes keep what ThermaBrick does: the same drum, sand mass and depth, heat
 ## Consequences
 
 - `design_state: constructable` in `project.yaml`. The build plan TBK-BLD-001 (`docs/05-build-plan.md`) shows every component and step in pictures generated from the model (`cad/src/build_plan_media.py`); open items are in the design decisions register TBK-DEC-001 (`docs/06-design-decisions.md`).
-- STEP and STL exports (`cad/step/thermabrick.step`, `cad/stl/thermabrick.stl`), TBK-DWG-001 Rev P2 and the concept media are regenerated from the changed model.
-- The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` still show the concept base, a 110 mm plenum, no trim ring and no cap fixings. They are made on Amish's Mac and are now stale.
-- With C1 and C2 accepted, a warning label line (about USD 15) is to be added to the BOM, and the siting rules (450 mm from combustibles, guard, heat trap, fan below the tee) are installer requirements in TBK-REQ-001 R15.
+- STEP and STL exports (`cad/step/thermabrick.step`, `cad/stl/thermabrick.stl`), TBK-DWG-001 Rev P3 and the concept media are regenerated from the changed model.
+- The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` are made on Amish's Mac and are out of date until re-rendered. The appearance model `cad/src/product_model.py` was updated on 2026-10-02 to the constructable design and the render scenes were exported for that re-render.
+- With C1 and C2 accepted, a warning label line (USD 15, BOM line 47) is in the BOM, and the siting rules (450 mm from combustibles, guard, heat trap, fan below the tee) are installer requirements in TBK-REQ-001 R15.
 - The test article (TBK-PRC-002, archived) was not touched.

@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/1386352909.svg)](https://zenodo.org/badge/latestdoi/1386352909) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/thermabrick/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/thermabrick/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/thermabrick)
 
-**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Value-engineering target:** USD 728, the test article budget decided by Amish on 2026-09-25 (on hold with TRL 4); estimated cost of the constructable full-scale design USD 3,854 (USD 3,126 over the target) · **Difficulty:** 3 of 5
+**Area:** CleanTech · **TRL:** 3 of 9 (proof of concept) · **Status:** Concept · **Value-engineering target:** USD 728, the test article budget decided by Amish on 2026-09-25 (on hold with TRL 4); estimated cost of the constructable design USD 3,869 (USD 3,141 over the target) · **Difficulty:** 3 of 5
 
 Sand thermal battery in an insulated steel drum. Resistive elements charge it from surplus PV, and a fan pulls hot air out for space heating.
 
@@ -66,16 +66,16 @@ The v0.2 design, made constructable on 2026-09-30 (TBK-DDR-003), stores 18.3 kWh
 
 | Document | ID | Version |
 | --- | --- | --- |
-| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.9 |
-| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.6 |
-| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.10 |
-| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.3 |
-| [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P2 |
+| [Problem statement](docs/01-problem.md) | TBK-PRB-001 | 0.11 |
+| [Design precis](docs/02-concept.md) | TBK-PRC-001 | 0.8 |
+| [Requirements](docs/03-requirements.md) | TBK-REQ-001 | 0.12 |
+| [Thermal and electrical sizing](docs/04-calcs/TBK-CAL-001-sizing.md) | TBK-CAL-001 | 0.5 |
+| [General arrangement](cad/drawings/TBK-DWG-001.pdf) | TBK-DWG-001 | Rev P3 |
 | [Concept sheet](media/concept-blueprint.pdf), with [hero](media/hero.png), [cutaway](media/cutaway.png) and [exploded](media/exploded.png) renders, [heat flow](media/flow.png) and [3D viewer](media/viewer.html) | TBK-DWG-006 | Rev P3 |
-| [Recommendations accepted](docs/decisions/0002-recommendations-accepted.md) | TBK-DDR-002 | 0.1 |
-| [Design for construction](docs/decisions/0003-design-for-construction.md) | TBK-DDR-003 | 0.1 |
-| [Prototype build plan](docs/05-build-plan.md), with making sketches TBK-DWG-101 to 110 | TBK-BLD-001 | 0.1 |
-| [Design decisions register](docs/06-design-decisions.md) | TBK-DEC-001 | 0.1 |
+| [Recommendations accepted](docs/decisions/0002-recommendations-accepted.md) | TBK-DDR-002 | 0.2 |
+| [Design for construction](docs/decisions/0003-design-for-construction.md) | TBK-DDR-003 | 0.3 |
+| [Prototype build plan](docs/05-build-plan.md), with making sketches TBK-DWG-101 to 110 | TBK-BLD-001 | 0.2 |
+| [Design decisions register](docs/06-design-decisions.md) | TBK-DEC-001 | 0.3 |
 | [Purchasing checklist](archive/out-of-phase-trl4/bom/purchasing-checklist.md) (archived) | | Test article, by supplier |
 | [Controller board BOM (optional, deferred; archived)](archive/out-of-phase-trl4/bom/bom-controller-board.csv) | | +$24.85 net |
 

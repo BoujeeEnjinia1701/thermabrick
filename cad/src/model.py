@@ -101,6 +101,12 @@ PARAMS = {
     "trim_ring": (250.0, 106.0, 1.2),   # black steel trim ring over the packing: OD, ID, thickness
     "jbox": (120.0, 430.0, 150.0, 150.0, 100.0),   # junction box: angle, radius, size x, y, height
     "jbox_hole": 40.0,
+    # Warning labels (BOM line 47; decision of 2026-10-02). Thin self-adhesive plates, 0.5 mm.
+    # jacket: angle, height; cap: angle, radius; jbox: face label size. All 96 x 64 mm except the box.
+    "label_t": 0.5,
+    "label_jacket": (358.0, 1060.0, 96.0, 64.0),     # HOT SURFACES INSIDE, on the jacket side
+    "label_cap": (205.0, 470.0, 96.0, 64.0),         # HOT OUTLET, on the jacket cap beside the outlet
+    "label_jbox": (90.0, 44.0),                      # DANGER 240 V, on the outer face of the junction box
     "tc_exit": (95.0, 330.0, 25.0),     # thermocouple exit grommet: angle, radius, hole
     "tc_sheath": 1500.0,         # DDR-003 P10: MI thermocouple length (1,000 mm could not reach the exit)
 
@@ -182,7 +188,7 @@ def derived(p=PARAMS):
 # Parts of the finished unit, in the assembly and in the drawings (the template is a temporary jig)
 ASSEMBLY = ["base", "drum", "wells", "heaters", "utubes", "thermocouples", "tc_guides", "sand", "lid", "collector",
             "collector_rivets", "insulation", "jacket", "jacket_cap", "outlet_packing", "trim_ring",
-            "inlet_plenum", "jbox"]
+            "inlet_plenum", "jbox", "labels"]
 
 
 def _polar(r, deg):
@@ -431,6 +437,18 @@ def build(parts=False):
     jb -= rod(p["jbox_hole"] / 2 - 4, 3, jx0, jy0, zt - 1)
     out["jbox"] = jb
 
+    # ---------------------------------------------------------------- warning labels (BOM line 47)
+    lt = p["label_t"]
+    ang, zl, lw_, lh_ = p["label_jacket"]
+    lx, ly = _polar(d["jacket_r_o"] + lt / 2, ang)
+    out["label_jacket"] = Pos(lx, ly, zl) * Rot(0, 0, ang) * Box(lt, lw_, lh_)
+    ang, rl, lw_, lh_ = p["label_cap"]
+    lx, ly = _polar(rl, ang)
+    out["label_cap"] = Pos(lx, ly, d["cap_top_z"] + lt / 2) * Rot(0, 0, ang + 90) * Box(lw_, lh_, lt)
+    bw, bh = p["label_jbox"]
+    out["label_jbox"] = Pos(jx0, jy0, zt) * Rot(0, 0, ja) * Pos(jx / 2 + lt / 2, 0, jh / 2) * Box(lt, bw, bh)
+    out["labels"] = Compound([out["label_jacket"], out["label_cap"], out["label_jbox"]])
+
     assy = Compound([out[n] for n in ASSEMBLY])
     return (assy, out) if parts else assy
 
@@ -480,7 +498,9 @@ def check():
              ("base_ifb", "base_ring"), ("base_aes", "base_ring"), ("drum", "base_ring"),
              ("drum", "insulation"), ("jacket", "insulation"), ("jacket_cap", "insulation"),
              ("collector", "insulation"), ("sand", "wells"), ("sand", "utubes"), ("sand", "thermocouples"),
-             ("tc_guides", "thermocouples"), ("tc_guides", "utubes"), ("tc_guides", "wells")]
+             ("tc_guides", "thermocouples"), ("tc_guides", "utubes"), ("tc_guides", "wells"),
+             ("label_jacket", "jacket"), ("label_cap", "jacket_cap"), ("label_cap", "trim_ring"),
+             ("label_cap", "inlet_plenum"), ("label_cap", "jbox"), ("label_jbox", "jbox")]
     for a, b in pairs:
         v = vol(M[a], M[b])
         ok(f"no overlap: {a} / {b}", v < 1.0, f"{v:.2f} mm3")
@@ -500,7 +520,10 @@ def check():
              ("trim ring on the cap", M["trim_ring"], M["jacket_cap"]),
              ("junction box on the cap", M["jbox"], M["jacket_cap"]),
              ("template on the drum rim", M["template"], M["drum"]),
-             ("thermocouple guide rods on the drum floor", M["tc_guides"], M["drum"])]
+             ("thermocouple guide rods on the drum floor", M["tc_guides"], M["drum"]),
+             ("HOT SURFACES INSIDE label on the jacket side", M["label_jacket"], M["jacket"]),
+             ("HOT OUTLET label on the jacket cap", M["label_cap"], M["jacket_cap"]),
+             ("DANGER 240 V label on the junction box face", M["label_jbox"], M["jbox"])]
     for n, a, b in touch:
         g = dist(a, b)
         ok(f"touch: {n}", g < 0.05, f"gap {g:.2f} mm")
@@ -524,6 +547,21 @@ def check():
     ok("sand thermocouples (T4 to T7) clear of the wells", g >= 0.0, f"{g:.1f} mm (T1 to T3 touch their wells)")
     fl_top = p["inlet_plenum_h"] / 2 - p["outlet_d"] / 2
     ok("inlet plenum wall round the 4 in collar, 15 mm or more above and below", fl_top >= 15.0, f"{fl_top:.1f} mm")
+    g = dist(M["label_cap"], M["trim_ring"])
+    ok("HOT OUTLET label clear of the trim ring by 20 mm or more", g >= 20.0, f"{g:.1f} mm")
+    g = dist(M["label_cap"], M["inlet_plenum"])
+    ok("HOT OUTLET label clear of the inlet plenum flange by 20 mm or more", g >= 20.0, f"{g:.1f} mm")
+    g = dist(M["label_cap"], M["jbox"])
+    ok("HOT OUTLET label clear of the junction box by 20 mm or more", g >= 20.0, f"{g:.1f} mm")
+    rcap = d["jacket_r_o"] + p["jacket_t"]
+    ok("HOT OUTLET label lies wholly on the cap, 10 mm or more inside its edge",
+       p["label_cap"][1] + hypot(p["label_cap"][2], p["label_cap"][3]) / 2 <= rcap - 10.0,
+       f"outer corner {p['label_cap'][1] + hypot(p['label_cap'][2], p['label_cap'][3]) / 2:.0f} mm of {rcap - 10:.0f} mm")
+    ok("jacket label sits between the second lap row and the cap, clear of the cap skirt",
+       p["label_jacket"][1] + p["label_jacket"][3] / 2 <= d["jacket_top_z"] - p["cap_skirt"] - 10.0,
+       f"top edge {p['label_jacket'][1] + p['label_jacket'][3] / 2:.0f} mm of {d['jacket_top_z'] - p['cap_skirt'] - 10:.0f} mm")
+    ok("DANGER 240 V label fits the junction box face with 10 mm margin",
+       p["label_jbox"][0] <= p["jbox"][3] - 20 and p["label_jbox"][1] <= p["jbox"][4] - 20)
     pd, pr, pa, pc = p["pour_holes"]
     tpl_ok = True
     for hx, hy, hd in [(*_polar(pr, a), pd) for a in pa] + [(0.0, 0.0, pc)]:
@@ -563,7 +601,7 @@ def check():
 
     # 5. Every part is a valid solid
     for k in ("drum", "lid", "wells", "utubes", "collector", "insulation", "jacket", "jacket_cap",
-              "inlet_plenum", "jbox", "template", "sand", "base"):
+              "inlet_plenum", "jbox", "template", "sand", "base", "labels"):
         ok(f"valid solid: {k}", M[k].is_valid)
 
     for n, good, det in res:

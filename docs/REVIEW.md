@@ -332,3 +332,37 @@ Amish, 2026-10-02: "i approve your recommendations for all 555 open decisions." 
 - Value engineering text has a stray full stop mid-sentence: "(up to USD 190). with stone wool batts".
 - Two different "trim rings" now exist: the cosmetic teal top ring in the renders and the functional black outlet ring of P8; name them distinctly.
 - There is no 0001 decision record in this repo; the 2026-09-24 decision is recorded only in TBK-PRB-001.
+
+## Session 2026-10-02: approved follow-ups carried out
+
+Amish approved all follow-up actions on 2026-10-02. Done: 4 of 6 in full, 2 on Amish's Mac. No requirement changed status; R3 stays not met. trl stays 3.
+
+### Follow-ups
+
+1. Decision 2, BOM: done. Line 47 added, USD 15.00 (five labels at about USD 3 each); BOM total $3,868.50. Value-engineering target: USD 728. Estimated cost of the constructable design: USD 3,869 (USD 3,141 over the target). `budget_usd` unchanged.
+2. Decision 2, pictures: done. Step 22 and Figure 26 (`docs/05-build-plan/step-22.png`) give the five label positions; the bought components list and safety stop S6 name the labels. Label plates added to the CAD model (jacket, cap, junction box) with 11 new checks; 88 of 88 checks pass; STEP and STL regenerated.
+3. Decision 5, BOM: done. Line 39 is a 2-pole 20 A, 5 mA GFCI breaker; price kept at $110.00 with the basis in `bom/bom-notes.md`.
+4. Decision 8, renders: scenes done, photoreal not done (made on Amish's Mac). `cad/src/product_model.py` now shows the galvanized jacket cap and the functional black outlet trim ring (BOM line 44), and names the teal part "Optional teal top bead (cosmetic, no BOM line)". Render scenes exported to `/home/claude/renders/thermabrick` (hero, exploded, detail, plus `thermabrick__jobs.json`).
+5. Decision 1, renders, card and social preview: not done: made on Amish's Mac from the exported scenes.
+6. Decision 4, calcs: not done: on hold with TRL 4 and the R3 charge-time fix; no change by decision.
+
+### Documents changed
+
+- `bom/bom.csv`, `bom/bom-notes.md`: lines 39 and 47, total, groups, cost-down figure
+- `cad/src/model.py`, `cad/step/thermabrick.step`, `cad/stl/thermabrick.stl`: label plates and checks
+- `docs/04-calcs/tbk_cal_001.py` and TBK-CAL-001 v0.5: mass re-run, 414.7 kg (about 415 kg), no result changed
+- TBK-DWG-001 Rev P3 (labels row); concept media regenerated; overview picture redrawn
+- TBK-BLD-001 v0.2, TBK-DEC-001 v0.3 (cost wording; stray full stop fixed), TBK-PRC-001 v0.8, TBK-PRB-001 v0.11, TBK-REQ-001 v0.12 (R20 cost), TBK-DDR-003 v0.3, `README.md`
+
+### Cross-repo actions
+
+None.
+
+### Points for Amish
+
+- The outlet guard sleeve has no BOM line (it is only in the appearance model and the build plan text). Consider a line for it.
+
+
+## 2026-10-02: photoreal renders redone on the constructable design
+
+Rendered with Blender Cycles on Amish's Mac from the updated appearance model; captioned with `.kit/photo_caption.py`; `media/card.png` and `media/social-preview.png` regenerated with `.kit/cards.py`. Views: hero, exploded, detail. image_qc passes. Appearance deviations are those logged above as proposed, awaiting Amish.

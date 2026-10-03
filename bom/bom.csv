@@ -37,7 +37,7 @@ Independent high limit,1,"1/16 DIN temperature controller, type K input, relay o
 Branch fuses,2,2-pole DIN rail fuse holder with 10 A class CC fuses,DigiKey or Mouser,15.00,buy,Supplementary protection per heater group.
 DC power supply,1,"DIN rail power supply, 12 VDC, 2 A, with 5 V buck converter",DigiKey or Mouser,25.00,buy,"ESP32, servo and fan signal."
 Export meter,1,Two-channel Wi-Fi energy meter with 50 A CT clamps and local API,Shelly Pro EM-50,90.00,buy,Measures grid export at the main panel; sets the charge power.
-GFCI breaker,1,2-pole 20 A GFCI breaker to match the existing panel,Home Depot or Lowe's,110.00,buy,Dedicated 240 V circuit. Installed by a licensed electrician where required.
+GFCI breaker,1,"2-pole 20 A, 5 mA (Class A) GFCI breaker to match the existing panel",Home Depot or Lowe's,110.00,buy,"Dedicated 240 V circuit (decision of 2026-10-02, TBK-DEC-001). 30 mA protection only as a measured exception agreed with the installing electrician. Installed by a licensed electrician where required."
 Branch wiring,1,"12 AWG THHN copper, conduit, fittings and disconnect",Home Depot or Lowe's,80.00,buy,20 A circuit to the control enclosure.
 Control enclosure,1,"Steel enclosure 300 x 250 x 150 mm, DIN rail, terminal blocks, cable glands",DigiKey or Automation Direct,70.00,buy,Mounted on the wall beside the unit.
 Heater junction box,1,Steel junction box 150 x 150 x 100 mm with ceramic terminal blocks,Home Depot plus McMaster-Carr,35.00,buy,On the jacket top; gathers the 24 heater leads.
@@ -45,3 +45,4 @@ Setting template,1,"Exterior plywood 18 mm, 610 x 610 mm (2 x 2 ft), cut to a 59
 Outlet trim ring,1,"Uncoated (black) steel sheet 18 ga, 12 x 12 in, cut to a 250 mm ring with a 106 mm hole",Home Depot or Lowe's,12.00,make,Covers the AES packing where the hot outlet passes through the galvanized jacket cap; keeps zinc 39 mm from the hot pipe (TBK-DDR-003 P8).
 Thermocouple guide rods,4,"Stainless steel rod 3/16 in (4.8 mm) x 36 in, with stainless tie wire",McMaster-Carr or welding supply,3.00,buy,"Cut to 561 mm. One beside each sand thermocouple T4 to T7, standing on the drum floor."
 Cap grommets,1,"Silicone rubber grommets, 40 mm and 25 mm hole sizes, rated 200 C, pack",McMaster-Carr,9.00,buy,Heater lead hole under the junction box and the thermocouple exit in the jacket cap.
+Warning labels,1,"Self-adhesive vinyl labels rated 105 C or higher: HOT SURFACES INSIDE (jacket side), HOT OUTLET (jacket cap), HOT SURFACE (outlet guard sleeve), DANGER 240 V (junction box and control enclosure)",Amazon or a safety-sign supplier (Brady or equal),15.00,buy,"Five labels, one pack per site. Positions in TBK-BLD-001 step 22 (decision of 2026-10-02, TBK-DEC-001). Basis: about USD 3 per 100 x 65 mm label."

@@ -3,7 +3,7 @@ doc_id: TBK-DEC-001
 title: ThermaBrick design decisions register
 project: ThermaBrick
 doc_type: Design decisions register
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: 'Amish approved the recommendations for all nine open decisions on 2026-10-02 (TBK-DDR-003 accepted); moved to decisions made'
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: 'Cost restated to USD 3,869 with the warning labels (BOM line 47) and the approved wording; stray full stop fixed'
 ---
 
 # ThermaBrick design decisions register
@@ -40,11 +44,11 @@ None. All open decisions were decided on 2026-10-02.
 
 ## Value engineering
 
-Value-engineering target: USD 728 (a hypothetical control target, not a limit; `budget_usd` in `project.yaml`, set as the reduced-scale test article budget by Amish on 2026-09-25). Estimated cost of the constructable full-scale design: USD 3,854 (USD 3,126 over the target). Main cost drivers and savings worth trying:
+Value-engineering target: USD 728 (a hypothetical control target, not a limit; `budget_usd` in `project.yaml`, set as the reduced-scale test article budget by Amish on 2026-09-25). Estimated cost of the constructable design: USD 3,869 (USD 3,141 over the target). Main cost drivers and savings worth trying:
 
 - The largest groups are insulation (USD 871), controls and instrumentation (USD 863), heaters and wells (USD 776) and the discharge exchanger and air path (USD 740). The largest single lines are the twelve cartridge heaters (USD 588), the stone wool batts (USD 225), the four stone wool boards (USD 180) and the eight thermocouples (USD 208).
-- Making the design constructable added USD 180: longer heater leads and thermocouples, 4 in nipples, two firebricks, a second AES rope, fasteners, and the template, trim ring, guide rods and grommets.
-- Savings worth trying (`bom/bom-notes.md`, Table 2): generic import heaters (about USD 300), a reconditioned drum (about USD 100), reading export from the inverter instead of a meter (USD 90), MAX31855 amplifiers (about USD 50), and an existing 240 V circuit (up to USD 190). with stone wool batts in place of board in the base (about USD 100), together about USD 830, which would bring the estimate to about USD 3,000, still far over the target; only the reduced-scale test article (archived, on hold with TRL 4) comes near it.
+- Making the design constructable added USD 180, and the approved warning labels USD 15: longer heater leads and thermocouples, 4 in nipples, two firebricks, a second AES rope, fasteners, and the template, trim ring, guide rods and grommets.
+- Savings worth trying (`bom/bom-notes.md`, Table 2): generic import heaters (about USD 300), a reconditioned drum (about USD 100), reading export from the inverter instead of a meter (USD 90), MAX31855 amplifiers (about USD 50), and an existing 240 V circuit (up to USD 190), and stone wool batts in place of board in the base (about USD 100), together about USD 830, which would bring the estimate to about USD 3,040, still far over the target; only the reduced-scale test article (archived, on hold with TRL 4) comes near it.
 
 ## Decisions made
 

@@ -3,7 +3,7 @@ doc_id: TBK-CAL-001
 title: ThermaBrick thermal and electrical sizing
 project: ThermaBrick
 doc_type: Calculation
-version: "0.4"
+version: "0.5"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -25,6 +25,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: 'Branch circuit breaker stated as 5 mA GFCI, per the decision of 2026-10-02 (TBK-DEC-001); no result changed'
+- version: "0.5"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Mass re-run with the warning labels (0.05 kg); operating mass 415 kg, no result changed'
 ---
 
 # ThermaBrick thermal and electrical sizing
@@ -216,7 +220,7 @@ Burst-fire control in whole mains cycles over a 1 s window sets each group in 25
 
 ## 7. Mass and floor load
 
-The operating mass is about 415 kg (Table 7). Version 0.3 adds 5 kg of insulation for the constructable base (TBK-DDR-003): a ring of stone wool batt round the firebrick disc and two more firebricks. The other changes made for construction (U-tube elbows standing on the drum floor, wells standing on a levelled first lift of sand at their concept height, a taller inlet plenum, longer leads) change no input of the sizing model, so no thermal or electrical result changes. The U-tube runs sit 22 mm lower in the bed, which the one-dimensional model does not resolve.
+The operating mass is about 415 kg (Table 7). Five warning labels (BOM line 47) add about 0.05 kg and leave the total at 415 kg. Version 0.3 adds 5 kg of insulation for the constructable base (TBK-DDR-003): a ring of stone wool batt round the firebrick disc and two more firebricks. The other changes made for construction (U-tube elbows standing on the drum floor, wells standing on a levelled first lift of sand at their concept height, a taller inlet plenum, longer leads) change no input of the sizing model, so no thermal or electrical result changes. The U-tube runs sit 22 mm lower in the bed, which the one-dimensional model does not resolve.
 
 | Item | Mass |
 | --- | --- |

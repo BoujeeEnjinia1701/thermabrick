@@ -1,8 +1,8 @@
 # BOM notes
 
-The bill of materials in `bom.csv` totals **$3,853.50** for the constructable design (Table 1). It was $3,673.50 for the v0.2 concept; making the design buildable (TBK-DDR-003, 2026-09-30) added $180.00: longer heater leads and thermocouple sheaths, 4 in nipples, two more firebricks, a second AES rope, more fasteners, and four new lines (setting template, outlet trim ring, thermocouple guide rods and cap grommets, lines 43 to 46).
+The bill of materials in `bom.csv` totals **$3,868.50** for the constructable design (Table 1). It was $3,673.50 for the v0.2 concept; making the design buildable (TBK-DDR-003, 2026-09-30) added $180.00: longer heater leads and thermocouple sheaths, 4 in nipples, two more firebricks, a second AES rope, more fasteners, and four new lines (setting template, outlet trim ring, thermocouple guide rods and cap grommets, lines 43 to 46). The warning labels approved on 2026-10-02 (line 47, $15.00) bring the total to $3,868.50.
 
-Value-engineering target: USD 728 (`budget_usd` in `project.yaml`, set as the reduced-scale test article budget, decided by Amish on 2026-09-25, TBK-DDR-002; the concept's original target was about $600). Estimated cost of the constructable full-scale design: USD 3,854 (USD 3,126 over the target). The target is a hypothetical control figure for value engineering, not a spending limit.
+Value-engineering target: USD 728 (`budget_usd` in `project.yaml`, set as the reduced-scale test article budget, decided by Amish on 2026-09-25, TBK-DDR-002; the concept's original target was about $600). Estimated cost of the constructable design: USD 3,869 (USD 3,141 over the target). The target is a hypothetical control figure for value engineering, not a spending limit.
 
 | Group | Cost (USD) | Share |
 | --- | --- | --- |
@@ -12,8 +12,8 @@ Value-engineering target: USD 728 (`budget_usd` in `project.yaml`, set as the re
 | Discharge exchanger and air path | 740.00 | 19 % |
 | Storage vessel, sand and setting template | 233.00 | 6 % |
 | Branch circuit | 190.00 | 5 % |
-| Jacket, trim ring and grommets | 181.00 | 5 % |
-| Total | 3,853.50 | 100 % |
+| Jacket, trim ring, grommets and warning labels | 196.00 | 5 % |
+| Total | 3,868.50 | 100 % |
 
 *Table 1. BOM cost by group.*
 
@@ -27,7 +27,7 @@ Value-engineering target: USD 728 (`budget_usd` in `project.yaml`, set as the re
 
 ## Cost-down options
 
-These options together save about $830 (to about $3,000) with no change in performance. None of them reaches the value-engineering target at 18 kWh(th).
+These options together save about $830 (to about $3,040) with no change in performance. None of them reaches the value-engineering target at 18 kWh(th).
 
 | Option | Saving | Trade-off |
 | --- | --- | --- |
@@ -44,4 +44,8 @@ A reduced-scale test article is the only route to a cost near the target. It was
 
 The purchasing checklist and its generator, `checklist.py`, are archived with the test article under `archive/out-of-phase-trl4/bom/`.
 
-Decisions of 2026-10-02 (TBK-DEC-001): the main panel breaker (line 39) is a 2-pole 5 mA GFCI breaker; 30 mA equipment ground-fault protection only as a measured exception agreed with the installing electrician. One BOM line, about $15, for hot-surface and 240 V warning labels is approved but not yet added to `bom.csv`. The teal top trim ring and kick plinth in the renders are optional cosmetic parts with no BOM line; the black outlet trim ring (line 44) is a functional part. No quantity or price was changed.
+Decisions of 2026-10-02 (TBK-DEC-001), carried into the bill of materials the same day:
+
+- Line 39 is now a 2-pole 20 A, 5 mA GFCI breaker; the price stays at $110.00 (basis: a Class A 2-pole GFCI breaker for a typical residential panel is within the same price band as the 30 mA type it replaces; confirm at order). 30 mA equipment ground-fault protection only as a measured exception agreed with the installing electrician.
+- Line 47 (new, $15.00): five self-adhesive vinyl warning labels rated 105 C or higher, at about $3 each: HOT SURFACES INSIDE (jacket), HOT OUTLET (jacket cap), HOT SURFACE (outlet guard sleeve), DANGER 240 V (junction box) and DANGER 240 V (control enclosure). Positions are in TBK-BLD-001 step 22. The labels add about 0.05 kg; operating mass stays 415 kg.
+- The teal top bead and kick plinth in the renders are optional cosmetic parts with no BOM line; the black outlet trim ring (line 44) is a functional part and is drawn as such in the appearance model.

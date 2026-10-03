@@ -3,7 +3,7 @@ doc_id: TBK-PRB-001
 title: ThermaBrick problem statement
 project: ThermaBrick
 doc_type: Problem statement
-version: "0.10"
+version: "0.11"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -49,6 +49,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: 'Standby loss open decision recorded as decided on 2026-10-02 (TBK-DEC-001)'
+- version: "0.11"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: 'Full-scale estimate $3,869 after the warning labels line (BOM line 47)'
 ---
 
 # ThermaBrick problem statement
@@ -89,7 +93,7 @@ The operating context sets the design. The unit charges from about 10:00 to 16:0
 - **Safe at the temperatures involved.** Independent hardware over-temperature protection, no coated or galvanized steel in hot zones, cool touchable surfaces and insulation fibers that are safe to handle.
 - **Standard supply.** 240 V split phase on one 20 A circuit, the normal North American arrangement for a fixed heater.
 - **Indoor siting on a concrete slab.** The unit weighs about 415 kg in service.
-- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimated $3,674 for the full-scale design; the constructable design (TBK-DDR-003) is estimated at $3,854, USD 3,126 over the USD 728 value-engineering target. The target is a hypothetical control figure for value engineering, not a spending limit. The budget now funds a reduced-scale test article, with a budget of $727.70 decided by Amish on 2026-09-25 (TBK-DDR-002). The test article is archived and on hold with TRL 4 (section 5).
+- **Prototype budget of about $600 USD.** The v0.2 costing (`bom/bom.csv`) estimated $3,674 for the full-scale design; the constructable design (TBK-DDR-003) is estimated at $3,869, USD 3,141 over the USD 728 value-engineering target. The target is a hypothetical control figure for value engineering, not a spending limit. The budget now funds a reduced-scale test article, with a budget of $727.70 decided by Amish on 2026-09-25 (TBK-DDR-002). The test article is archived and on hold with TRL 4 (section 5).
 
 ## 4. What success looks like
 

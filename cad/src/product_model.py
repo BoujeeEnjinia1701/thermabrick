@@ -1,8 +1,8 @@
 """ThermaBrick product appearance model (build123d), TRL 3.
 
 Finished-product look for photoreal renders: the insulated drum with a galvanized jacket in three
-lapped rows, riveted seams, a teal top trim ring and a dark kick plinth, a name plate and HOT
-SURFACE warning labels; an 80 deg cut sector through the jacket, stone wool, AES blanket, drum
+lapped rows, riveted seams, an optional cosmetic teal top bead and a dark kick plinth, the galvanized jacket cap with the functional black outlet trim ring (BOM line 44), a name plate and HOT
+SURFACE warning labels (BOM line 47); an 80 deg cut sector through the jacket, stone wool, AES blanket, drum
 and sand bed that shows two heater wells split open with their glowing cartridge heaters, a
 U-tube and the layered base (stone wool board, insulating firebrick, AES board); the annular
 inlet plenum with its servo-driven inlet damper and intake grille; the heater junction box on
@@ -257,7 +257,13 @@ def product_parts(P=PARAMS):
     bead = _ring(rj + 3.0, rj - 6.0, zt - 16, 20)
     bead = _fillet_try(bead, _circles(bead, lambda r, z: r > rj + 1), [3.0, 2.0, 1.0])
     bead -= cut
-    add("Top trim ring", bead, C_ACCENT, "painted", 26, "shell", EJ)
+    add("Optional teal top bead (cosmetic, no BOM line)", bead, C_ACCENT, "painted", 26, "shell", EJ)
+
+    # galvanized jacket cap (BOM 25) with the functional black outlet trim ring (BOM 44) over the AES packing (BOM 19)
+    add("Galvanized jacket cap", M["jacket_cap"] - cut, C_JACKET, "metal", 25, "shell", EJ)
+    add("Outlet packing, AES blanket", M["outlet_packing"] - cut, C_AES, "fabric", 19, "shell", EJ)
+    add("Functional black outlet trim ring (BOM 44)", M["trim_ring"] - cut, C_BLACK, "metal", 44, "shell",
+        (EJ[0], EJ[1], 250))
 
     plinth = _ring(rj + 4.0, rj - 4.0, 0, 60)
     plinth = _fillet_try(plinth, _circles(plinth, lambda r, z: r > rj + 1 and z > 30), [4.0, 3.0, 2.0])
@@ -271,16 +277,16 @@ def product_parts(P=PARAMS):
                   _box(0, -18, 3, 10, 96, 9) + _box(0, 42, 3, 10, 14, 9) + _box(0, 0, -9, 10, 124, 3))
     add("Name plate print", npi, C_LABEL, "paper", 26, "shell", EJ)
     wl, wi = _curved_label(358.0, rj + 1.3, 1060.0, 96, 64)
-    add("HOT SURFACES INSIDE label", wl, C_WARN, "paper", 26, "shell", EJ)
-    add("HOT SURFACES INSIDE label print", wi, C_INK, "paper", 26, "shell", EJ)
+    add("HOT SURFACES INSIDE label", wl, C_WARN, "paper", 47, "shell", EJ)
+    add("HOT SURFACES INSIDE label print", wi, C_INK, "paper", 47, "shell", EJ)
 
     tl = _box(0, 0, 0, 96, 64, 0.5)
     tx, ty = _polar(470.0, 205.0)
     top_lab = Pos(tx, ty, ztc + 0.25) * Rot(0, 0, 205 + 90) * tl
     top_ink = Pos(tx, ty, ztc + 0.65) * Rot(0, 0, 205 + 90) * Rot(0, 0, 90) * (
         Rot(0, -90, 0) * _warn_marks(96, 64) & Box(200, 200, 0.3))
-    add("HOT OUTLET label", top_lab, C_WARN, "paper", 26, "shell", EJ)
-    add("HOT OUTLET label print", top_ink, C_INK, "paper", 26, "shell", EJ)
+    add("HOT OUTLET label", top_lab, C_WARN, "paper", 47, "shell", EJ)
+    add("HOT OUTLET label print", top_ink, C_INK, "paper", 47, "shell", EJ)
 
     # ------------------------------------------------------------ insulation (BOM 19 to 23)
     ins = M["insulation"] - cut
@@ -383,8 +389,8 @@ def product_parts(P=PARAMS):
     add("Junction box lid screws", js, C_DARK, "metal", 42, "shell", (EB[0], EB[1], 470))
     vl = _box(jx, jy - 75.3, ztc + 45, 90, 0.5, 44)
     vi = Pos(jx, jy - 75.8, ztc + 45) * Rot(0, 0, -90) * _warn_marks(90, 44) & _box(jx, jy - 75.8, ztc + 45, 200, 0.3, 200)
-    add("DANGER 240 V label", vl, C_WARN, "paper", 42, "shell", EB)
-    add("DANGER 240 V label print", vi, C_INK, "paper", 42, "shell", EB)
+    add("DANGER 240 V label", vl, C_WARN, "paper", 47, "shell", EB)
+    add("DANGER 240 V label print", vi, C_INK, "paper", 47, "shell", EB)
     jg = _ycyl(jx, jy + 81, ztc + 50, 11.0, 12)
     add("Junction box gland", jg, C_DARK, "plastic", 42, "shell", EB)
 
@@ -424,8 +430,8 @@ def product_parts(P=PARAMS):
     loc_face = -40.0 - A
     zlab = zs1 - 55
     pl, pi_ = _curved_label(loc_face, rs, zlab, 84, 60)
-    add("HOT SURFACE label", rot * (Pos(X1, 0, 0) * pl), C_WARN, "paper", 12, "accessory", ED)
-    add("HOT SURFACE label print", rot * (Pos(X1, 0, 0) * pi_), C_INK, "paper", 12, "accessory", ED)
+    add("HOT SURFACE label", rot * (Pos(X1, 0, 0) * pl), C_WARN, "paper", 47, "accessory", ED)
+    add("HOT SURFACE label print", rot * (Pos(X1, 0, 0) * pi_), C_INK, "paper", 47, "accessory", ED)
 
     # mixing tee with the balancing damper on its room-air branch
     tee = _zcyl(X1, 0, TEE_Z, r4 + 3, 240)
@@ -533,8 +539,8 @@ def product_parts(P=PARAMS):
     wl2 = _box(ex + 60, ey0 - 5.2, ez - 78, 70, 0.5, 48)
     wi2 = Pos(ex + 60, ey0 - 5.6, ez - 78) * Rot(0, 0, -90) * _warn_marks(70, 48) \
         & _box(ex + 60, ey0 - 5.6, ez - 78, 200, 0.3, 200)
-    add("DANGER 240 V label, enclosure", wl2, C_WARN, "paper", 41, "accessory", EE)
-    add("DANGER 240 V label print, enclosure", wi2, C_INK, "paper", 41, "accessory", EE)
+    add("DANGER 240 V label, enclosure", wl2, C_WARN, "paper", 47, "accessory", EE)
+    add("DANGER 240 V label print, enclosure", wi2, C_INK, "paper", 47, "accessory", EE)
     gl = _union([_zcyl(ex + dx, WALL_Y - ed / 2, ez - eh / 2 - 8, 10, 16) for dx in (-80, 80)])
     gl += _xcyl(ex + ew / 2 + 8, WALL_Y - 40, ez - 40, 10, 16)
     add("Enclosure cable glands", gl, C_DARK, "plastic", 41, "accessory", EE)

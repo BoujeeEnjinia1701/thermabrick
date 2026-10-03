@@ -3,9 +3,9 @@ doc_id: TBK-BLD-001
 title: ThermaBrick prototype build plan
 project: ThermaBrick
 doc_type: Build plan
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,6 +13,10 @@ revisions:
     date: '2026-10-01'
     author: Amish Chadha
     change: First build plan, with pictures by component and step; design made constructable (TBK-DDR-003)
+  - version: "0.2"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: Step 22 and Figure 26 added for the five warning labels (BOM line 47); label line in the bought components
 ---
 
 # ThermaBrick prototype build plan
@@ -25,7 +29,7 @@ revisions:
 
 *Figure 1. Every component pulled apart and numbered in build order, in four columns: the base; the drum and the pipes that stand in it; what goes into and onto the drum; the jacket and what sits on top. The setting template (9) is a temporary jig.*
 
-ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry sand, with twelve electric heaters in capped steel pipes (the wells) to charge it and six steel U-tubes to carry room air through it and take the heat out. The drum stands on an insulated base and is wrapped in 317 mm of fiber insulation inside a galvanized steel jacket, 1,209 mm across and 1,462 mm high. Figure 1 shows the 21 components in the order you make or fit them. Ten are made in a home workshop: the base layers, the drilled drum lid, a plywood setting template, the wells, the U-tubes, the collector and outlet, the jacket side and cap, a steel trim ring and the inlet plenum. Everything else is bought: sand, heaters, thermocouples, insulation, the air path parts and the controls. The work is cutting and threading black steel pipe, drilling sheet steel with hole saws, cutting firebrick and fiber insulation, and cutting, folding and riveting thin sheet metal. No welding, machining or pressure parts. The parts cost about USD 3,850 from the bill of materials. The finished unit weighs about 415 kg and must stand on a concrete slab.
+ThermaBrick is a 55 US gal steel drum filled with 210 kg of dry sand, with twelve electric heaters in capped steel pipes (the wells) to charge it and six steel U-tubes to carry room air through it and take the heat out. The drum stands on an insulated base and is wrapped in 317 mm of fiber insulation inside a galvanized steel jacket, 1,209 mm across and 1,462 mm high. Figure 1 shows the 21 components in the order you make or fit them. Ten are made in a home workshop: the base layers, the drilled drum lid, a plywood setting template, the wells, the U-tubes, the collector and outlet, the jacket side and cap, a steel trim ring and the inlet plenum. Everything else is bought: sand, heaters, thermocouples, insulation, the air path parts and the controls. The work is cutting and threading black steel pipe, drilling sheet steel with hole saws, cutting firebrick and fiber insulation, and cutting, folding and riveting thin sheet metal. No welding, machining or pressure parts. The parts cost about USD 3,870 from the bill of materials. The finished unit weighs about 415 kg and must stand on a concrete slab.
 
 > **Safety:** The bed runs at up to 550 °C at the heater wells and stays hot for days after the power is off. The heaters run on 240 V: the branch circuit and the control enclosure are wired or checked by a licensed electrician. Pouring sand and cutting firebrick release respirable crystalline silica, and fiber insulation irritates skin, eyes and airways: work outdoors or with local exhaust, and wear a P100 or N95 respirator, gloves, long sleeves and eye protection. The first firing gives off smoke from coatings and the insulation binder. Section 6 lists every stop point.
 
@@ -354,6 +358,7 @@ Buy to specification, not brand. Line numbers are those of the bill of materials
 - **Jacket (lines 25, 26).** Two coils of 610 mm galvanized flashing; aluminium and steel pop rivets, stainless sheet metal screws, foil tape.
 - **Controls (lines 27 to 42).** As Figure 25 and the bill of materials.
 - **New for construction (lines 43 to 46).** Plywood for the template, 18 ga uncoated steel for the trim ring, four stainless guide rods, silicone grommets.
+- **Warning labels (line 47).** Five self-adhesive vinyl labels rated 105 °C or higher; positions in step 22.
 
 ## 4. Putting it together
 
@@ -483,6 +488,22 @@ The damper and its servo on the inlet collar. The 4 in outlet rises, turns and d
 
 The picture for this step is Figure 25. The control enclosure goes on the wall beside the unit. A licensed electrician runs the dedicated 240 V circuit and checks the wiring of Figure 25. **Hold point:** safety stop S5.
 
+### Step 22: warning labels
+
+![Figure 26. Step 22: warning label positions](05-build-plan/step-22.png)
+
+*Figure 26. The five warning labels and where they go (assembly step 22).*
+
+Stick the labels on clean, dry metal once the unit is finished and the air path is in place, in this order:
+
+1. HOT SURFACES INSIDE on the jacket side, at the front (0°), 1,060 mm above the floor.
+2. HOT OUTLET on the jacket cap, 470 mm from the centre at 205°, clear of the plenum and the trim ring.
+3. DANGER 240 V on the outer face of the junction box.
+4. HOT SURFACE on the drop of the guard sleeve, facing the room.
+5. DANGER 240 V on the door of the control enclosure.
+
+**Check before moving on.** All five labels are on, square and readable from a standing position.
+
 ## 5. First checks
 
 These are the checks a TRL 4 test report would record; this plan only lists them. Requirement numbers are those of TBK-REQ-001.
@@ -512,7 +533,7 @@ Stop at each point. Carry on only when everything listed is true.
 - **S3. Before burning out the drum.** Outdoors, clear of buildings, with water to hand; the drum empty, open and never sealed.
 - **S4. Before the top insulation covers the heaters.** Every heater reads 1 MΩ or more at 500 V lead to sheath; every lead is labelled and its beads are whole.
 - **S5. Before the 240 V circuit is energized.** A licensed electrician has run and checked the dedicated circuit; the enclosure is closed and earthed; the junction box lid is on; the high limit trips the contactor in a test with the heaters disconnected.
-- **S6. Before the first firing (bake-out).** The room is ventilated and smoke detectors are not disabled; the hot outlet guard is fitted and nothing combustible is within 450 mm of it; someone stays with the unit until it holds 150 °C steadily.
+- **S6. Before the first firing (bake-out).** The room is ventilated and smoke detectors are not disabled; the hot outlet guard is fitted and nothing combustible is within 450 mm of it; all five warning labels are on; someone stays with the unit until it holds 150 °C steadily.
 - **S7. Before any heater is pulled or the lid opened.** The sand mean reads below 60 °C; the circuit is isolated and locked off.
 
 ## 7. Tools, skills and workspace
@@ -527,10 +548,10 @@ Stop at each point. Carry on only when everything listed is true.
 
 ## 8. Where the numbers come from
 
-- Model and constructability checks: `cad/src/model.py` (`python cad/src/model.py --check`, 72 checks); STEP and STL in `cad/step/` and `cad/stl/`.
+- Model and constructability checks: `cad/src/model.py` (`python cad/src/model.py --check`, 88 checks); STEP and STL in `cad/step/` and `cad/stl/`.
 - Pictures: `cad/src/build_plan_media.py`, using `.kit/build_views.py`; written to `docs/05-build-plan/` and `cad/drawings/TBK-DWG-101` to `TBK-DWG-110`.
-- General arrangement: `cad/drawings/TBK-DWG-001.pdf`, Rev P2.
-- Calculations: `docs/04-calcs/TBK-CAL-001-sizing.md` (TBK-CAL-001 v0.3) and `docs/04-calcs/tbk_cal_001.py`; mass and floor load section 7, electrical section 6.
+- General arrangement: `cad/drawings/TBK-DWG-001.pdf`, Rev P3.
+- Calculations: `docs/04-calcs/TBK-CAL-001-sizing.md` (TBK-CAL-001 v0.5) and `docs/04-calcs/tbk_cal_001.py`; mass and floor load section 7, electrical section 6.
 - Bill of materials: `bom/bom.csv` and `bom/bom-notes.md`.
 - Decisions: `docs/decisions/0003-design-for-construction.md` (TBK-DDR-003), with TBK-DDR-002; open items in `docs/06-design-decisions.md` (TBK-DEC-001).
-- Requirements: `docs/03-requirements.md` (TBK-REQ-001 v0.10).
+- Requirements: `docs/03-requirements.md` (TBK-REQ-001 v0.12).

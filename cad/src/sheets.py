@@ -20,7 +20,8 @@ VIEWS = DWG / "_views"
 
 REVISIONS = {
     "TBK-DWG-001": [("P1", "First issue: general arrangement of the v0.2 design", "2026-09-24", "AC"),
-                    ("P2", "Made constructable: base, fittings, plenum, cap, box (TBK-DDR-003)", "2026-09-30", "AC")],
+                    ("P2", "Made constructable: base, fittings, plenum, cap, box (TBK-DDR-003)", "2026-09-30", "AC"),
+                    ("P3", "Warning labels added: jacket, cap, junction box (BOM line 47, TBK-DEC-001)", "2026-10-02", "AC")],
     "TBK-DWG-002": [("P1", "First issue: reduced-scale test article", "2026-09-24", "AC"),
                     ("P2", "Bricks moved under the chime; U-tube legs to 36 in nipple length; stack follows", "2026-09-24", "AC")],
     "TBK-DWG-005": [("P1", "First issue: controller enclosure, 250 x 200 x 150 mm", "2026-09-24", "AC")],
@@ -48,6 +49,7 @@ def rows_001():
         ("Section A-A", "Front view is cut on the XZ plane through four heater wells; sand omitted for clarity"),
         ("Sand level", f"{d['sand_depth']:.0f} mm above drum floor; headspace filled with {d['ins_top_int']:.0f} mm "
                        "AES blanket and stone wool"),
+        ("Labels", "HOT SURFACES INSIDE on the jacket, HOT OUTLET on the cap, DANGER 240 V on the junction box (96 x 64 and 90 x 44 mm)"),
         ("Reference", "TBK-PRC-001 design precis, TBK-CAL-001 sizing, TBK-BLD-001 build plan, bom/bom.csv"),
     ]
 
